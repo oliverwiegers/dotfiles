@@ -1,0 +1,7 @@
+"3.15.0 (created: 2016/10/05 01:11:26)
+
+set gui=none
+
+source! /home/chrootzius/.vimperatorrc.local
+source! /home/chrootzius/.vimperator/dark.vimp
+" vim: set ft=vimperator:

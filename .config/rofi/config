@@ -1,0 +1,13 @@
+rofi.modi:                  run
+rofi.width:                 30
+rofi.lines:                 7
+rofi.columns:               1
+rofi.font:                  hack 10
+rofi.bw:                    0
+rofi.pid:                   .cache/rofi.pid
+rofi.color-enabled:         true
+rofi.color-normal:          argb:00000000,  #FFFFFF , argb:00000000,  #333344 ,  #FFFFFF
+rofi.color-urgent:          argb:00000000,  #FFFFFF , argb:00000000,  #000000 ,  #FFFFFF
+rofi.color-active:          argb:00000000,  #FFFFFF , argb:00000000,  #000000 ,  #FFFFFF
+rofi.color-window:          argb:66222233,  #FFFFFF ,   #002233
+rofi.separator-style:       solid

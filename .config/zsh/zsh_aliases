@@ -1,0 +1,149 @@
+##############
+# alias file #
+##############
+
+#config
+alias conf="sh $SCRIPT_DIR/edit_config.sh"
+alias back="sh $SCRIPT_DIR/background.sh"
+alias reload="source $HOME/.zshrc && echo 'Successfully reloaded zsh_config_files'"
+alias scr="sh $SCRIPT_DIR/edit_scripts.sh"
+
+#net
+alias serv="python -m SimpleHTTPServer"
+alias wanip="curl -s http://whatismijnip.nl |cut -d' ' -f 5"
+
+#useful
+
+alias calc="bc -l"
+alias j="jump"
+alias dev="ls /dev/"
+alias pingit="ping -c3 www.google.com"
+alias clock="tty-clock -d10 -D -c -C6"
+alias psf="ps -aux --forest"
+alias locate="sudo locate"
+alias weather="curl -H \"Accept-Language: de\" wttr.in/Berlin"
+alias clone="$SCRIPT_DIR/clone.sh"
+
+#paste buffer
+alias pbcopy="xclip -selection clipboard"
+alias pbpaste="xclip -selection clipboard -o"
+alias -g C="| xargs echo -n | pbcopy"
+
+#maven
+alias pack="mvn clean package"
+alias pskip="mvn clean package -DskipTests"
+
+#power
+alias reboot="sudo reboot"
+alias poweroff="sudo poweroff"
+
+#fun
+alias pac="sh $SCRIPT_DIR/pacman.sh"
+alias invade="sh $SCRIPT_DIR/invaders.sh"
+alias als="alsi -u -t -f $HOME/.config/alsi/alsi.logo"
+
+#code
+alias unli="curl http://unlicense.org/UNLICENSE > LICENSE"
+
+#functions
+
+cpstat() {
+
+    if [ ! pv ]; then
+        printf "Please install \"pv\"\nexiting...\n"
+        exit 1
+    fi
+    #declare -i size=$(du -s $1 | awk '{print $1}')
+    if [ -f $1 ]; then
+        printf "Copying file: \"$1\" to: \"$2\"...\n"
+        pv -petra $1 > $2
+    elif [ -d $1 ]; then
+        printf "Copying directory: \"$1\" to: \"$2\"...\n"
+        tar c $1 | pv -petra | tar -x -C $2
+    else
+        printf "\"$1\" is neither a file nor a directory\nexiting...\n"
+        exit 1
+    fi
+
+}
+
+backup() {
+    if [ $# -ne 2 ]; then
+        printf "Wrong number of arguments.\nUsage: bachup <src/dir> <dest/dir>\n"
+        exit 1
+    fi
+
+    if [ ! $1 -d ]; then
+        printf "\"$1\" is not a directory.\n"
+    fi
+
+    if [ ! $2 -d ]; then
+        printf "\"$2\" is not a directory.\n"
+    fi
+
+    rsync -au --progress $1 $2
+}
+
+mkcd() {
+    mkdir -p $@
+    cd $@
+}
+
+pytest() {
+    echo "#!/usr/bin/env python" > ./test.py
+    vim ./test.py
+    chmod 0700 ./test.py
+}
+
+tsh() {
+    echo "#!/bin/bash" > ./test.sh
+    vim ./test.sh
+    chmod 0700 ./test.sh
+}
+
+mkread(){
+    [[ -f README.md ]] && rm README.md
+    touch README.md
+    echo "# $(pwd | rev | cut -d'/' -f1 | rev)" >> README.md
+    echo "Please insert simple description."
+    read desc
+    echo -e "> ${desc}\n" >> README.md
+    echo -e "## Requirements\n" >> README.md
+    echo -e "## Build\n" >> README.md
+    echo -e "## Run\n" >> README.md
+    echo -e "## Install" >> README.md
+
+}
+
+mkpro(){
+    if [[ $# -ne 1 ]] && echo "Please provide name of project as argument.\nExiting." && return 1
+    mkcd $1
+    unli
+    mkread
+    echo "Hey! Cool, you started another project\nPlease insert the name of the first file\n=>"
+    read name
+    touch $name
+}
+
+changemon() {
+    PS3="What setup would you like to run?"
+    select choice in "Internal monitor" "External monitor" "Both"; do
+        case $choice in
+            "Internal monitor" )
+                xrandr --output LVDS1 --auto --output DP3 --off && sh $HOME/.fehbg && $SCRIPT_DIR/polybar.sh intern
+                return 0
+                ;;
+            "External monitor" )
+                xrandr --output DP3 --auto --output LVDS1 --off && $HOME/.fehbg && $SCRIPT_DIR/polybar.sh extern
+                return 0
+                ;;
+            "Both" )
+                xrandr --output DP3 --auto --primary --output LVDS1 --auto --noprimary --right-of DP3 && $HOME/.fehbg && $SCRIPT_DIR/polybar.sh
+                return 0
+                ;;
+            *)
+                echo "Wrong input."
+                ;;
+        esac
+    done
+}
