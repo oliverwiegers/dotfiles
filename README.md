@@ -2,10 +2,14 @@
 
 > Dotfiles flying around
 
-![img](.shots/buisy.png "Fake buisy")
+Clean desktop
 ![img](.shots/clean.png "Clean")
-![img](.shots/vim.png "Vim")
+Rofi run dialog
 ![img](.shots/rofi.png "Rofi")
+Fake buisy
+![img](.shots/buisy.png "Fake buisy")
+Vim + Nerdtree + CtrlP
+![img](.shots/vim.png "Vim")
 
 ## visible software
 

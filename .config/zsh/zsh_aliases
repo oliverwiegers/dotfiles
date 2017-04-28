@@ -105,7 +105,7 @@ mkread(){
     [[ -f README.md ]] && rm README.md
     touch README.md
     echo "# $(pwd | rev | cut -d'/' -f1 | rev)" >> README.md
-    echo "Please insert simple description."
+    echo -e "Please insert simple description.\n"
     read desc
     echo -e "> ${desc}\n" >> README.md
     echo -e "## Requirements\n" >> README.md

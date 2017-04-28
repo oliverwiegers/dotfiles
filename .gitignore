@@ -7,6 +7,9 @@ Android/
 AndroidStudioProjects/
 workspace/
 
+.vim/
+.config/ranger/
+.config/inkscape/preferences.xml
 .gitconfig
 .atom/
 .bash*

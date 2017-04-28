@@ -1,5 +1,5 @@
 "######################
-"#      Vundle        #
+"#		Vundle		  #
 "######################
 
 " set the runtime path to include Vundle and initialize
@@ -22,7 +22,7 @@ Plugin 'Raimondi/delimitMate'
 call vundle#end()
 
 "######################
-"#      Plugins       #
+"#		Plugins		  #
 "######################
 
 "supertab
@@ -46,8 +46,8 @@ let NERDTreeShowHidden=1
 
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='.a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-    exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'.a:extension .'$#'
+	exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='.a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+	exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'.a:extension .'$#'
 endfunction
 
 call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
@@ -95,7 +95,7 @@ set rtp+=/usr/lib/python3.4/site-packages/powerline/bindings/vim/
 set laststatus=2
 
 "######################
-"#       personal     #
+"#		 personal	  #
 "######################
 
 "general
@@ -113,11 +113,25 @@ hi LineNr ctermfg=lightgrey ctermbg=black
 hi CursorLine term=bold ctermbg=black cterm=bold guibg=Grey40
 
 "hilight tabs
-set tabstop=4 softtabstop=4 shiftwidth=4
-set list listchars=tab:❘.,trail:·,extends:»,precedes:«,nbsp:×
-autocmd! bufreadpost * set noexpandtab | retab! 4
-autocmd! bufwritepre * set expandtab | retab! 4
-autocmd! bufwritepost * set noexpandtab | retab! 4
+let blacklist = ['html', 'css']
+autocmd BufReadPost * if index(blacklist, &ft) < 0 | set tabstop=4 softtabstop=4 shiftwidth=4
+autocmd BufReadPost * if index(blacklist, &ft) < 0 | set list listchars=tab:❘.,trail:·,extends:»,precedes:«,nbsp:×
+autocmd BufReadPost * if index(blacklist, &ft) < 0 | set noexpandtab | retab! 4
+autocmd BufReadPre * if index(blacklist, &ft) < 0 | set expandtab | retab! 4
+autocmd BufWritePost * if index(blacklist, &ft) < 0 | set noexpandtab | retab! 4
+
+
+autocmd BufReadPost *.html set tabstop=2 softtabstop=2 shiftwidth=2
+autocmd BufReadPost *.html set list listchars=tab:·,trail:·,extends:»,precedes:«,nbsp:×
+autocmd BufReadPost *.html set noexpandtab | retab! 2
+autocmd BufReadPre *.html set expandtab | retab! 2
+autocmd BufWritePost *.html set noexpandtab | retab! 2
+
+autocmd BufReadPost *.css set tabstop=2 softtabstop=2 shiftwidth=2
+autocmd BufReadPost *.css set list listchars=tab:·,trail:·,extends:»,precedes:«,nbsp:×
+autocmd BufReadPost *.css set noexpandtab | retab! 2
+autocmd BufReadPre *.css set expandtab | retab! 2
+autocmd BufWritePost *.css set noexpandtab | retab! 2
 
 "markdown
 au BufRead,BufNewFile *.md set filetype=markdown
