@@ -3,22 +3,158 @@ xmonad.hs:10:1: Warning:
     Module ‘XMonad.Hooks.ICCCMFocus’ is deprecated:
       XMonad.Hooks.ICCCMFocus: xmonad>0.10 core merged issue 177
 
+xmonad.hs:38:1: Warning: Tab character
+
+xmonad.hs:41:1: Warning: Tab character
+
+xmonad.hs:41:31: Warning: Tab character
+
+xmonad.hs:42:1: Warning: Tab character
+
+xmonad.hs:42:28: Warning: Tab character
+
+xmonad.hs:43:1: Warning: Tab character
+
+xmonad.hs:43:31: Warning: Tab character
+
+xmonad.hs:44:1: Warning: Tab character
+
+xmonad.hs:44:29: Warning: Tab character
+
+xmonad.hs:45:1: Warning: Tab character
+
+xmonad.hs:45:32: Warning: Tab character
+
+xmonad.hs:46:1: Warning: Tab character
+
+xmonad.hs:46:31: Warning: Tab character
+
+xmonad.hs:47:1: Warning: Tab character
+
+xmonad.hs:47:29: Warning: Tab character
+
+xmonad.hs:48:1: Warning: Tab character
+
+xmonad.hs:48:59: Warning: Tab character
+
+xmonad.hs:49:1: Warning: Tab character
+
+xmonad.hs:49:27: Warning: Tab character
+
+xmonad.hs:50:1: Warning: Tab character
+
+xmonad.hs:50:21: Warning: Tab character
+
+xmonad.hs:51:1: Warning: Tab character
+
+xmonad.hs:52:1: Warning: Tab character
+
 xmonad.hs:55:8: Warning:
     In the use of ‘defaultConfig’
     (imported from XMonad, but defined in XMonad.Config):
     Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
 
-xmonad.hs:57:59: Warning:
+xmonad.hs:56:1: Warning: Tab character
+
+xmonad.hs:56:19: Warning: Tab character
+
+xmonad.hs:57:1: Warning: Tab character
+
+xmonad.hs:57:19: Warning: Tab character
+
+xmonad.hs:57:67: Warning:
     In the use of ‘defaultConfig’
     (imported from XMonad, but defined in XMonad.Config):
     Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
 
-xmonad.hs:75:16: Warning:
+xmonad.hs:58:1: Warning: Tab character
+
+xmonad.hs:59:1: Warning: Tab character
+
+xmonad.hs:60:1: Warning: Tab character
+
+xmonad.hs:61:1: Warning: Tab character
+
+xmonad.hs:62:1: Warning: Tab character
+
+xmonad.hs:63:1: Warning: Tab character
+
+xmonad.hs:64:1: Warning: Tab character
+
+xmonad.hs:67:1: Warning: Tab character
+
+xmonad.hs:68:1: Warning: Tab character
+
+xmonad.hs:69:1: Warning: Tab character
+
+xmonad.hs:70:1: Warning: Tab character
+
+xmonad.hs:71:1: Warning: Tab character
+
+xmonad.hs:72:1: Warning: Tab character
+
+xmonad.hs:73:1: Warning: Tab character
+
+xmonad.hs:74:1: Warning: Tab character
+
+xmonad.hs:75:1: Warning: Tab character
+
+xmonad.hs:75:28: Warning:
     In the use of ‘takeTopFocus’
     (imported from XMonad.Hooks.ICCCMFocus):
     Deprecated: "XMonad.Hooks.ICCCMFocus: xmonad>0.10 core merged issue 177"
 
-xmonad.hs:78:50: Warning:
+xmonad.hs:76:1: Warning: Tab character
+
+xmonad.hs:77:1: Warning: Tab character
+
+xmonad.hs:78:1: Warning: Tab character
+
+xmonad.hs:78:58: Warning:
     In the use of ‘defaultConfig’
     (imported from XMonad, but defined in XMonad.Config):
     Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
+
+xmonad.hs:79:1: Warning: Tab character
+
+xmonad.hs:80:1: Warning: Tab character
+
+xmonad.hs:81:1: Warning: Tab character
+
+xmonad.hs:82:1: Warning: Tab character
+
+xmonad.hs:83:1: Warning: Tab character
+
+xmonad.hs:84:1: Warning: Tab character
+
+xmonad.hs:86:1: Warning: Tab character
+
+xmonad.hs:87:1: Warning: Tab character
+
+xmonad.hs:88:1: Warning: Tab character
+
+xmonad.hs:89:1: Warning: Tab character
+
+xmonad.hs:89:46: Warning: Tab character
+
+xmonad.hs:90:1: Warning: Tab character
+
+xmonad.hs:91:1: Warning: Tab character
+
+xmonad.hs:91:46: Warning: Tab character
+
+xmonad.hs:92:1: Warning: Tab character
+
+xmonad.hs:92:46: Warning: Tab character
+
+xmonad.hs:93:1: Warning: Tab character
+
+xmonad.hs:93:46: Warning: Tab character
+
+xmonad.hs:94:1: Warning: Tab character
+
+xmonad.hs:95:1: Warning: Tab character
+
+xmonad.hs:96:1: Warning: Tab character
+
+xmonad.hs:97:1: Warning: Tab character

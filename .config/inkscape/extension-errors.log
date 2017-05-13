@@ -1,10 +1,4 @@
 Extension "Win32 Vector Print" failed to load because the extension is designed for Windows only.  This is caused by an improper .inx file for this extension.  An improper .inx file could have been caused by a faulty installation of Inkscape.
-Extension "GIMP XCF" failed to load because a dependency was not met.
-Dependency:
-  type: executable
-  location: path
-  string: gimp
-
 Extension "XFIG Input" failed to load because a dependency was not met.
 Dependency:
   type: executable

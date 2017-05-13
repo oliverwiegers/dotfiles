@@ -91,7 +91,7 @@ let g:ranger_open_new_tab = 1
 let g:ranger_map_keys = 0
 
 "statusline
-set rtp+=/usr/lib/python3.4/site-packages/powerline/bindings/vim/
+set rtp+=/usr/lib/python2.7/site-packages/powerline/bindings/vim/
 set laststatus=2
 
 "######################
@@ -113,7 +113,7 @@ hi LineNr ctermfg=lightgrey ctermbg=black
 hi CursorLine term=bold ctermbg=black cterm=bold guibg=Grey40
 
 "hilight tabs
-let blacklist = ['html', 'css']
+let blacklist = ['html', 'css', 'json', 'yaml']
 autocmd BufReadPost * if index(blacklist, &ft) < 0 | set tabstop=4 softtabstop=4 shiftwidth=4
 autocmd BufReadPost * if index(blacklist, &ft) < 0 | set list listchars=tab:❘.,trail:·,extends:»,precedes:«,nbsp:×
 autocmd BufReadPost * if index(blacklist, &ft) < 0 | set noexpandtab | retab! 4
@@ -121,17 +121,17 @@ autocmd BufReadPre * if index(blacklist, &ft) < 0 | set expandtab | retab! 4
 autocmd BufWritePost * if index(blacklist, &ft) < 0 | set noexpandtab | retab! 4
 
 
-autocmd BufReadPost *.html set tabstop=2 softtabstop=2 shiftwidth=2
-autocmd BufReadPost *.html set list listchars=tab:·,trail:·,extends:»,precedes:«,nbsp:×
-autocmd BufReadPost *.html set noexpandtab | retab! 2
-autocmd BufReadPre *.html set expandtab | retab! 2
-autocmd BufWritePost *.html set noexpandtab | retab! 2
+autocmd Filetype html setlocal expandtab softtabstop=2 shiftwidth=2 tabstop=2
+autocmd Filetype html retab
 
-autocmd BufReadPost *.css set tabstop=2 softtabstop=2 shiftwidth=2
-autocmd BufReadPost *.css set list listchars=tab:·,trail:·,extends:»,precedes:«,nbsp:×
-autocmd BufReadPost *.css set noexpandtab | retab! 2
-autocmd BufReadPre *.css set expandtab | retab! 2
-autocmd BufWritePost *.css set noexpandtab | retab! 2
+autocmd Filetype css setlocal expandtab softtabstop=2 shiftwidth=2 tabstop=2
+autocmd Filetype css retab
+
+autocmd Filetype json setlocal expandtab softtabstop=2 shiftwidth=2 tabstop=2
+autocmd Filetype json retab
+
+autocmd Filetype yaml setlocal expandtab softtabstop=2 shiftwidth=2 tabstop=2
+autocmd Filetype yaml retab
 
 "markdown
 au BufRead,BufNewFile *.md set filetype=markdown

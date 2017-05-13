@@ -6,6 +6,7 @@ Downloads/
 Android/
 AndroidStudioProjects/
 workspace/
+node_modules/
 
 .vim/
 .config/ranger/

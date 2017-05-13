@@ -23,9 +23,9 @@ padding-left = 2
 padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
-font-0 = Hack:size=16;0
-font-1 = FontAwesome:size=12;0
-font-2 = MaterialIcons:size=12;0
+font-0 = Hack:size=12;4
+font-1 = FontAwesome:size=11;3
+font-2 = MaterialIcons:size=11;3
 modules-left = temperature cpu memory player
 modules-center = 
 modules-right = volume wireless-network wired-network battery date
