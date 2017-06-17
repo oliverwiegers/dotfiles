@@ -73,7 +73,6 @@ main = do
 		logHook = dynamicLog
 			>> updatePointer (0.5,0.5) (1,1)
 			>> takeTopFocus
-			>> spawnOnce "setxkbmap gb"
 			>> myLogHook,
 		manageHook = myManageHook <+> manageHook defaultConfig
 		}`additionalKeys`[

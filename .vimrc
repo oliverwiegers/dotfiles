@@ -150,6 +150,8 @@ au BufRead,BufNewFile *.html set colorcolumn=79
 
 
 "keymappings
+
+inoremap jk <ESC>
 map <S-m> :NERDTreeToggle<CR>
 map <S-c> :SyntasticToggleMode<CR>
 map <S-C-j> :lnext<CR>

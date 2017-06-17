@@ -8,6 +8,13 @@ AndroidStudioProjects/
 workspace/
 node_modules/
 
+.AndroidStudio2.3/
+.Skype/
+.gem/
+.gimp*
+.marks/
+.scribus/
+.webclipse*
 .vim/
 .config/ranger/
 .config/inkscape/preferences.xml

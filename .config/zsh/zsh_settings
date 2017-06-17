@@ -1,12 +1,7 @@
 source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#source /etc/profile
+bindkey -M viins 'jk' vi-cmd-mode
 
-export _JAVA_AWT_WM_NONREPARENTING=1
-export AWT_TOOLKIT=MToolkit
 export TERM=xterm-termite
 export EDITOR=/usr/bin/vim
 export SCRIPT_DIR=$HOME/Documents/scripts
 export PATH=.:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/opt/bin:/usr/x86_64-pc-linux-gnu/gcc-bin/4.9.4:/home/chrootzius/documents/tools/eclipse
-
-#that fucking java fuck to run that fuck!!!!
-export CATALINA_HOME=/usr/share/tomcat/
