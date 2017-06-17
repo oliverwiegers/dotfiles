@@ -15,7 +15,7 @@ node_modules/
 .marks/
 .scribus/
 .webclipse*
-.vim/
+.vimrc
 .config/ranger/
 .config/inkscape/preferences.xml
 .gitconfig
