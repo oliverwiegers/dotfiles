@@ -8,6 +8,8 @@ AndroidStudioProjects/
 workspace/
 node_modules/
 
+.cargo/
+.ICAClient/
 .AndroidStudio2.3/
 .Skype/
 .gem/

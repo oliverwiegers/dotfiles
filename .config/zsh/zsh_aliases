@@ -47,24 +47,23 @@ alias unli="curl http://unlicense.org/UNLICENSE > LICENSE"
 
 #functions
 
-cpstat() {
-
-	if [ ! pv ]; then
+cpstat() { 
+	if [ -f /bin/pv ] || [ -f /sbin/pv ] || [ -f /usr/bin/pv ] || [ -f /usr/sbin/pv ] || [ -f /usr/local/bin/pv ] || [ -f /usr/local/bin/pv ]; then
+		#declare -i size=$(du -s $1 | awk '{print $1}')
+		if [ -f $1 ]; then
+			printf "Copying file: \"$1\" to: \"$2\"...\n"
+			pv -petra $1 > $2
+		elif [ -d $1 ]; then
+			printf "Copying directory: \"$1\" to: \"$2\"...\n"
+			tar c $1 | pv -petra | tar -x -C $2
+		else
+			printf "\"$1\" is neither a file nor a directory\nexiting...\n"
+			exit 1
+		fi
+	else
 		printf "Please install \"pv\"\nexiting...\n"
 		exit 1
 	fi
-	#declare -i size=$(du -s $1 | awk '{print $1}')
-	if [ -f $1 ]; then
-		printf "Copying file: \"$1\" to: \"$2\"...\n"
-		pv -petra $1 > $2
-	elif [ -d $1 ]; then
-		printf "Copying directory: \"$1\" to: \"$2\"...\n"
-		tar c $1 | pv -petra | tar -x -C $2
-	else
-		printf "\"$1\" is neither a file nor a directory\nexiting...\n"
-		exit 1
-	fi
-
 }
 
 backup() {
