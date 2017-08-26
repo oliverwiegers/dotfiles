@@ -1,23 +1,22 @@
 [colors]
 accent = #fba922
-good = #2bb4da
-okay = #6944da
-bad = #7e08b4
+good = #16A085
+okay = #268bd2
+bad = #CB4B16
 
-[bar/extTop]
-enable-ipc = true
-monitor = DP3
+[bar/bottom]
+enable-ipc = false
+monitor = HDMI-0
 width = 100%
 fixed-center = true
 height = 27
-#background = #171717
 background = #88171717
 foreground = #eee
-border-bottom-size = 1
-border-bottom-color = #444
-overline-size = 10
+border-top-size = 1
+border-top-color = #444
+overline-size = 2
 overline-color = ${self.background}
-underline-size = 10
+underline-size = 2
 underline-color = ${self.background}
 padding-left = 2
 padding-right = 2
@@ -26,38 +25,14 @@ module-margin-right = 1
 font-0 = Hack:size=12;4
 font-1 = FontAwesome:size=11;3
 font-2 = MaterialIcons:size=11;3
-modules-left = temperature cpu memory player
-modules-center = 
-modules-right = volume wireless-network wired-network battery date
+modules-left = cpu memory player
+modules-center = i3
+modules-right = volume date
 tray-position = right
 monitor-strict = false
-override-redirect = true
-wm-restack = xmonad
-
-[bar/intern]
-enable-ipc = ${bar/extTop.enable-ipc}
-monitor = LVDS1
-width = ${bar/extTop.width}
-height = 23
-background = ${bar/extTop.background}
-foreground = ${bar/extTop.foreground}
-border-bottom-size = ${bar/extTop.border-bottom-size}
-border-bottom-color = ${bar/extTop.border-bottom-color}
-overline-size = ${bar/extTop.overline-size}
-overline-color = ${self.background}
-underline-size = ${bar/extTop.underline-size}
-underline-color = ${self.background}
-padding-left = ${bar/extTop.padding-left}
-padding-right = ${bar/extTop.padding-right}
-module-margin-left = ${bar/extTop.module-margin-left}
-module-margin-right = ${bar/extTop.module-margin-right}
-font-0 = Hack:size=10;4
-font-1 = FontAwesome:size=11;3
-font-2 = MaterialIcons:size=11;3
-modules-left = temperature cpu memory
-modules-center = ${bar/extTop.modules-center}
-modules-right = volume wireless-network wired-network xbacklight battery date
-tray-position =${bar/extTop.tray-position}
+override-redirect = false
+bottom = true
+wm-restack = i3
 
 [module/temperature]
 type = internal/temperature
@@ -76,27 +51,6 @@ ramp-1 = 
 ramp-2 = 
 ramp-foreground = #eee
 ramp-warn-foreground = ${colors.bad}
-
-[module/xbacklight]
-type = internal/xbacklight
-output = LVDS1
-format = <ramp>
-ramp-0 = 
-ramp-0-foreground = #666
-ramp-1 = 
-ramp-1-foreground = #999
-ramp-2 = 
-ramp-2-foreground = #fff
-bar-width = 12
-bar-indicator = |
-bar-indicator-font = 6
-bar-indicator-foreground = #bbffffff
-bar-fill = ─
-bar-fill-font = 6
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 6
-bar-empty-foreground = #44
 
 [module/cpu]
 type = internal/cpu
@@ -155,47 +109,26 @@ bar-used-empty = ─
 bar-used-empty-font = 2
 bar-used-empty-foreground = #44
 
-[module/wireless-network]
-type = internal/network
-interface = wlp6s0
-interval = 10
-ping-interval = 10
-format-connected = <ramp-signal>
-label-connected = %essid%
-label-disconnected = 
-label-disconnected-foreground = #66
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-animation-packetloss-0 = 
-animation-packetloss-0-foreground = #ffa64c
-animation-packetloss-1 = 
-animation-packetloss-1-foreground = ${bar/top.foreground}
-animation-packetloss-framerate = 500
-
 [module/wired-network]
 type = internal/network
-interface = enp12s0
+interface = enp0s25
 interval = 10
 label-connected = 
 label-disconnected = 
 label-disconnected-foreground = #66
-
 
 [module/date]
 label-font = 0
 type = internal/date
 interval = 10
 format-foreground = #fff
+date = %Y-%m-%d%
 time = %H:%M
 label = %time%
 
 [module/volume]
 type = internal/volume
-format-volume = <ramp-volume> <label-volume>
-label-volume =
+format-volume = <ramp-volume>
 label-volume-foreground = #ff
 label-muted = 
 label-muted-foreground = #99ffffff
@@ -205,30 +138,31 @@ ramp-volume-2 = 
 ramp-volume-3 = 
 ramp-volume-foreground = #eee
 
-[module/battery]
-type = internal/battery
-full-at = 96
-battery = BAT0
-adapter = ADP1
-poll-interval = 5
-time-format = %H:%M
-format-charging = <animation-charging> <label-charging>
-format-discharging = <label-discharging> <ramp-capacity>
-label-full = 
-label-charging = 
-label-discharging = %percentage%%
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-bar-capacity-width = 10
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-framerate = 750
+[module/i3]
+type = internal/i3
+
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+enable-click = false
+enable-scroll = false
+wrapping-scroll = false
+reverse-scroll = false
+fuzzy-match = true
+ws-icon-default ="  "
+#ws-icon-default = 
+format = <label-state> <label-mode>
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #e60053
+label-focused = %icon%
+label-focused-foreground = #ffffff
+label-unfocused = %icon%
+label-unfocused-foreground = #888888
+label-visible = %icon%
+label-visible-foreground = #e60053
+label-urgent = %icon%
+label-urgent-foreground = #e60053
 
 [module/player]
 type = custom/script

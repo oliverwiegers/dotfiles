@@ -10,63 +10,62 @@ urgent_on_bell = true
 clickable_url = true
 scrollback_lines = 10000
 search_wrap = true
-#icon_name = terminal
-#geometry = 640x480
-
 # "system", "on" or "off"
 cursor_blink = system
-
 # "block", "underline" or "ibeam"
 cursor_shape = underline
-
-# $BROWSER is used by default if set, with xdg-open as a fallback
 browser = firefox
-
 # set size hints for the window
 size_hints = true
-
 # Hide links that are no longer valid in url select overlay mode
 filter_unmatched_urls = true
-
 # emit escape sequences for extra modified keys
-#modify_other_keys = false
+modify_other_keys = false
 
 [colors]
-foreground = #dcdccc
+#white
+foreground = #F9FAF9
+#blue grey
 foreground_bold = #909eb4
-#background = #262626
-
-# 10% background transparency (requires a compositor)
-background = rgba(1, 1, 1, 0.9)
-
-# if unset, will reverse foreground and background
-highlight = #2f2f2f
-
-# colors from color0 to color254 can be set
+background = rgba(43, 44, 43, 0.98)
+#yellow
+highlight = #d2b746
+#darkgrey
 color0 = #3f3f3f
-color1 = #705050
-# glances bold block
-color2 = #60b48a
-# alsi dangerous color
-color3 = #dfaf8f
-# color of right spelled command 
-color4 = #506070
-# color of numbers in this file
-color5 = #dc8cc3
-# color of comments in this file
-color6 = #8cd0d3
-# grey 
-color7 = #dcdccc
-color8 = #709080
-# color of f.e. [colors]
-color9 = #dca3a3
-#executable files
-color10 = #8f6aaf
-color11 = #f0dfaf
-color12 = #94bff3
-color13 = #ec93d3
-color14 = #93e0e3
-color15 = #ffffff
+#white
+color1 = #f9faf9
+#neon blue
+color2 = #1de2e5
+#light blue
+color3 = #cffff6
+#green
+color4 = #16A085
+#beige
+color5 = #FDF6E3
+#lightgrey
+color6 = #a7a7a7
+#lightgreen // vim numbers
+color7 = #6dae92
+#other light grey
+color8 = #808380
+#color4
+color9 = #16A085
+#color4
+color10 = #16A085
+#neon blue
+color11 = #80FFF9
+#lightblue // ls directory color
+color12 = #7bb3ff
+#orange
+color13 = #CB4B16
+#blue
+color14 = #268BD2
+#black
+color15 = #000000
+#white
+color16 = #ffffff
+#black
+color17 = #0c0c0c
 
 [hints]
 font = Hack 13

@@ -1,0 +1,216 @@
+#####################
+#	  Settings		#
+#####################
+set $mod Mod4
+new_window pixel 1
+new_float pixel 1 
+hide_edge_borders none
+focus_follows_mouse no
+floating_modifier $mod
+
+# Autostart applications
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id bash $HOME/.fehbg; sleep 1; compton -b
+exec --no-startup-id unclutter -idle 1
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+exec_always bash $HOME/Documents/scripts/polybar.sh
+
+
+
+# Colors
+set $i3_background		#2B2C2B
+set $i3_separator		#454947
+set $i3_text #F9FAF9
+set $i3_color0 #3f3f3f
+set $i3_color1 #f9faf9
+set $i3_color2 #1de2e5
+set $i3_color3 #cffff6
+set $i3_color4 #16A085
+set $i3_color5 #FDF6E3
+set $i3_color6 #a7a7a7
+set $i3_color7 #6dae92
+set $i3_color8 #808380
+set $i3_color9 #16A085
+set $i3_color10 #16A085
+set $i3_color11 #80FFF9
+set $i3_color12 #7bb3ff
+set $i3_color13 #CB4B16
+set $i3_color14 #268BD2
+set $i3_color15 #000000
+set $i3_color16 #ffffff
+set $i3_color17 #0c0c0c
+
+# class					border		backgr.		text		indic.		child_border
+client.focused			$i3_color4	$i3_color4	$i3_color11 $i3_color12
+client.focused_inactive $i3_color4	$i3_color8	$i3_color4	$i3_color10
+client.unfocused		$i3_color8	$i3_color8	$i3_color4	$i3_color10
+client.urgent			$i3_color13 $i3_color12 $i3_color4	$i3_color14
+client.background		$i3_background
+
+#####################
+#	  Workspaces	#
+#####################
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+
+# Move to workspace with focused container
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+
+#####################
+#	   Windows		#
+#####################
+assign [class="Firefox"] $ws2
+
+assign [class="Java"] $ws3
+assign [class="Eclipse"] $ws3
+
+assign [class="Franz"] $ws4
+assign [class="Skype"] $ws4
+assign [class="Steam"] $ws4
+assign [class="TeamSpeak 3"] $ws4
+
+for_window [class="Franz"] floating enable
+for_window [class="Franz"] floating enable
+for_window [class="Skype"] floating enable
+for_window [class="Steam"] floating enable
+for_window [class="Spotify"] floating enable
+for_window [class="TeamSpeak 3"] floating enable
+for_window [class="Lxappearance"] floating enable
+for_window [class="Spotify"] move to workspace $ws4
+
+#####################
+#	 Keybindings	#
+#####################
+bindsym $mod+Shift+Return exec termite
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec --no-startup-id rofi -show run
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split orientation
+bindsym $mod+Shift+backslash split h;exec notify-send 'tile horizontally'
+bindsym $mod+minus split v;exec notify-send 'tile vertically'
+
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+9 exec --no-startup-id blurlock
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Set shut down, restart and locking features
+bindsym $mod+0 mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+	bindsym l exec --no-startup-id i3exit lock, mode "default"
+	bindsym s exec --no-startup-id i3exit suspend, mode "default"
+	bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+	bindsym e exec --no-startup-id i3exit logout, mode "default"
+	bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+	bindsym r exec --no-startup-id i3exit reboot, mode "default"
+	bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+	# exit system mode: "Enter" or "Escape"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+# Resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+mode "resize" {
+		bindsym h resize shrink width 5 px or 5 ppt
+		bindsym j resize grow height 5 px or 5 ppt
+		bindsym k resize shrink height 5 px or 5 ppt
+		bindsym l resize grow width 5 px or 5 ppt
+
+		# exit resize mode: Enter or Escape
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+}
+
+#audio keys
+bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5%
+
+#media keys
+#bindsym XF86Tools
+bindsym XF86Mail exec franz-bin
+#bindsym XF86HomePage
+bindsym XF86Calculator exec termite -e 'bc -l'
+
+bindsym Menu exec firefox
+# #####################
+#		 Gaps		#
+#####################
+gaps inner 10
+gaps outer -4
+smart_gaps on
+smart_borders on
+
+# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+		bindsym o	   mode "$mode_gaps_outer"
+		bindsym i	   mode "$mode_gaps_inner"
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+		bindsym plus  gaps inner current plus 5
+		bindsym minus gaps inner current minus 5
+		bindsym 0	  gaps inner current set 0
+
+		bindsym Shift+plus	gaps inner all plus 5
+		bindsym Shift+minus gaps inner all minus 5
+		bindsym Shift+0		gaps inner all set 0
+
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+		bindsym plus  gaps outer current plus 5
+		bindsym minus gaps outer current minus 5
+		bindsym 0	  gaps outer current set 0
+
+		bindsym Shift+plus	gaps outer all plus 5
+		bindsym Shift+minus gaps outer all minus 5
+		bindsym Shift+0		gaps outer all set 0
+
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+}
