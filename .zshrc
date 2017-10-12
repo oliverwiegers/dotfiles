@@ -64,9 +64,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+#	export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#	export EDITOR='mvim'
 # fi
 
 # Compilation flags
@@ -83,5 +83,4 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source $HOME/.config/zsh/zsh_aliases
 source $HOME/.config/zsh/zsh_settings

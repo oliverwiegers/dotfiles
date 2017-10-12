@@ -8,13 +8,15 @@ alias back="sh $SCRIPT_DIR/background.sh"
 alias reload="source $HOME/.zshrc && echo 'Successfully reloaded zsh_config_files'"
 alias scr="sh $SCRIPT_DIR/edit_scripts.sh"
 
+#todo
+alias todo="vim $HOME/Documents/textfiles/todo.md"
+
 #net
 alias serv="python -m SimpleHTTPServer"
 alias wanip="curl -s http://whatismijnip.nl |cut -d' ' -f 5"
 
 #useful
 
-alias calc="bc -l"
 alias j="jump"
 alias dev="ls /dev/"
 alias pingit="ping -c3 www.google.com"
@@ -47,7 +49,7 @@ alias unli="curl http://unlicense.org/UNLICENSE > LICENSE"
 
 #functions
 
-cpstat() { 
+cpstat() {
 	if [ -f /bin/pv ] || [ -f /sbin/pv ] || [ -f /usr/bin/pv ] || [ -f /usr/sbin/pv ] || [ -f /usr/local/bin/pv ] || [ -f /usr/local/bin/pv ]; then
 		#declare -i size=$(du -s $1 | awk '{print $1}')
 		if [ -f $1 ]; then
@@ -115,7 +117,7 @@ mkread(){
 }
 
 mkpro(){
-	if [[ $# -ne 1 ]] && echo "Please provide name of project as argument.\nExiting." && return 1
+	[[ $# -ne 1 ]] && echo "Please provide name of project as argument.\nExiting." && return 1
 	mkcd $1
 	unli
 	mkread

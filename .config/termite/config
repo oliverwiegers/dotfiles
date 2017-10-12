@@ -14,7 +14,7 @@ search_wrap = true
 cursor_blink = system
 # "block", "underline" or "ibeam"
 cursor_shape = underline
-browser = firefox
+browser = /usr/bin/vivaldi-stable
 # set size hints for the window
 size_hints = true
 # Hide links that are no longer valid in url select overlay mode
@@ -23,49 +23,43 @@ filter_unmatched_urls = true
 modify_other_keys = false
 
 [colors]
-#white
-foreground = #F9FAF9
-#blue grey
-foreground_bold = #909eb4
-background = rgba(43, 44, 43, 0.98)
-#yellow
-highlight = #d2b746
-#darkgrey
-color0 = #3f3f3f
-#white
-color1 = #f9faf9
-#neon blue
-color2 = #1de2e5
-#light blue
-color3 = #cffff6
-#green
-color4 = #16A085
-#beige
-color5 = #FDF6E3
-#lightgrey
-color6 = #a7a7a7
-#lightgreen // vim numbers
-color7 = #6dae92
-#other light grey
-color8 = #808380
-#color4
-color9 = #16A085
-#color4
-color10 = #16A085
-#neon blue
-color11 = #80FFF9
-#lightblue // ls directory color
-color12 = #7bb3ff
-#orange
-color13 = #CB4B16
-#blue
-color14 = #268BD2
-#black
-color15 = #000000
-#white
-color16 = #ffffff
-#black
-color17 = #0c0c0c
+;background = #1d2021
+background = #282828
+# soft contrast: background = #32302f
+foreground = #ebdbb2
+foreground_bold = #ebdbb2
+
+# dark0 + gray
+color0 = #282828
+color8 = #928374
+
+# neutral_red + bright_red
+color1 = #cc241d
+color9 = #fb4934
+
+# neutral_green + bright_green
+color2 = #98971a
+color10 = #b8bb26
+
+# neutral_yellow + bright_yellow
+color3 = #d79921
+color11 = #fabd2f
+
+# neutral_blue + bright_blue
+color4 = #458588
+color12 = #83a598
+
+# neutral_purple + bright_purple
+color5 = #b16286
+color13 = #d3869b
+
+# neutral_aqua + faded_aqua
+color6 = #689d6a
+color14 = #8ec07c
+
+# light4 + light1
+color7 = #a89984
+color15 = #ebdbb2
 
 [hints]
 font = Hack 13

@@ -1,17 +1,16 @@
 [colors]
-accent = #fba922
-good = #16A085
-okay = #268bd2
-bad = #CB4B16
+accent = #689d6a
+good = #98971a
+okay = #d79921
+bad = #fb4934
 
 [bar/bottom]
 enable-ipc = false
 monitor = HDMI-0
 width = 100%
-fixed-center = true
 height = 27
-background = #88171717
-foreground = #eee
+background = #1d2021
+foreground = #ebdbb2
 border-top-size = 1
 border-top-color = #444
 overline-size = 2
@@ -25,14 +24,14 @@ module-margin-right = 1
 font-0 = Hack:size=12;4
 font-1 = FontAwesome:size=11;3
 font-2 = MaterialIcons:size=11;3
-modules-left = cpu memory player
+modules-left = cpu memory weather
 modules-center = i3
-modules-right = volume date
-tray-position = right
+modules-right = player todo pkg gmail volume date
+tray-position =
 monitor-strict = false
 override-redirect = false
 bottom = true
-wm-restack = i3
+fixed-center = true
 
 [module/temperature]
 type = internal/temperature
@@ -100,7 +99,7 @@ bar-used-foreground-3 = ${colors.bad}
 bar-used-indicator = |
 ;bar-used-indicator = █
 bar-used-indicator-font = 2
-bar-used-indicator-foreground = #fff
+bar-used-indicator-foreground = #ebdbb2
 bar-used-fill = ─
 ;bar-used-fill = █
 bar-used-fill-font = 2
@@ -118,6 +117,7 @@ label-disconnected = 
 label-disconnected-foreground = #66
 
 [module/date]
+label-foreground = #ebdbb2
 label-font = 0
 type = internal/date
 interval = 10
@@ -129,18 +129,18 @@ label = %time%
 [module/volume]
 type = internal/volume
 format-volume = <ramp-volume>
-label-volume-foreground = #ff
+label-volume-foreground = #ebdbb2
 label-muted = 
 label-muted-foreground = #99ffffff
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-volume-3 = 
-ramp-volume-foreground = #eee
+ramp-volume-foreground = #ebdbb2
 
 [module/i3]
 type = internal/i3
-
+label-focused-foreground = #ebdbb2
 pin-workspaces = true
 strip-wsnumbers = true
 index-sort = true
@@ -150,13 +150,11 @@ wrapping-scroll = false
 reverse-scroll = false
 fuzzy-match = true
 ws-icon-default ="  "
-#ws-icon-default = 
 format = <label-state> <label-mode>
 label-mode = %mode%
 label-mode-padding = 2
 label-mode-background = #e60053
 label-focused = %icon%
-label-focused-foreground = #ffffff
 label-unfocused = %icon%
 label-unfocused-foreground = #888888
 label-visible = %icon%
@@ -166,8 +164,42 @@ label-urgent-foreground = #e60053
 
 [module/player]
 type = custom/script
-exec-if = pgrep -x $SCRIPT_DIR/player.sh
-exec = $SCRIPT_DIR/player.sh
+exec = sh /home/chrootzius/Documents/scripts/player.sh
 tail = true
-interval = 2
+interval = 0.1
+
+[module/gmail]
+type = custom/script
+label-foreground = #ebdbb2
+format = <label>
+interval = 600
+label =  %output%
+exec = sh /home/chrootzius/Documents/scripts/gmail.sh
+
+
+[module/weather]
+type = custom/script
+label-foreground = #ebdbb2
+interval = 1200
+format = <label>
+format-prefix = " "
+exec = python /home/chrootzius/Documents/scripts/weather.py
+
+[module/pkg]
+type = custom/script
+label-foreground = #ebdbb2
+interval = 1200
+format = <label>
+label = "%output:0:30%"
+exec = /home/chrootzius/Documents/scripts/pkg.sh
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+
+[module/todo]
+type = custom/script
+label-foreground = #ebdbb2
+interval = 5
+format = <label>
+label = " %output%"
+exec = /home/chrootzius/Documents/scripts/todoPolybar.sh
+
 ; vim:ft=dosini
