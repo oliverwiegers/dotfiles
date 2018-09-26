@@ -1,0 +1,157 @@
+#####################
+#	  Settings		#
+#####################
+set $mod Mod1
+new_window pixel 1
+new_float pixel 1 
+hide_edge_borders none
+focus_follows_mouse no
+floating_modifier $mod
+
+# Autostart applications
+exec --no-startup-id bash $HOME/.fehbg; sleep 1; compton -b
+exec_always unclutter -idle 1
+exec_always bash $HOME/.config/polybar/polybar.sh
+
+#####################
+#		Theme		#
+#####################
+# set primary gruvbox colorscheme colors
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+set $border #98971a
+
+# class					border|backgr|text|indicator|child_border
+client.focused			$border $border $darkgray $purple $border
+client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+client.unfocused		$darkgray $darkgray $yellow $purple $darkgray
+client.urgent			$red $red $white $red $darkgray
+
+#####################
+#	  Workspaces	#
+#####################
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+
+# Move to workspace with focused container
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+
+#####################
+#	   Windows		#
+#####################
+assign [class="Firefox"] $ws2
+assign [class="Eclipse"] $ws3
+assign [class="Java"] $ws3
+assign [class="Rambox"] $ws4
+
+for_window [class="Lxappearance"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Spotify"] move to workspace $ws4
+
+#####################
+#	 Keybindings	#
+#####################
+bindsym $mod+Return exec alacritty
+bindsym $mod+q kill
+bindsym $mod+space exec --no-startup-id rofi -show run
+bindsym $mod+ctrl+q exec --no-startup-id scrot 'wall_lock.png' -e 'mv $f /tmp/' && /bin/i3lock -i '/tmp/wall_lock.png'
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split orientation
+bindsym $mod+v split h
+bindsym $mod+minus split v
+
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+a focus parent
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+9 exec --no-startup-id i3lock-blur
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Set shut down, restart and locking features
+bindsym $mod+0 mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+	bindsym l exec --no-startup-id i3exit lock, mode "default"
+	bindsym s exec --no-startup-id i3exit suspend, mode "default"
+	bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+	bindsym e exec --no-startup-id i3exit logout, mode "default"
+	bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+	bindsym r exec --no-startup-id i3exit reboot, mode "default"
+	bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+	# exit system mode: "Enter" or "Escape"
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+# Resize window (you can also use the mouse for that)
+bindsym $mod+r mode "resize"
+mode "resize" {
+		bindsym h resize shrink width 5 px or 5 ppt
+		bindsym j resize grow height 5 px or 5 ppt
+		bindsym k resize shrink height 5 px or 5 ppt
+		bindsym l resize grow width 5 px or 5 ppt
+
+		# exit resize mode: Enter or Escape
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+}
+
+#audio keys
+bindsym XF86AudioMute exec amixer -q sset Master toggle
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl stop
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioLowerVolume exec amixer -q sset Master 5%-
+bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+
+
+#media keys
+bindsym XF86Tools exec spotify
+bindsym XF86Mail exec rambox
+bindsym XF86Calculator exec alacritty -e 'bc -l'
+bindsym Menu exec firefox
+
+
+#####################
+#		 Gaps		#
+#####################
+gaps inner 10
+gaps outer -4
+smart_gaps on
+smart_borders on
