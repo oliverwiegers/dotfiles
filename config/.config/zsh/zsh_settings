@@ -6,6 +6,7 @@ bindkey -M viins 'jk' vi-cmd-mode
 
 export EDITOR=/usr/bin/vim
 export SCRIPT_DIR=$HOME/Documents/scripts
+export PATH="$PATH:$HOME/.cargo/bin"
 
 # colored man pages
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
@@ -27,6 +28,13 @@ export GROFF_NO_SGR=1
 source $HOME/.config/zsh/zsh_aliases
 source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx
+if [[ "$(uname)" == "Linux" ]]; then
+	if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+	  exec startx
+	fi
+fi
+
+if [[ "$(uname)" == "Darwin" ]]; then
+	test -e "$HOME/.iterm_shell_integration.zsh" && source \
+		"$HOME/.iterm_shell_integration.zsh"
 fi

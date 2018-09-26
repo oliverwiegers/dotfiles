@@ -3,34 +3,53 @@
 #################
 
 # Linux and macOS related aliases.
-# todo
-alias todo="vim $HOME/Documents/textfiles/todo.md"
 
-# net
+# ToDo and journaling related stuff.
+alias todo="vim $HOME/Documents/personal/notes/todo.md"
+alias mj="cp dummy $(date "+%Y-%m-%d").yaml && vim $(date "+%Y-%m-%d").yaml \
+	&& ga ."
+
+# Use custom function on cd.
+cd () { builtin cd "$@" && chpwd; }
+
+# Show greeting message when entering notes dir.
+chpwd() {
+	if [ "$PWD" = "$HOME/Documents/notes" ]; then
+		./greetings.sn
+	fi
+}
+
+# Net
 alias serv="python -m SimpleHTTPServer"
 alias wanip="curl -s http://whatismijnip.nl |cut -d' ' -f 5"
 
-# useful
+# Useful
 alias dev="ls /dev/"
 alias pingit="ping -c3 www.google.com"
 alias weather="curl -H \"Accept-Language: de\" wttr.in/Berlin"
+alias glc="gloga | head -1 | cut -d ' ' -f2"
+alias tm="tmux a || tmux"
 
-# code
+# Creating license file containing unlicense.
 alias unli="curl http://unlicense.org/UNLICENSE > LICENSE"
 
-# functions
+# Functions
+
+# Create and edit executeable python file.
 pytest() {
 	echo "#!/usr/bin/env python" > ./test.py
 	vim ./test.py
 	chmod 0700 ./test.py
 }
 
+# Create and edit executeable bash file.
 tsh() {
 	echo "#!/bin/bash" > ./test.sh
 	vim ./test.sh
 	chmod 0700 ./test.sh
 }
 
+# Create README for project.
 mkread(){
 	[[ -f README.md ]] && rm README.md
 	touch README.md
@@ -40,14 +59,15 @@ mkread(){
 	echo -e "> ${desc}\n" >> README.md
 	echo -e "## Requirements\n" >> README.md
 	echo -e "## Build\n" >> README.md
-	echo -e "## Run\n" >> README.md
 	echo -e "## Install" >> README.md
+	echo -e "## Run\n" >> README.md
 
 }
 
+# Create new project.
 mkpro(){
 	[[ $# -ne 1 ]] && echo "Please provide name of project as argument.\nExiting." && return 1
-	mkcd $1
+	take $1
 	unli
 	mkread
 	echo "Hey! Cool, you started another project\nPlease insert the name of the first file\n=>"
@@ -55,48 +75,60 @@ mkpro(){
 	touch $name
 }
 
-changemon() {
-	PS3="What setup would you like to run?"
-	select choice in "Internal monitor" "External monitor" "Both"; do
-		case $choice in
-			"Internal monitor" )
-				xrandr --output LVDS1 --auto --output DP3 --off && sh $HOME/.fehbg && $SCRIPT_DIR/polybar.sh intern
-				return 0
-				;;
-			"External monitor" )
-				xrandr --output DP3 --auto --output LVDS1 --off && $HOME/.fehbg && $SCRIPT_DIR/polybar.sh extern
-				return 0
-				;;
-			"Both" )
-				xrandr --output DP3 --auto --primary --output LVDS1 --auto --noprimary --right-of DP3 && $HOME/.fehbg && $SCRIPT_DIR/polybar.sh
-				return 0
-				;;
-			*)
-				echo "Wrong input."
-				;;
-		esac
-	done
-}
 
 # only linux related aliases
 if [[ "$(uname)" == "Linux" ]]; then
-	# config
+
+	# Configure my system.
 	alias conf="sh $SCRIPT_DIR/edit_config.sh"
 	alias back="sh $SCRIPT_DIR/background.sh"
 	alias reload="source $HOME/.zshrc && echo 'Successfully reloaded zsh_config_files'"
 	
-	#power
+	# Power commands.
 	alias reboot="sudo reboot"
 	alias poweroff="sudo poweroff"
 
-	# useful
-	alias clone="$SCRIPT_DIR/clone.sh"
-	
-	#fun
+	# Fun
 	alias pac="sh $SCRIPT_DIR/pacman.sh"
 	alias invade="sh $SCRIPT_DIR/invaders.sh"
 	alias als="alsi -u -t -f $HOME/.config/alsi/alsi.logo"
 
+	# Change monitor settings.
+	changemon() {
+		PS3="What setup would you like to run?"
+		select choice in "Internal monitor" "External monitor" "Both"; do
+			case $choice in
+				"Internal monitor" )
+					xrandr --output LVDS0 --auto --output DP3 --off && sh $HOME/.fehbg && $SCRIPT_DIR/polybar.sh bottom
+					return 0
+					;;
+				"External monitor" )
+					xrandr --output DP3 --auto --output LVDS0 --off && $HOME/.fehbg && $SCRIPT_DIR/polybar.sh bottom
+					return 0
+					;;
+				"Both" )
+					xrandr --output DP3 --auto --primary --output LVDS0 --auto --noprimary --right-of DP3 && $HOME/.fehbg && $SCRIPT_DIR/polybar.sh bottom
+					return 0
+					;;
+				*)
+					echo "Wrong input."
+					;;
+			esac
+		done
+	}
 fi
 
+if [[ "$(uname)" == "Darwin" ]]; then
+	if [[ "$(whoami)" == owiegers ]]; then
+		alias jblu="ssh jumpblu"
+		alias jbki="ssh jumpbki"
 
+		hp() {
+			git commit -am "$@"
+			git pull
+			git push
+		}
+	fi
+
+
+fi
