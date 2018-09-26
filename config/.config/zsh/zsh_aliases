@@ -14,8 +14,8 @@ cd () { builtin cd "$@" && chpwd; }
 
 # Show greeting message when entering notes dir.
 chpwd() {
-	if [ "$PWD" = "$HOME/Documents/notes" ]; then
-		./greetings.sn
+	if [ "$PWD" = "$HOME/Documents/personal/notes" ]; then
+		./greetings.sh
 	fi
 }
 
