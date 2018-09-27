@@ -123,9 +123,9 @@ label-font = 0
 type = internal/date
 interval = 60
 format-foreground = #fff
-date = %Y-%m-%d%
+date = %a %d-%m
 time = %H:%M
-label = %time%
+label = %time%    %date%
 
 [module/alsa]
 type = internal/alsa
@@ -201,7 +201,7 @@ format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 label-charging =  %percentage%%
 label-discharging = %percentage%%
-label-full =
+label-full = <ramp-capacity>
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 

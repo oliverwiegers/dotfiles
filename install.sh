@@ -46,12 +46,15 @@ select choice in "Yes" "No"; do
             if [[ "$(uname)" == "Linux" ]]; then
                 stow homedir
                 stow config
-            else if [[ "$(uname)" == "Darwin" ]]; then
+            elif [[ "$(uname)" == "Darwin" ]]; then
                 if [[ ! -d $HOME/.config ]]; then
                     mkdir -p $HOME/.config/                
                 fi
                 ln -s $HOME/.dotfiles/config/.config/zsh $HOME/.config/zsh
                 ln -s $HOME/.dotfile/homedir/.zshrc $HOME/.zshrc
+                ln -s $HOME/.dotfiles/config/.config/neofetch \
+                    $HOME/.config/neofetch
+            fi
             break
             ;;
         "No" )
