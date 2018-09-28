@@ -23,6 +23,8 @@ Neofetch, Alacritty, ZSH, oh-my-zsh, and Vim
 
 ## Installation
 
+This script will clone this repo, [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and will ask to clone my [Vim config](https://github.com/oliverwiegers/vim_config), my [Tmux config](https://github.com/oliverwiegers/.tmuxist) and my personnal [scripts](https://github.com/oliverwiegers/scripts).
+
 ```
 $ cd $HOME
 $ git clone https://github.com/oliverwiegers/dotfiles .dotfiles

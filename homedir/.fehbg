@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-scale '/home/oliverwiegers/Pictures/wallpaper/gruvbox_wallpaper.png' 
+feh --bg-fill '/home/oliverwiegers/Pictures/wallpaper/city.jpg' 

@@ -25,7 +25,13 @@ echo -e "\e[0m "
 
 sleep 1
 
-echo -e "\e[32mCloning oh-my-zsh into: \e[34m$HOME/.oh-my-zsh\e[0m"
+backup_foder=$HOME/config_backup/
+echo -e "\e[32mCreating backup folder: \e[34m$backup_folder\e[0m\n"
+mkdir $backup_folder
+echo -e "Moving: \e[32m\n$HOME/.config \n$HOME/.fehbg \n$HOME/.themes\n\
+    $HOME/.xinitrc\n $HOME/.zshrc\n to \e[34m$backup_folder.\e[0m.\n"
+mv $HOME/.config $HOME/.fehbg $HOME/.themes, $HOME/.xinitrc $HOME/.zshrc \
+    $backup_folder 2> /dev/null echo -e "\e[32mCloning oh-my-zsh into: \e[34m$HOME/.oh-my-zsh\e[0m" 
 git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
 echo -e "\e[32mDone.\n\e[0m"
 
@@ -99,6 +105,29 @@ select choice in "Yes" "No"; do
             cd $HOME/.tmuxist
             stow tmux
             echo -e "\e[32mDone installing Tmux config..\n\e[0m"
+            break
+            ;;
+        "No" )
+            echo -e "Okay. Going on...\n"
+            break
+            ;;
+        "*" )
+            echo -e "\e[31mWrong input. Try again.\e[0m"
+    esac
+done
+
+echo -e "Want to install helper scripts too? (1/2)."
+
+select choice in "Yes" "No"; do
+    case $choice in
+        "Yes" )
+            cd $HOME
+            if [[ ! -d $HOME/Documents ]]; then
+                mkdir -p $HOME/Documents/
+            fi
+            git clone https://github.com/chrootzius/scripts \
+                $HOME/Documents/scripts
+            echo -e "\e[32mDone installing scripts..\n\e[0m"
             break
             ;;
         "No" )

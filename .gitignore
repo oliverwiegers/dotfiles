@@ -11,3 +11,7 @@ config/.config/pavucontrol.ini
 config/.config/pulse
 config/.config/Rambox
 config/.config/spotify
+config/.config/kactivitymanagerdrc
+config/.config/kglobalshortcutsrc
+config/.config/libre*
+config/.config/plasma*
