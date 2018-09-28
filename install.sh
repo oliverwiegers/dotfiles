@@ -29,9 +29,10 @@ backup_foder=$HOME/config_backup/
 echo -e "\e[32mCreating backup folder: \e[34m$backup_folder\e[0m\n"
 mkdir $backup_folder
 echo -e "Moving: \e[32m\n$HOME/.config \n$HOME/.fehbg \n$HOME/.themes\n\
-    $HOME/.xinitrc\n $HOME/.zshrc\n to \e[34m$backup_folder.\e[0m.\n"
+    $HOME/.xinitrc\n $HOME/.zshrc\n\e[0m to \e[34m$backup_folder.\e[0m.\n"
 mv $HOME/.config $HOME/.fehbg $HOME/.themes, $HOME/.xinitrc $HOME/.zshrc \
-    $backup_folder 2> /dev/null echo -e "\e[32mCloning oh-my-zsh into: \e[34m$HOME/.oh-my-zsh\e[0m" 
+    $backup_folder 2> /dev/null 
+echo -e "\e[32mCloning oh-my-zsh into: \e[34m$HOME/.oh-my-zsh\e[0m" 
 git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
 echo -e "\e[32mDone.\n\e[0m"
 
