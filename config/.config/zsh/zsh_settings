@@ -2,8 +2,6 @@
 # config section #
 ##################
 
-bindkey -M viins 'jk' vi-cmd-mode
-
 export EDITOR=/usr/bin/vim
 export SCRIPT_DIR=$HOME/Documents/scripts
 export PATH="$PATH:$HOME/.cargo/bin"
@@ -32,9 +30,4 @@ if [[ "$(uname)" == "Linux" ]]; then
 	if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	  exec startx
 	fi
-fi
-
-if [[ "$(uname)" == "Darwin" ]]; then
-	test -e "$HOME/.iterm_shell_integration.zsh" && source \
-		"$HOME/.iterm_shell_integration.zsh"
 fi

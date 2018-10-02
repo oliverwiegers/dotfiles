@@ -4,6 +4,36 @@ good = #98971a
 okay = #d79921
 bad = #fb4934
 
+[bar/top]
+enable-ipc = false
+monitor = LVDS-0
+width = 100%
+height = 27
+background = #1d2021
+foreground = #ebdbb2
+border-bottom-size = 1
+border-bottom-color = #444
+overline-size = 2
+overline-color = ${self.background}
+underline-size = 2
+underline-color = ${self.background}
+padding-left = 2
+padding-right = 2
+module-margin-left = 1.5
+module-margin-right = 1.5
+font-0 = Ubuntu:size=13;4
+font-1 = FontAwesome:size=11;4
+font-2 = Material Icons:size=11;3
+font-3 = Hack:size=12;4
+modules-left =
+modules-center = tor dns
+modules-right =
+tray-position =
+monitor-strict = false
+override-redirect = false
+bottom = false
+fixed-center = true
+
 [bar/bottom]
 enable-ipc = false
 monitor = LVDS-0
@@ -19,15 +49,15 @@ underline-size = 2
 underline-color = ${self.background}
 padding-left = 2
 padding-right = 2
-module-margin-left = 2
-module-margin-right = 2
+module-margin-left = 1.5
+module-margin-right = 1.5
 font-0 = Ubuntu:size=13;4
 font-1 = FontAwesome:size=11;4
 font-2 = Material Icons:size=11;3
 font-3 = Hack:size=12;4
 modules-left = cpu memory
 modules-center = i3
-modules-right = todo pkg alsa battery date
+modules-right = todo pkg alsa dns tor battery date
 tray-position =
 monitor-strict = false
 override-redirect = false
@@ -201,7 +231,8 @@ format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 label-charging =  %percentage%%
 label-discharging = %percentage%%
-label-full = <ramp-capacity>
+format-full = <label-full>
+label-full = 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
@@ -219,4 +250,17 @@ animation-charging-framerate = 750
 type = custom/script
 exec = $HOME/.config/polybar/hackspeed.sh
 tail = true
+
+[module/tor]
+type = custom/script
+label = " %output%"
+exec = $HOME/.config/polybar/status.sh tor
+interval = 6
+
+[module/dns]
+type = custom/script
+label = " %output%"
+exec = $HOME/.config/polybar/dnslookup.sh
+interval = 6
+; vim:ft=dosini
 ; vim:ft=dosini

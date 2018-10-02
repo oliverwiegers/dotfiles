@@ -4,20 +4,8 @@
 
 # Linux and macOS related aliases.
 
-# ToDo and journaling related stuff.
+# Open and edit ToDo list.
 alias todo="vim $HOME/Documents/personal/notes/todo.md"
-alias mj="cp dummy $(date "+%Y-%m-%d").yaml && vim $(date "+%Y-%m-%d").yaml \
-	&& ga ."
-
-# Use custom function on cd.
-cd () { builtin cd "$@" && chpwd; }
-
-# Show greeting message when entering notes dir.
-chpwd() {
-	if [ "$PWD" = "$HOME/Documents/personal/notes" ]; then
-		./greetings.sh
-	fi
-}
 
 # Net
 alias serv="python -m SimpleHTTPServer"
@@ -34,6 +22,17 @@ alias tm="tmux a || tmux"
 alias unli="curl http://unlicense.org/UNLICENSE > LICENSE"
 
 # Functions
+
+# Change to journal dir and create new journal.
+function mj() {
+    journal_dir="$HOME/Documents/personal/notes/journal" 
+    if [ ! "$PWD" = "$journal_dir" ]; then
+        cd $journal_dir
+    fi
+    cp dummy $(date "+%Y-%m-%d").yaml
+    vim $(date "+%Y-%m-%d").yaml
+    git add .
+}
 
 # Create and edit executeable python file.
 pytest() {

@@ -12,7 +12,7 @@ floating_modifier $mod
 exec --no-startup-id bash $HOME/.fehbg
 exec --no-startup-id unclutter -idle 1
 exec --no-startup-id "i3-msg 'workspace 1; append_layout $HOME/.config/i3/ws1.json'"
-exec_always bash $HOME/.config/polybar/polybar.sh
+exec_always bash $HOME/.config/polybar/polybar.sh bottom
 
 #####################
 #		Theme		#
@@ -146,7 +146,6 @@ bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+
 bindsym XF86Tools exec spotify
 bindsym XF86Mail exec rambox
 bindsym XF86Calculator exec alacritty -e 'bc -l'
-bindsym Menu exec firefox
 
 
 #####################
