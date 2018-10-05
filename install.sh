@@ -57,9 +57,9 @@ select choice in "Yes" "No"; do
                 if [[ ! -d $HOME/.config ]]; then
                     mkdir -p $HOME/.config/                
                 fi
-                ln -s $HOME/.dotfiles/config/.config/zsh $HOME/.config/zsh
-                ln -s $HOME/.dotfile/homedir/.zshrc $HOME/.zshrc
-                ln -s $HOME/.dotfiles/config/.config/neofetch \
+                ln -s $HOME/.dotfiles/config/.config/zsh/ $HOME/.config/zsh
+                ln -s $HOME/.dotfiles/homedir/.zshrc $HOME/.zshrc
+                ln -s $HOME/.dotfiles/config/.config/neofetch/ \
                     $HOME/.config/neofetch
             fi
             break
@@ -79,7 +79,7 @@ select choice in "Yes" "No"; do
     case $choice in
         "Yes" )
             cd $HOME
-            git clone --recursive https://github.com/oliverwigers/vim_config \
+            git clone --recursive https://github.com/oliverwiegers/vim_config \
                 .vim
             cd $HOME/.vim
             stow vimrc
