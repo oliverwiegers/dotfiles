@@ -22,7 +22,10 @@ export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 export GROFF_NO_SGR=1
 
-#source $HOME/.config/zsh/zsh_aliases
+# Load wal color theme for every terminal.
+cat ~/.cache/wal/sequences
+
+# Source $HOME/.config/zsh/zsh_aliases
 source $HOME/.config/zsh/zsh_aliases
 source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

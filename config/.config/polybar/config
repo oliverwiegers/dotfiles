@@ -1,266 +1,502 @@
+[settings]
+screenchange-reload = true
+[global/wm]
+compositing-background = source
+
 [colors]
-accent = #689d6a
-good = #98971a
-okay = #d79921
-bad = #fb4934
+black1= ${xrdb:color0:#<COLOR0>}
+black2 = ${xrdb:color8:#<COLOR8>}
+red1 = ${xrdb:color1:#<COLOR1>}
+red2 = ${xrdb:color9:#<COLOR9>}
+green1 = ${xrdb:color2:#<COLOR2>} green2 = ${xrdb:color10:#<COLOR10>}
+yellow1 = ${xrdb:color3:#<COLOR3>}
+yellow2 = ${xrdb:color11:#<COLOR11>}
+blue1 = ${xrdb:color4:#<COLOR4>}
+blue2 = ${xrdb:color12:#<COLOR12>}
+magenta1 = ${xrdb:color5:#<COLOR5>}
+magenta2 = ${xrdb:color13:#<COLOR13>}
+cyan1 = ${xrdb:color6:#<COLOR6>}
+cyan2 = ${xrdb:color14:#<COLOR14>}
+white1 = ${xrdb:color7:#<COLOR7>}
+white2 = ${xrdb:color15:#<COLOR15>}
+
+bg = ${xrdb:color0:#<COLOR0>}
+fg = ${xrdb:color0:#<COLOR0>}
+formatbg = ${self.magenta1}
+
+[prefix]
+top-right-side = 
+top-right-side-foreground = ${colors.bg}
+top-right-side-background = ${colors.formatbg}
+
+top-left-side = 
+top-left-side-foreground = ${colors.formatbg}
+top-left-side-background = ${colors.bg}
+
+bottom-right-side = 
+bottom-right-side-foreground = ${colors.bg}
+bottom-right-side-background = ${colors.formatbg}
+
+bottom-left-side = 
+bottom-left-side-foreground = ${colors.formatbg}
+bottom-left-side-background = ${colors.bg}
+
+[suffix]
+top-right-side = 
+top-right-side-foreground = ${colors.bg}
+top-right-side-background = ${colors.formatbg}
+
+top-left-side = 
+top-left-side-foreground = ${colors.formatbg}
+top-left-side-background = ${colors.bg}
+
+bottom-right-side = 
+bottom-right-side-foreground = ${colors.bg}
+bottom-right-side-background = ${colors.formatbg}
+
+bottom-left-side = 
+bottom-left-side-foreground = ${colors.formatbg}
+bottom-left-side-background = ${colors.bg}
+###--Topbar
 
 [bar/top]
-enable-ipc = false
 monitor = LVDS-0
 width = 100%
-height = 27
-background = #1d2021
-foreground = #ebdbb2
-border-bottom-size = 1
-border-bottom-color = #444
-overline-size = 2
-overline-color = ${self.background}
-underline-size = 2
-underline-color = ${self.background}
-padding-left = 2
-padding-right = 2
-module-margin-left = 1.5
-module-margin-right = 1.5
-font-0 = Ubuntu:size=13;4
-font-1 = FontAwesome:size=11;4
-font-2 = Material Icons:size=11;3
-font-3 = Hack:size=12;4
-modules-left =
-modules-center = tor dns
-modules-right =
-tray-position =
-monitor-strict = false
-override-redirect = false
+height = 18
 bottom = false
 fixed-center = true
 
+border-size = 5
+border-color = ${colors.bg}
+
+line-size = 2
+background = ${colors.bg}
+
+font-0 = PowerlineSymbols:size=12;3
+font-1 = Ubuntu:pixelsize=15:antialias=true;2
+font-2 = TerminessTTF Nerd Font:size=15;4
+font-3 = Unifont:size=15:antialias=true;3
+font-4 = Font Awesome 5 Brands:style=Regular:size=12;3
+font-5 = Font Awesome 5 Free:style=Solid:size=12;3
+font-6 = Font Awesome 5 Free:style=Regular:size=12;3
+font-7 = Weather Icons:size=10;1
+
+modules-left = dns tor bt pulseaudio
+modules-center = spacer-left player-mpris-tail
+modules-right = battery0 battery1 date
+
 [bar/bottom]
-enable-ipc = false
 monitor = LVDS-0
 width = 100%
-height = 27
-background = #1d2021
-foreground = #ebdbb2
-border-top-size = 1
-border-top-color = #444
-overline-size = 2
-overline-color = ${self.background}
-underline-size = 2
-underline-color = ${self.background}
-padding-left = 2
-padding-right = 2
-module-margin-left = 1.5
-module-margin-right = 1.5
-font-0 = Ubuntu:size=13;4
-font-1 = FontAwesome:size=11;4
-font-2 = Material Icons:size=11;3
-font-3 = Hack:size=12;4
-modules-left = cpu memory
-modules-center = i3
-modules-right = todo pkg alsa dns tor battery date
-tray-position =
-monitor-strict = false
-override-redirect = false
+height = 18
 bottom = true
 fixed-center = true
 
-[module/temperature]
-type = internal/temperature
-label-font = 0
-label-warn-font = 1
-interval = 10
-thermal-zone = 0
-warn-temperature = 60
-format = <ramp> <label>
-format-warn = <ramp> <label-warn>
-label = %temperature%
-label-warn = %temperature%
-label-warn-foreground = ${colors.bad}
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = #eee
-ramp-warn-foreground = ${colors.bad}
+border-size = 5
+border-color = ${colors.bg}
 
-[module/cpu]
-type = internal/cpu
-interval = 5
-format = <ramp-coreload>
-label = CPU
-label-font = 0
-label-foreground = #99
-ramp-coreload-0 = ▁
-ramp-coreload-0-font = 2
-ramp-coreload-0-foreground = ${colors.good}
-ramp-coreload-1 = ▂
-ramp-coreload-1-font = 2
-ramp-coreload-1-foreground = ${colors.good}
-ramp-coreload-2 = ▃
-ramp-coreload-2-font = 2
-ramp-coreload-2-foreground = ${colors.good}
-ramp-coreload-3 = ▄
-ramp-coreload-3-font = 2
-ramp-coreload-3-foreground = ${colors.good}
-ramp-coreload-4 = ▅
-ramp-coreload-4-font = 2
-ramp-coreload-4-foreground = ${colors.okay}
-ramp-coreload-5 = ▆
-ramp-coreload-5-font = 2
-ramp-coreload-5-foreground = ${colors.okay}
-ramp-coreload-6 = ▇
-ramp-coreload-6-font = 2
-ramp-coreload-6-foreground = ${colors.bad}
-ramp-coreload-7 = █
-ramp-coreload-7-font = 2
-ramp-coreload-7-foreground = ${colors.bad}
+line-size = 2
+background = ${colors.bg}
 
-[module/memory]
-type = internal/memory
-interval = 5
-format = <bar-used>
-label = RAM
-label-font = 0
-label-foreground = #99
-bar-used-width = 20
-bar-used-gradient = true
-bar-used-foreground-0 = ${colors.good}
-bar-used-foreground-1 = ${colors.okay}
-bar-used-foreground-2 = ${colors.okay}
-bar-used-foreground-3 = ${colors.bad}
-bar-used-indicator = |
-;bar-used-indicator = █
-bar-used-indicator-font = 2
-bar-used-indicator-foreground = #ebdbb2
-bar-used-fill = ─
-;bar-used-fill = █
-bar-used-fill-font = 2
-bar-used-empty = ─
-;bar-used-empty = █
-bar-used-empty-font = 2
-bar-used-empty-foreground = #44
+font-0 = PowerlineSymbols:size=12;3
+font-1 = Ubuntu:pixelsize=15:antialias=true;2
+font-2 = TerminessTTF Nerd Font:size=15;4
+font-3 = Unifont:size=15:antialias=true;3
+font-4 = Font Awesome 5 Brands:style=Regular:size=11;3
+font-5 = Font Awesome 5 Free:style=Solid:size=11;3
+font-6 = Font Awesome 5 Free:style=Regular:size=11;3
+font-7 = Weather Icons:size=10;1
 
-[module/wired-network]
-type = internal/network
-interface = enp0s25
-interval = 20
-label-connected = 
-label-disconnected = 
-label-disconnected-foreground = #66
+modules-left = inbox-reddit todo pkg
+modules-center = i3
+modules-right = coretemp weather
+###--MODULES
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+index-sort = true
+
+icon-font = 5
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+
+format-font = 6
+format = <label-state>
+format-background = ${colors.formatbg}
+format-foreground = ${colors.fg}
+format-prefix = ${suffix.top-right-side}
+format-suffix-foreground = ${suffix.top-right-side-foreground}
+format-suffix-background = ${suffix.top-right-side-background}
+
+format-suffix = ${prefix.top-left-side}
+format-prefix-foreground = ${prefix.top-left-side-foreground}
+format-prefix-background = ${prefix.top-left-side-background}
+
+label-focused = %icon%
+label-focused-underline = ${colors.red2}
+label-focused-background = ${colors.formatbg}
+label-focused-foreground = ${colors.fg}
+
+label-unfocused = %icon%
+label-unfocused-background = ${colors.formatbg}
+label-unfocused-foreground = ${colors.fg}
+
+label-occupied = %icon%
+label-occupied-background = ${colors.formatbg}
+label-occupied-foreground = ${colors.fg}
+
+label-urgend = %icon%
+label-urgend-background = ${colors.formatbg}
+label-urgend-foreground = ${colors.fg}
+
+label-empty = %icon%
+label-empty-background = ${colors.formatbg}
+label-empty-foreground = ${colors.fg}
+
+label-focused-padding = 3
+label-unfocused-padding = 3
+label-occupied-padding = 3
+label-urgent-padding = 3
 
 [module/date]
-label-foreground = #ebdbb2
-label-font = 0
 type = internal/date
 interval = 60
-format-foreground = #fff
 date = %a %d-%m
 time = %H:%M
-label = %time%    %date%
+label = %time%  %date%
+label-font = 6
 
-[module/alsa]
-type = internal/alsa
+format-background = ${colors.formatbg}
+format-foreground = ${colors.fg}
+
+format-prefix = ${prefix.top-right-side}
+format-prefix-foreground = ${prefix.top-right-side-foreground}
+format-prefix-background = ${prefix.top-right-side-background}
+
+format-suffix = ${suffix.top-right-side}
+format-suffix-foreground = ${suffix.top-right-side-foreground}
+format-suffix-background = ${suffix.top-right-side-background}
+
+[module/pulseaudio]
+type = internal/pulseaudio
 
 ; Soundcard to be used
 ; Usually in the format hw:# where # is the card number
 ; You can find the different card numbers in `/proc/asound/cards`
-master-soundcard = default
+;master-soundcard = default
 
-interval = 5
-
+label-font = 5
 format-volume = <ramp-volume>
-label-volume-foreground = #ebdbb2
+format-muted = <label-muted>
 label-muted = 
-label-muted-foreground = #99ffffff
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-volume-3 = 
-ramp-volume-foreground = #ebdbb2
 
-[module/i3]
-type = internal/i3
-label-font = 2
-label-focused-foreground = #ebdbb2
-pin-workspaces = true
-strip-wsnumbers = true
-index-sort = true
-enable-click = false
-enable-scroll = false
-wrapping-scroll = false
-reverse-scroll = false
-fuzzy-match = true
-ws-icon-default ="  "
-format = <label-state> <label-mode>
-label-mode = %mode%
-label-mode-padding = 2
-label-mode-background = #e60053
-label-focused = %icon%
-label-unfocused = %icon%
-label-unfocused-foreground = #888888
-label-visible = %icon%
-label-visible-foreground = #e60053
-label-urgent = %icon%
-label-urgent-foreground = #e60053
+format-muted-background = ${colors.formatbg}
+format-muted-foreground = ${colors.fg}
+
+format-muted-prefix = ${prefix.top-left-side}
+format-muted-prefix-foreground = ${prefix.top-left-side-foreground}
+format-muted-prefix-background = ${prefix.top-left-side-background}
+
+format-muted-suffix = ${suffix.top-left-side}
+format-muted-suffix-foreground = ${suffix.top-left-side-foreground}
+format-muted-suffix-background = ${suffix.top-left-side-background}
+
+format-volume-background = ${colors.formatbg}
+format-volume-foreground = ${colors.fg}
+
+format-volume-prefix = ${prefix.top-left-side}
+format-volume-prefix-foreground = ${prefix.top-left-side-foreground}
+format-volume-prefix-background = ${prefix.top-left-side-background}
+
+format-volume-suffix = ${suffix.top-left-side}
+format-volume-suffix-foreground = ${suffix.top-left-side-foreground}
+format-volume-suffix-background = ${suffix.top-left-side-background}
 
 [module/pkg]
 type = custom/script
-label-foreground = #ebdbb2
 interval = 1200
 format = <label>
-label = "%output:0:30%"
+label = "%output%"
 exec = $HOME/.config/polybar/pkg.sh
-exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+
+format-background = ${colors.formatbg}
+format-foreground = ${colors.bg}
+format-suffix = ${suffix.bottom-left-side}
+format-suffix-foreground = ${suffix.bottom-left-side-foreground}
+format-suffix-background = ${suffix.bottom-left-side-background}
+
+format-prefix = ${prefix.bottom-left-side}
+format-prefix-foreground = ${prefix.bottom-left-side-foreground}
+format-prefix-background = ${prefix.bottom-left-side-background}
 
 [module/todo]
 type = custom/script
-label-foreground = #ebdbb2
 interval = 60
-format = <label>
+label-font = 2
 label = " %output%"
 exec = $HOME/.config/polybar/todoPolybar.sh
 
-[module/battery]
+format-background = ${colors.formatbg}
+format-foreground = ${colors.fg}
+format-suffix = ${suffix.bottom-left-side}
+format-suffix-foreground = ${suffix.bottom-left-side-foreground}
+format-suffix-background = ${suffix.bottom-left-side-background}
+
+format-prefix = ${prefix.bottom-left-side}
+format-prefix-foreground = ${prefix.bottom-left-side-foreground}
+format-prefix-background = ${prefix.bottom-left-side-background}
+
+[module/battery0]
 type = internal/battery
-full-at = 95
 battery = BAT0
-adapter = ADP1
-interval = 60
-poll-interval = 15
-time-format = %H:%M
-format-charging = <animation-charging> <label-charging>
-format-discharging = <ramp-capacity> <label-discharging>
-label-charging =  %percentage%%
-label-discharging = %percentage%%
-format-full = <label-full>
+adapter = AC
+full-at = 98
+
 label-full = 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-bar-capacity-width = 10
+format-full = <label-full>
+format-full-background = ${colors.formatbg}
+format-full-foreground = ${colors.fg}
+
+format-full-prefix = ${prefix.top-right-side}
+format-full-prefix-foreground = ${prefix.top-right-side-foreground}
+format-full-prefix-background = ${prefix.top-right-side-background}
+
+format-full-suffix = ${suffix.top-right-side}
+format-full-suffix-foreground = ${suffix.top-right-side-foreground}
+format-full-suffix-background = ${suffix.top-right-side-background}
+
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-framerate = 750
 
-[module/info-hackspeed]
-type = custom/script
-exec = $HOME/.config/polybar/hackspeed.sh
-tail = true
+label-charging-font = 2
+label-charging = %percentage%%
+format-charging = <animation-charging> <label-charging>
+format-charging-background = ${colors.formatbg}
+format-charging-foreground = ${colors.fg}
 
+format-charging-prefix = ${prefix.top-right-side}
+format-charging-prefix-foreground = ${prefix.top-right-side-foreground}
+format-charging-prefix-background = ${prefix.top-right-side-background}
+
+format-charging-suffix = ${suffix.top-right-side}
+format-charging-suffix-foreground = ${suffix.top-right-side-foreground}
+format-charging-suffix-background = ${suffix.top-right-side-background}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+label-discharging-font = 2
+label-discharging = %percentage%%
+format-discharging = <ramp-capacity>
+format-discharging-background = ${colors.formatbg}
+format-discharging-foreground = ${colors.fg}
+
+format-discharging-prefix = ${prefix.top-right-side}
+format-discharging-prefix-foreground = ${prefix.top-right-side-foreground}
+format-discharging-prefix-background = ${prefix.top-right-side-background}
+
+format-discharging-suffix = ${suffix.top-right-side}
+format-discharging-suffix-foreground = ${suffix.top-right-side-foreground}
+format-discharging-suffix-background = ${suffix.top-right-side-background}
+
+[module/battery1]
+type = internal/battery
+battery = BAT1
+adapter = AC
+full-at = 98
+
+label-full = 
+format-full = <label-full>
+format-full-background = ${colors.formatbg}
+format-full-foreground = ${colors.fg}
+
+format-full-prefix = ${prefix.top-right-side}
+format-full-prefix-foreground = ${prefix.top-right-side-foreground}
+format-full-prefix-background = ${prefix.top-right-side-background}
+
+format-full-suffix = ${suffix.top-right-side}
+format-full-suffix-foreground = ${suffix.top-right-side-foreground}
+format-full-suffix-background = ${suffix.top-right-side-background}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+
+label-charging-font = 2
+label-charging = %percentage%%
+format-charging = <animation-charging> <label-charging>
+format-charging-background = ${colors.formatbg}
+format-charging-foreground = ${colors.fg}
+
+format-charging-prefix = ${prefix.top-right-side}
+format-charging-prefix-foreground = ${prefix.top-right-side-foreground}
+format-charging-prefix-background = ${prefix.top-right-side-background}
+
+format-charging-suffix = ${suffix.top-right-side}
+format-charging-suffix-foreground = ${suffix.top-right-side-foreground}
+format-charging-suffix-background = ${suffix.top-right-side-background}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+label-discharging-font = 2
+label-discharging = %percentage%%
+format-discharging = <ramp-capacity>
+format-discharging-background = ${colors.formatbg}
+format-discharging-foreground = ${colors.fg}
+
+format-discharging-prefix = ${prefix.top-right-side}
+format-discharging-prefix-foreground = ${prefix.top-right-side-foreground}
+format-discharging-prefix-background = ${prefix.top-right-side-background}
+
+format-discharging-suffix = ${suffix.top-right-side}
+format-discharging-suffix-foreground = ${suffix.top-right-side-foreground}
+format-discharging-suffix-background = ${suffix.top-right-side-background}
+    
 [module/tor]
 type = custom/script
-label = " %output%"
-exec = $HOME/.config/polybar/status.sh tor
 interval = 6
+label-font = 6
+format-font = 2
+format = <label>
+label =  %output%
+exec = $HOME/.config/polybar/status.sh tor
+
+format-background = ${colors.formatbg}
+format-foreground = ${colors.fg}
+format-suffix = ${suffix.top-left-side}
+format-suffix-foreground = ${suffix.top-left-side-foreground}
+format-suffix-background = ${suffix.top-left-side-background}
+
+format-prefix = ${prefix.top-left-side}
+format-prefix-foreground = ${prefix.top-left-side-foreground}
+format-prefix-background = ${prefix.top-left-side-background}
 
 [module/dns]
 type = custom/script
-label = " %output%"
-exec = $HOME/.config/polybar/dnslookup.sh
 interval = 6
+label-font = 6
+format-font = 2
+format = <label>
+label =  %output%
+exec = $HOME/.config/polybar/dnslookup.sh
+
+format-background = ${colors.formatbg}
+format-foreground = ${colors.fg}
+format-suffix = ${suffix.top-left-side}
+format-suffix-foreground = ${suffix.top-left-side-foreground}
+format-suffix-background = ${suffix.top-left-side-background}
+
+format-prefix = ${prefix.top-left-side}
+format-prefix-foreground = ${prefix.top-left-side-foreground}
+format-prefix-background = ${prefix.top-left-side-background}
+
+[module/player-mpris-tail]
+type = custom/script
+exec = $HOME/.config/polybar/player-mpris-tail.py -f '{icon} {artist} - {title}'
+tail = true
+label = %output%
+
+format-background = ${colors.formatbg}
+format-foreground = ${colors.fg}
+format-suffix = ${suffix.top-right-side}
+format-suffix-foreground = ${suffix.top-right-side-foreground}
+format-suffix-background = ${suffix.top-right-side-background}
+
+format-prefix = ${prefix.top-left-side}
+format-prefix-foreground = ${prefix.top-left-side-foreground}
+format-prefix-background = ${prefix.top-left-side-background}
+
+[module/news-archlinux]
+type = custom/script
+exec = $HOME/.config/polybar/news-archlinux.py
+interval = 600
+
+[module/weather]
+type = custom/script
+exec = $HOME/.config/polybar/openweathermap-detailed.sh
+interval = 600
+label-font = 7
+
+format-background = ${colors.formatbg}
+format-foreground = ${colors.fg}
+format-prefix = ${prefix.bottom-right-side}
+format-prefix-foreground = ${prefix.bottom-right-side-foreground}
+format-prefix-background = ${prefix.bottom-right-side-background}
+
+format-suffix = ${suffix.bottom-right-side}
+format-suffix-foreground = ${suffix.bottom-right-side-foreground}
+format-suffix-background = ${suffix.bottom-right-side-background}
+
+[module/inbox-reddit]
+format = <label>
+type = custom/script
+exec = $HOME/.config/polybar/inbox-reddit.sh
+interval = 600
+label =  %output%
+label-font = 5
+
+format-background = ${colors.formatbg}
+format-foreground = ${colors.fg}
+format-prefix = ${prefix.bottom-left-side}
+format-prefix-foreground = ${prefix.bottom-left-side-foreground}
+format-prefix-background = ${prefix.bottom-left-side-background}
+
+format-suffix = ${suffix.bottom-left-side}
+format-suffix-foreground = ${suffix.bottom-left-side-foreground}
+format-suffix-background = ${suffix.bottom-left-side-background}
+
+[module/bt]
+label = %output%
+label-font = 5
+type = custom/script
+exec = $HOME/.config/polybar/bluetooth.sh
+interval = 10
+
+format-background = ${colors.formatbg}
+format-foreground = ${colors.fg}
+format-suffix = ${suffix.top-left-side}
+format-suffix-foreground = ${suffix.top-left-side-foreground}
+format-suffix-background = ${suffix.top-left-side-background}
+
+format-prefix = ${prefix.top-left-side}
+format-prefix-foreground = ${prefix.top-left-side-foreground}
+format-prefix-background = ${prefix.top-left-side-background}
+
+[module/coretemp]
+label =  %output%
+label-font = 6
+type = custom/script
+exec = $HOME/.config/polybar/coretemp.sh
+interval = 60
+
+format-background = ${colors.formatbg}
+format-foreground = ${colors.fg}
+format-suffix = ${suffix.bottom-right-side}
+format-suffix-foreground = ${suffix.bottom-right-side-foreground}
+format-suffix-background = ${suffix.bottom-right-side-background}
+
+format-prefix = ${prefix.bottom-right-side}
+format-prefix-foreground = ${prefix.bottom-right-side-foreground}
+format-prefix-background = ${prefix.bottom-right-side-background}
 ; vim:ft=dosini
 ; vim:ft=dosini

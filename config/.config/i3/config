@@ -12,22 +12,23 @@ floating_modifier $mod
 exec --no-startup-id bash $HOME/.fehbg
 exec --no-startup-id unclutter -idle 1
 exec --no-startup-id "i3-msg 'workspace 1; append_layout $HOME/.config/i3/ws1.json'"
-exec_always bash $HOME/.config/polybar/polybar.sh bottom
+exec_always bash $HOME/.config/polybar/polybar.sh top bottom
+exec_always --no-startup-id dunst -lb "$bg" -nb "$bg" -cb "$bg" -lf "$fg" -bf "fg" -cf "$fg" -nf "$fg" -fn "ypn envypn 12" -s -lto 3 -nto 5 -cto 0
 
 #####################
 #		Theme		#
 #####################
-# set primary gruvbox colorscheme colors
-set $bg #282828
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
-set $border #98971a
+
+# Load colors from Xressources.
+
+set_from_resource $bg i3wm.color0
+set_from_resource $fg i3wm.color15
+set_from_resource $green i3wm.color5
+set_from_resource $border i3wm.color4
+set_from_resource $darkgray i3wm.color0
+set_from_resource $red i3wm.color1
+set_from_resource $aqua i3wm.color6
+
 
 # class					border|backgr|text|indicator|child_border
 client.focused			$border $border $darkgray $purple $border

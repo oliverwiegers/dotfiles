@@ -1,2 +1,2 @@
-#!/bin/sh
-feh --bg-fill '/home/oliverwiegers/Pictures/wallpaper/real-unsplash.jpg' 
+#!/bin/bash
+feh  --bg-fill '/home/oliverwiegers/Pictures/wallpaper/deus-ex-office.jpg'

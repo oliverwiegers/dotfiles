@@ -16,3 +16,7 @@ config/.config/kglobalshortcutsrc
 config/.config/libre*
 config/.config/plasma*
 config/.config/lxc
+config/.config/kritadisplayrc
+config/.config/kritarc
+config/.config/qt5ct/
+config/.config/wpg/
