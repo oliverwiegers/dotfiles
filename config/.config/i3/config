@@ -8,10 +8,9 @@ hide_edge_borders none
 focus_follows_mouse no
 floating_modifier $mod
 
-# Autostart applications
+# Autostart applications.
 exec --no-startup-id bash $HOME/.fehbg
 exec --no-startup-id unclutter -idle 1
-exec --no-startup-id "i3-msg 'workspace 1; append_layout $HOME/.config/i3/ws1.json'"
 exec_always bash $HOME/.config/polybar/polybar.sh top bottom
 exec_always --no-startup-id dunst -lb "$bg" -nb "$bg" -cb "$bg" -lf "$fg" -bf "fg" -cf "$fg" -nf "$fg" -fn "ypn envypn 12" -s -lto 3 -nto 5 -cto 0
 
@@ -45,14 +44,14 @@ set $ws3 3
 set $ws4 4
 set $ws5 5
 
-# switch to workspace
+# Switch to workspace.
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 
-# Move to workspace with focused container
+# Move to workspace with focused container.
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
@@ -78,22 +77,24 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+q kill
 bindsym $mod+space exec --no-startup-id rofi -show run
 bindsym $mod+ctrl+q exec --no-startup-id scrot 'wall_lock.png' -e 'mv $f /tmp/' && /bin/i3lock -i '/tmp/wall_lock.png'
-# change focus
+
+# Change focus.
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# move focused window
+# Move focused window.
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# split orientation
+# Split orientation.
 bindsym $mod+v split h
 bindsym $mod+minus split v
 
+# Various keybindings.
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+a focus parent
@@ -101,10 +102,10 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+9 exec --no-startup-id i3lock-blur
 
-# exit i3 (logs you out of your X session)
+# Exit i3 (logs you out of your X session).
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# Set shut down, restart and locking features
+# Set shut down, restart and locking features.
 bindsym $mod+0 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
@@ -116,12 +117,12 @@ mode "$mode_system" {
 	bindsym r exec --no-startup-id i3exit reboot, mode "default"
 	bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
-	# exit system mode: "Enter" or "Escape"
+	# Exit system mode: "Enter" or "Escape".
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
 }
 
-# Resize window (you can also use the mouse for that)
+# Resize window (you can also use the mouse for that).
 bindsym $mod+r mode "resize"
 mode "resize" {
 		bindsym h resize shrink width 5 px or 5 ppt
@@ -129,12 +130,12 @@ mode "resize" {
 		bindsym k resize shrink height 5 px or 5 ppt
 		bindsym l resize grow width 5 px or 5 ppt
 
-		# exit resize mode: Enter or Escape
+		# Exit resize mode: Enter or Escape.
 		bindsym Return mode "default"
 		bindsym Escape mode "default"
 }
 
-#audio keys
+# Audio keys.
 bindsym XF86AudioMute exec amixer -q sset Master toggle
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
@@ -142,12 +143,6 @@ bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioLowerVolume exec amixer -q sset Master 5%-
 bindsym XF86AudioRaiseVolume exec amixer -q sset Master 5%+
-
-#media keys
-bindsym XF86Tools exec spotify
-bindsym XF86Mail exec rambox
-bindsym XF86Calculator exec alacritty -e 'bc -l'
-
 
 #####################
 #		 Gaps		#

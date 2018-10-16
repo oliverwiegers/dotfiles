@@ -57,7 +57,6 @@ bottom-right-side-background = ${colors.formatbg}
 bottom-left-side = 
 bottom-left-side-foreground = ${colors.formatbg}
 bottom-left-side-background = ${colors.bg}
-###--Topbar
 
 [bar/top]
 monitor = LVDS-0
@@ -183,11 +182,6 @@ format-suffix-background = ${suffix.top-right-side-background}
 
 [module/pulseaudio]
 type = internal/pulseaudio
-
-; Soundcard to be used
-; Usually in the format hw:# where # is the card number
-; You can find the different card numbers in `/proc/asound/cards`
-;master-soundcard = default
 
 label-font = 5
 format-volume = <ramp-volume>

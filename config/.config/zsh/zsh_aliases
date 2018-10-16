@@ -79,6 +79,8 @@ mkpro(){
 if [[ "$(uname)" == "Linux" ]]; then
 
 	# Configure my system.
+	alias chcolor="wal -g -i $HOME/Pictures/wallpaper/ -o i\
+	    $HOME/Documents/scripts/wal-set.sh"
 	alias conf="sh $SCRIPT_DIR/edit_config.sh"
 	alias back="sh $SCRIPT_DIR/background.sh"
 	alias reload="source $HOME/.zshrc && echo 'Successfully reloaded zsh_config_files'"
