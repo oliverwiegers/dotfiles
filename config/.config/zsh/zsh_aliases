@@ -29,8 +29,10 @@ function mj() {
     if [ ! "$PWD" = "$journal_dir" ]; then
         cd $journal_dir
     fi
-    cp dummy $(date "+%Y-%m-%d").yaml
-    vim $(date "+%Y-%m-%d").yaml
+    current_file="$(date "+%Y/%Y-%m-%d").yaml"
+    cp dummy $current_file
+    vim $current_file
+    cd "$(date "+%Y")"
     git add .
 }
 
