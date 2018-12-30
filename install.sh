@@ -61,6 +61,8 @@ select choice in "Yes" "No"; do
                 ln -s $HOME/.dotfiles/homedir/.zshrc $HOME/.zshrc
                 ln -s $HOME/.dotfiles/config/.config/neofetch/ \
                     $HOME/.config/neofetch
+                ln -s $HOME/.dotfiles/config/.config/ranger/ \
+                    $HOME/.config/ranger
             fi
             break
             ;;
