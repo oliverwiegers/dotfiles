@@ -16,7 +16,6 @@ alias dev="ls /dev/"
 alias pingit="ping -c3 www.google.com"
 alias weather="curl -H \"Accept-Language: de\" wttr.in/Berlin"
 alias glc="gloga | head -1 | cut -d ' ' -f2"
-alias tm="tmux a || tmux"
 
 # Creating license file containing unlicense.
 alias unli="curl http://unlicense.org/UNLICENSE > LICENSE"
@@ -29,10 +28,8 @@ function mj() {
     if [ ! "$PWD" = "$journal_dir" ]; then
         cd $journal_dir
     fi
-    current_file="$(date "+%Y/%Y-%m-%d").yaml"
-    cp dummy $current_file
-    vim $current_file
-    cd "$(date "+%Y")"
+    cp dummy $(date "+%Y-%m-%d").yaml
+    vim $(date "+%Y-%m-%d").yaml
     git add .
 }
 
@@ -81,8 +78,6 @@ mkpro(){
 if [[ "$(uname)" == "Linux" ]]; then
 
 	# Configure my system.
-	alias chcolor="wal -g -i $HOME/Pictures/wallpaper/ -o i\
-	    $HOME/Documents/scripts/wal-set.sh"
 	alias conf="sh $SCRIPT_DIR/edit_config.sh"
 	alias back="sh $SCRIPT_DIR/background.sh"
 	alias reload="source $HOME/.zshrc && echo 'Successfully reloaded zsh_config_files'"
@@ -123,9 +118,9 @@ fi
 
 if [[ "$(uname)" == "Darwin" ]]; then
 	if [[ "$(whoami)" == owiegers ]]; then
-		alias jblu="ssh jumpblu"
-		alias jbki="ssh jumpbki"
-
+        alias jblu="caffeinate -i -- ssh -t jumpblu -- \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
+        alias jbki="caffeinate -i -- ssh -t jumpbki -- \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
+        
 		hp() {
 			git commit -am "$@"
 			git pull
