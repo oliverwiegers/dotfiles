@@ -4,6 +4,8 @@
 
 # Linux and macOS related aliases.
 
+# Use fancy alternative if installed
+[[ $(command -v bat) ]] && alias cat="bat"
 # Open and edit ToDo list.
 alias todo="vim $HOME/Documents/personal/notes/todo.md"
 
