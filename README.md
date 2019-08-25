@@ -14,12 +14,10 @@ and Tmux from other repositories listed down below.
 
 ## Look
 
-Clean desktop
-![img](shots/clean.png "Clean")
-Dmenu run dialog
-![img](shots/dmenu.png "Dmenu")
 Neofetch, st, ZSH, oh-my-zsh, and Vim
 ![img](shots/buisy.png "Neofetch st Vim")
+Clean desktop
+![img](shots/clean.png "Clean")
 
 ## Installation
 
