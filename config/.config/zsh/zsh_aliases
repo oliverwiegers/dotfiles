@@ -104,7 +104,7 @@ mkpro() {
 if [ "$(uname)" = "Linux" ]; then
 
 	# Configure my system.
-	alias reload='source $HOME/.zshrc && printf "Successfully reloaded zsh_config_files"'
+	alias reload='source $HOME/.zshrc && printf "Successfully reloaded zsh_config_files\n"'
 	
 	# Fun
 	alias pac='. "${SCRIPT_DIR}/pacman.sh"'

@@ -4,7 +4,7 @@
 
 export EDITOR=/usr/bin/vim
 export SCRIPT_DIR=$HOME/Documents/scripts
-export PATH="$PATH:/usr/lib/plan9/bin/"
+export PATH="$HOME/.local/bin:$PATH:/usr/lib/plan9/bin"
 
 # colored man pages
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
