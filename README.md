@@ -16,10 +16,10 @@ and Tmux from other repositories listed down below.
 
 Clean desktop
 ![img](shots/clean.png "Clean")
-Rofi run dialog
-![img](shots/rofi.png "Rofi")
-Neofetch, Alacritty, ZSH, oh-my-zsh, and Vim
-![img](shots/buisy.png "Neofetch Alacritty Vim")
+Dmenu run dialog
+![img](shots/dmenu.png "Dmenu")
+Neofetch, st, ZSH, oh-my-zsh, and Vim
+![img](shots/buisy.png "Neofetch st Vim")
 
 ## Installation
 
@@ -44,9 +44,9 @@ This list provides links to the repositories/websites of software I use.
 
 ### Visible software
 
-- [i3wm](https://i3wm.org/)
-- [Alacritty](https://github.com/jwilm/alacritty)
-- [Rofi](https://github.com/DaveDavenport/rofi)
+- [bspwm](https://github.com/baskerville/bspwm)
+- [st](https://st.suckless.org/)
+- [dmenu](https://tools.suckless.org/dmenu/)
 - [Ranger](https://github.com/ranger/ranger)
 - [Polybar](https://github.com/jaagr/polybar)
 - [ZSH](https://github.com/zsh-users/zsh)
@@ -71,7 +71,6 @@ seen in the screenshots.
 
 ### Software I also use
 
-- [bat](https://github.com/sharkdp/bat)
 - [Glances](https://github.com/nicolargo/glances)
 - [htop](https://github.com/hishamhm/htop)
 
