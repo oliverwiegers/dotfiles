@@ -4,6 +4,7 @@ config/.config/gconf
 config/.config/gopass
 config/.config/gtk-2.0
 config/.config/gtk-3.0
+config/.config/glib-2.0
 config/.config/htop
 config/.config/inkscape
 config/.config/mimeapps.list

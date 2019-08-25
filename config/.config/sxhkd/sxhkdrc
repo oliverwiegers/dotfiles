@@ -1,0 +1,79 @@
+#
+# WM independent bindings.
+#
+
+# Open terminal emulator.
+mod1 + Return
+    st
+
+# Open rofi run dialog.
+mod1 + @space
+    ${SCRIPT_DIR}/dmen.sh
+
+# Reload sxhkd config.
+mod1 + Escape
+    pkill -USR1 -x sxhkd
+
+#
+# Media keys.
+# 
+
+XF86AudioLowerVolume
+    pactl set-sink-mute 0 0 && pactl set-sink-volume 0 -5%
+XF86AudioRaiseVolume
+    pactl set-sink-mute 0 0 && pactl set-sink-volume 0 +5%
+XF86AudioMute
+    pactl set-sink-mute 0 toggle
+
+#Brightness control
+XF86MonBrightnessDown
+   xbacklight -dec 5
+XF86MonBrightnessUp
+   xbacklight -inc 5
+
+#
+# bspwm bindings.
+#
+
+# quit/restart bspwm.
+super + mod1 + {q,r}
+    bspc {quit,wm -r}
+
+# close and kill.
+mod1 + q
+    . $SCRIPT_DIR/dmenu_prompt.sh -c 'bspc node -k' -m 'Kill current window?' -w
+
+# Sleep
+mod1 + shift + s
+    . $SCRIPT_DIR/dmenu_prompt.sh -c 'sudo /bin/zzz' -m 'Go to sleep?' -w
+
+# set the window state
+mod1 + {t,shift + t,s,f}
+  bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+#
+# Stage/Flags.
+#
+
+#
+# Focus/Swap
+#
+
+# Focus node in given direction.
+mod1 + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+
+#
+# Desktops
+#
+
+# foces desktop by number.
+mod1 + {_,shift + }{1-9}
+    bspc {desktop -f, node -d} '^{1-9}'
+
+# Focus last node.
+mod1 + Tab
+    bspc node -f last
+
+

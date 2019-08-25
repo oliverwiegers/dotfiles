@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# source the colors.
+source "${HOME}/.cache/wal/colors.sh"
+
+# Launch needed software.
+sxhkd &
+unclutter -idle 2 &
+wal -R
+setxkbmap -option 'caps:ctrl_modifier'
+xset r rate 280 40
+xmodmap ~/.Xmodmap
+sh "${HOME}/.config/polybar/polybar.sh" "top"
+.fehbg
+
+# Actual bspwm settings.
+if [ "$(xrandr -q | grep -q "DP1 connected")" -eq 1 ]; then
+    bspc monitor LVDS1 -d 1 2 
+    bspc monitor DP1 -d 3 4 5 
+else
+    bspc monitor LVDS1 -d 1 2 3 4 5
+fi
+
+bspc config border_width         1
+bspc config window_gap           7
+
+
+# Rules
+
+bspc rule -a Firefox desktop='^2'
+bspc rule -a TelegramDesktop desktop='^5'

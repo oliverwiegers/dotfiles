@@ -26,6 +26,7 @@ echo -e "\e[0m "
 sleep 1
 
 backup_foder=$HOME/config_backup/
+
 echo -e "\e[32mCreating backup folder: \e[34m$backup_folder\e[0m\n"
 mkdir $backup_folder
 echo -e "Moving: \e[32m\n$HOME/.config \n$HOME/.fehbg \n$HOME/.themes\n\
@@ -74,6 +75,29 @@ select choice in "Yes" "No"; do
             echo -e "\e[31mWrong input. Try again.\e[0m"
     esac
 done
+
+if [[ "$(uname)" == "Linux" ]]; then
+    echo -e "Want to download and install Source Code Pro Nerdfont too? (1/2)."
+    
+    select choice in "Yes" "No"; do
+        case $choice in
+            "Yes" )
+                curl -O https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf
+                curl -O https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Light-Italic/complete/Sauce%20Code%20Pro%20Light%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
+                curl -O https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Bold/complete/Sauce%20Code%20Pro%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
+                mv *.ttf /usr/share/fonts/TTF/
+                fc-cache -f
+                break
+                ;;
+            "No" )
+                echo -e "Okay. Going on...\n"
+                break
+                ;;
+            "*" )
+                echo -e "\e[31mWrong input. Try again.\e[0m"
+        esac
+    done
+fi
 
 echo -e "Want to install Vim config too? (1/2)."
 

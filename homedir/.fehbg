@@ -1,2 +1,2 @@
-#!/bin/bash
-feh  --bg-fill '/home/oliverwiegers/Pictures/wallpaper/deus-ex-office.jpg'
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/oliverwiegers/Pictures/wallpaper/aks-voidX-exodus-night.png' 

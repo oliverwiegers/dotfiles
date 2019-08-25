@@ -4,7 +4,7 @@
 
 export EDITOR=/usr/bin/vim
 export SCRIPT_DIR=$HOME/Documents/scripts
-export PATH="$PATH:$HOME/.cargo/bin:${HOME}/.local/bin/"
+export PATH="$PATH:/usr/lib/plan9/bin/"
 
 # colored man pages
 export LESS_TERMCAP_mb=$(tput bold; tput setaf 2) # green
@@ -27,8 +27,16 @@ source $HOME/.config/zsh/zsh_aliases
 source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if [[ "$(uname)" == "Linux" ]]; then
-	if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-	  exec startx
+	if [[ ! $DISPLAY ]]; then
+	  exec startx &
 	fi
 fi
 
+# Add this line to your .bashrc or a shell script.
+# source "${HOME}/.cache/wal/colors.sh"
+# Import colorscheme from 'wal' asynchronously
+# &   # Run the process in the background.
+# ( ) # Hide shell job control messages.
+(cat ~/.cache/wal/sequences &)
+# To add support for TTYs this line can be optionally added.
+source ~/.cache/wal/colors-tty.sh

@@ -1,14 +1,10 @@
-[settings]
-screenchange-reload = true
-[global/wm]
-compositing-background = source
-
 [colors]
 black1= ${xrdb:color0:#<COLOR0>}
 black2 = ${xrdb:color8:#<COLOR8>}
 red1 = ${xrdb:color1:#<COLOR1>}
 red2 = ${xrdb:color9:#<COLOR9>}
-green1 = ${xrdb:color2:#<COLOR2>} green2 = ${xrdb:color10:#<COLOR10>}
+green1 = ${xrdb:color2:#<COLOR2>}
+green2 = ${xrdb:color10:#<COLOR10>}
 yellow1 = ${xrdb:color3:#<COLOR3>}
 yellow2 = ${xrdb:color11:#<COLOR11>}
 blue1 = ${xrdb:color4:#<COLOR4>}
@@ -20,477 +16,256 @@ cyan2 = ${xrdb:color14:#<COLOR14>}
 white1 = ${xrdb:color7:#<COLOR7>}
 white2 = ${xrdb:color15:#<COLOR15>}
 
-bg = ${xrdb:color0:#<COLOR0>}
-fg = ${xrdb:color0:#<COLOR0>}
-formatbg = ${self.magenta1}
+background = ${xrdb:color0:#<COLOR0>}
+foreground = ${xrdb:color15:#<COLOR15>}
+accent = ${xrdb:color2:#<COLOR2>}
+linecolor = ${xrdb:color2:#<COLOR2>}
+bordercolor = ${xrdb:color8:#<COLOR8>}
 
-[prefix]
-top-right-side = 
-top-right-side-foreground = ${colors.bg}
-top-right-side-background = ${colors.formatbg}
+[settings]
+screenchange-reload = true
 
-top-left-side = 
-top-left-side-foreground = ${colors.formatbg}
-top-left-side-background = ${colors.bg}
-
-bottom-right-side = 
-bottom-right-side-foreground = ${colors.bg}
-bottom-right-side-background = ${colors.formatbg}
-
-bottom-left-side = 
-bottom-left-side-foreground = ${colors.formatbg}
-bottom-left-side-background = ${colors.bg}
-
-[suffix]
-top-right-side = 
-top-right-side-foreground = ${colors.bg}
-top-right-side-background = ${colors.formatbg}
-
-top-left-side = 
-top-left-side-foreground = ${colors.formatbg}
-top-left-side-background = ${colors.bg}
-
-bottom-right-side = 
-bottom-right-side-foreground = ${colors.bg}
-bottom-right-side-background = ${colors.formatbg}
-
-bottom-left-side = 
-bottom-left-side-foreground = ${colors.formatbg}
-bottom-left-side-background = ${colors.bg}
+[global/wm]
+margin-top = 0
+margin-bottom = 0
 
 [bar/top]
-monitor = LVDS-0
+enable-ipc = true
+monitor = ${env:MONITOR:LVDS1}
 width = 100%
-height = 18
-bottom = false
+height = 24
 fixed-center = true
-
-border-size = 5
-border-color = ${colors.bg}
-
-line-size = 2
-background = ${colors.bg}
-
-font-0 = PowerlineSymbols:size=12;3
-font-1 = Ubuntu:pixelsize=15:antialias=true;2
-font-2 = TerminessTTF Nerd Font:size=15;4
-font-3 = Unifont:size=15:antialias=true;3
-font-4 = Font Awesome 5 Brands:style=Regular:size=12;3
-font-5 = Font Awesome 5 Free:style=Solid:size=12;3
-font-6 = Font Awesome 5 Free:style=Regular:size=12;3
-font-7 = Weather Icons:size=10;1
-
-modules-left = dns tor bt pulseaudio
-modules-center = spacer-left player-mpris-tail
-modules-right = battery0 battery1 date
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-color = ${colors.linecolor}
+underline-size = 1
+overline-size = 2
+border-bottom-size = 2
+border-bottom-color = ${colors.bordercolor}
+padding-left = 2
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 1
+font-0 = dina:pixelsize=10;1
+font-1 = siji:pixelsize=11;1
+font-2 = unifont:size=10;1
+modules-left = power-menu wifi memory cpu 
+modules-center = bspwm
+modules-right = pulseaudio battery date
+tray-position = right
+tray-padding = 4
+tray-maxsize = 16
+wm-restack = bspwm
+bspwm-focused-overline = ${colors.linecolor}
+bspwm-focused-underline = #cc333333
 
 [bar/bottom]
-monitor = LVDS-0
-width = 100%
-height = 18
+inherit = bar/top
+enable-ipc = true
+monitor = ${env:MONITOR:LVDS1}
 bottom = true
-fixed-center = true
+underline-size = ${bar/top.overline-size}
+overline-size = ${bar/top.underline-size}
+modules-left = bspwm
+modules-right =fs-root date power-menu
+tray-position = none
+bspwm-focused-overline = #cc333333
+bspwm-focused-underline = ${colors.linecolor}
 
-border-size = 5
-border-color = ${colors.bg}
+[module/fs-root]
+type = internal/fs
+mount-0 = /
+label-mounted = %{F#e60053}%percentage_used%%%{F-} used of %mountpoint%
 
-line-size = 2
-background = ${colors.bg}
-
-font-0 = PowerlineSymbols:size=12;3
-font-1 = Ubuntu:pixelsize=15:antialias=true;2
-font-2 = TerminessTTF Nerd Font:size=15;4
-font-3 = Unifont:size=15:antialias=true;3
-font-4 = Font Awesome 5 Brands:style=Regular:size=11;3
-font-5 = Font Awesome 5 Free:style=Solid:size=11;3
-font-6 = Font Awesome 5 Free:style=Regular:size=11;3
-font-7 = Weather Icons:size=10;1
-
-modules-left = inbox-reddit todo pkg
-modules-center = i3
-modules-right = coretemp weather
-###--MODULES
-
-[module/i3]
-type = internal/i3
-pin-workspaces = true
-index-sort = true
-
-icon-font = 5
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-
-format-font = 6
-format = <label-state>
-format-background = ${colors.formatbg}
-format-foreground = ${colors.fg}
-format-prefix = ${suffix.top-right-side}
-format-suffix-foreground = ${suffix.top-right-side-foreground}
-format-suffix-background = ${suffix.top-right-side-background}
-
-format-suffix = ${prefix.top-left-side}
-format-prefix-foreground = ${prefix.top-left-side-foreground}
-format-prefix-background = ${prefix.top-left-side-background}
-
+[module/bspwm]
+type = internal/bspwm
+enable-scroll = false
+inline-mode = true
+format = <label-state> <label-mode>
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-default = 
 label-focused = %icon%
-label-focused-underline = ${colors.red2}
-label-focused-background = ${colors.formatbg}
-label-focused-foreground = ${colors.fg}
-
-label-unfocused = %icon%
-label-unfocused-background = ${colors.formatbg}
-label-unfocused-foreground = ${colors.fg}
+label-focused-background = #383838
+label-focused-foreground = #fff
+label-focused-overline = ${root.bspwm-focused-overline}
+label-focused-underline = ${root.bspwm-focused-underline}
+label-focused-padding = 2
+label-focused-occupied = %icon%
+label-focused-occupied-background = ${self.label-focused-background}
+label-focused-occupied-foreground = ${self.label-focused-foreground}
+label-focused-occupied-overline = ${self.label-focused-overline}
+label-focused-occupied-underline = ${self.label-focused-underline}
+label-focused-occupied-padding = ${self.label-focused-padding}
 
 label-occupied = %icon%
-label-occupied-background = ${colors.formatbg}
-label-occupied-foreground = ${colors.fg}
+label-occupied-padding = 2
 
-label-urgend = %icon%
-label-urgend-background = ${colors.formatbg}
-label-urgend-foreground = ${colors.fg}
+label-urgent = %icon%
+label-urgent-padding = 2
+label-urgent-background = #bd2c40
 
 label-empty = %icon%
-label-empty-background = ${colors.formatbg}
-label-empty-foreground = ${colors.fg}
+label-empty-padding = 2
+label-empty-foreground = #444
 
-label-focused-padding = 3
-label-unfocused-padding = 3
-label-occupied-padding = 3
-label-urgent-padding = 3
+label-monocle = 
+label-monocle-padding = 2
+label-monocle-background = #171717
+label-monocle-foreground = ${colors.accent}
+
+label-floating = 
+label-floating-padding = 2
+label-floating-background = #171717
+label-floating-foreground = ${colors.accent}
+
+label-locked = locked
+label-locked-padding = 1
+label-sticky = sticky
+label-sticky-padding = 1
+label-private = private
+label-private-padding = 1
+
+label-dimmed-background = ${root.background}
+label-dimmed-overline = ${root.background}
+label-dimmed-underline = ${root.background}
+label-dimmed-active-foreground = #f00
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+label = %percentage%%
+format-prefix = " "
+format-prefix-foreground = #666
+
+[module/memory]
+type = internal/memory
+interval = 2
+label = %percentage_used%%
+format-prefix = " "
+format-prefix-foreground = #666
+
+[module/wifi]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-foreground = #666
+format-connected-prefix-offset = -6
+label-connected = %local_ip%
+
+format-disconnected = <label-disconnected>
+format-disconnected-prefix = " "
+format-disconnected-prefix-foreground = #666
+label-disconnected = not connected
+label-disconnected-foreground = #999
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = #666
 
 [module/date]
 type = internal/date
-interval = 60
-date = %a %d-%m
+label = %{F#666}%{F-} %date%  %{F#91aa97}%{F-} %time%
+date = %Y-%m-%d
 time = %H:%M
-label = %time%  %date%
-label-font = 6
+interval = 5
 
-format-background = ${colors.formatbg}
-format-foreground = ${colors.fg}
+[module/volume]
+type = internal/volume
+speaker-mixer = Speaker
+headphone-mixer = Headphone
+headphone-id = 9
 
-format-prefix = ${prefix.top-right-side}
-format-prefix-foreground = ${prefix.top-right-side-foreground}
-format-prefix-background = ${prefix.top-right-side-background}
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
 
-format-suffix = ${suffix.top-right-side}
-format-suffix-foreground = ${suffix.top-right-side-foreground}
-format-suffix-background = ${suffix.top-right-side-background}
+format-muted-prefix = " "
+format-muted-foreground = #777
+label-muted = sound muted
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-foreground = #666
+
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+ramp-headphones-foreground = #666
 
 [module/pulseaudio]
 type = internal/pulseaudio
+use-ui-max = false
 
-label-font = 5
-format-volume = <ramp-volume>
-format-muted = <label-muted>
-label-muted = 
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-ramp-volume-3 = 
-
-format-muted-background = ${colors.formatbg}
-format-muted-foreground = ${colors.fg}
-
-format-muted-prefix = ${prefix.top-left-side}
-format-muted-prefix-foreground = ${prefix.top-left-side-foreground}
-format-muted-prefix-background = ${prefix.top-left-side-background}
-
-format-muted-suffix = ${suffix.top-left-side}
-format-muted-suffix-foreground = ${suffix.top-left-side-foreground}
-format-muted-suffix-background = ${suffix.top-left-side-background}
-
-format-volume-background = ${colors.formatbg}
-format-volume-foreground = ${colors.fg}
-
-format-volume-prefix = ${prefix.top-left-side}
-format-volume-prefix-foreground = ${prefix.top-left-side-foreground}
-format-volume-prefix-background = ${prefix.top-left-side-background}
-
-format-volume-suffix = ${suffix.top-left-side}
-format-volume-suffix-foreground = ${suffix.top-left-side-foreground}
-format-volume-suffix-background = ${suffix.top-left-side-background}
-
-[module/pkg]
-type = custom/script
-interval = 1200
-format = <label>
-label = "%output%"
-exec = $HOME/.config/polybar/pkg.sh
-
-format-background = ${colors.formatbg}
-format-foreground = ${colors.bg}
-format-suffix = ${suffix.bottom-left-side}
-format-suffix-foreground = ${suffix.bottom-left-side-foreground}
-format-suffix-background = ${suffix.bottom-left-side-background}
-
-format-prefix = ${prefix.bottom-left-side}
-format-prefix-foreground = ${prefix.bottom-left-side-foreground}
-format-prefix-background = ${prefix.bottom-left-side-background}
-
-[module/todo]
-type = custom/script
-interval = 60
-label-font = 2
-label = " %output%"
-exec = $HOME/.config/polybar/todoPolybar.sh
-
-format-background = ${colors.formatbg}
-format-foreground = ${colors.fg}
-format-suffix = ${suffix.bottom-left-side}
-format-suffix-foreground = ${suffix.bottom-left-side-foreground}
-format-suffix-background = ${suffix.bottom-left-side-background}
-
-format-prefix = ${prefix.bottom-left-side}
-format-prefix-foreground = ${prefix.bottom-left-side-foreground}
-format-prefix-background = ${prefix.bottom-left-side-background}
-
-[module/battery0]
+[module/battery]
 type = internal/battery
-battery = BAT0
-adapter = AC
 full-at = 98
+time-format = %H:%M
 
-label-full = 
+format-charging = <animation-charging> <label-charging>
+label-charging = %percentage%% %time%
+
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = %percentage%% %time%
+
 format-full = <label-full>
-format-full-background = ${colors.formatbg}
-format-full-foreground = ${colors.fg}
+format-full-prefix = " "
+format-full-prefix-foreground = #666
 
-format-full-prefix = ${prefix.top-right-side}
-format-full-prefix-foreground = ${prefix.top-right-side-foreground}
-format-full-prefix-background = ${prefix.top-right-side-background}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = #666
 
-format-full-suffix = ${suffix.top-right-side}
-format-full-suffix-foreground = ${suffix.top-right-side-foreground}
-format-full-suffix-background = ${suffix.top-right-side-background}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = #666
+animation-charging-framerate = 750
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
+[module/power-menu]
+type = custom/menu
 
-label-charging-font = 2
-label-charging = %percentage%%
-format-charging = <animation-charging> <label-charging>
-format-charging-background = ${colors.formatbg}
-format-charging-foreground = ${colors.fg}
+label-open = 
+label-close = 
+label-separator = /
+label-separator-margin = 1
 
-format-charging-prefix = ${prefix.top-right-side}
-format-charging-prefix-foreground = ${prefix.top-right-side-foreground}
-format-charging-prefix-background = ${prefix.top-right-side-background}
+menu-0-0 = Terminate WM
+menu-0-0-foreground = ${colors.accent}
+menu-0-0-exec = bspc quit -1
+menu-0-1 = Reboot
+menu-0-1-foreground = ${colors.accent}
+menu-0-1-exec = menu-open-1
+menu-0-2 = Power off
+menu-0-2-foreground = ${colors.accent}
+menu-0-2-exec = menu-open-2
+menu-0-3 = Lock
+menu-0-3-foreground = ${colors.accent}
+menu-0-3-exec = lockscreen
 
-format-charging-suffix = ${suffix.top-right-side}
-format-charging-suffix-foreground = ${suffix.top-right-side-foreground}
-format-charging-suffix-background = ${suffix.top-right-side-background}
+menu-1-0 = Cancel
+menu-1-0-foreground = ${colors.accent}
+menu-1-0-exec = menu-open-0
+menu-1-1 = Reboot
+menu-1-1-foreground = ${colors.accent}
+menu-1-1-exec = sudo reboot
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+menu-2-0 = Power off
+menu-2-0-foreground = ${colors.accent}
+menu-2-0-exec = sudo poweroff
+menu-2-1 = Cancel
+menu-2-1-foreground = ${colors.accent}
+menu-2-1-exec = menu-open-0
 
-label-discharging-font = 2
-label-discharging = %percentage%%
-format-discharging = <ramp-capacity>
-format-discharging-background = ${colors.formatbg}
-format-discharging-foreground = ${colors.fg}
-
-format-discharging-prefix = ${prefix.top-right-side}
-format-discharging-prefix-foreground = ${prefix.top-right-side-foreground}
-format-discharging-prefix-background = ${prefix.top-right-side-background}
-
-format-discharging-suffix = ${suffix.top-right-side}
-format-discharging-suffix-foreground = ${suffix.top-right-side-foreground}
-format-discharging-suffix-background = ${suffix.top-right-side-background}
-
-[module/battery1]
-type = internal/battery
-battery = BAT1
-adapter = AC
-full-at = 98
-
-label-full = 
-format-full = <label-full>
-format-full-background = ${colors.formatbg}
-format-full-foreground = ${colors.fg}
-
-format-full-prefix = ${prefix.top-right-side}
-format-full-prefix-foreground = ${prefix.top-right-side-foreground}
-format-full-prefix-background = ${prefix.top-right-side-background}
-
-format-full-suffix = ${suffix.top-right-side}
-format-full-suffix-foreground = ${suffix.top-right-side-foreground}
-format-full-suffix-background = ${suffix.top-right-side-background}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-
-label-charging-font = 2
-label-charging = %percentage%%
-format-charging = <animation-charging> <label-charging>
-format-charging-background = ${colors.formatbg}
-format-charging-foreground = ${colors.fg}
-
-format-charging-prefix = ${prefix.top-right-side}
-format-charging-prefix-foreground = ${prefix.top-right-side-foreground}
-format-charging-prefix-background = ${prefix.top-right-side-background}
-
-format-charging-suffix = ${suffix.top-right-side}
-format-charging-suffix-foreground = ${suffix.top-right-side-foreground}
-format-charging-suffix-background = ${suffix.top-right-side-background}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-label-discharging-font = 2
-label-discharging = %percentage%%
-format-discharging = <ramp-capacity>
-format-discharging-background = ${colors.formatbg}
-format-discharging-foreground = ${colors.fg}
-
-format-discharging-prefix = ${prefix.top-right-side}
-format-discharging-prefix-foreground = ${prefix.top-right-side-foreground}
-format-discharging-prefix-background = ${prefix.top-right-side-background}
-
-format-discharging-suffix = ${suffix.top-right-side}
-format-discharging-suffix-foreground = ${suffix.top-right-side-foreground}
-format-discharging-suffix-background = ${suffix.top-right-side-background}
-    
-[module/tor]
-type = custom/script
-interval = 6
-label-font = 6
-format-font = 2
-format = <label>
-label =  %output%
-exec = $HOME/.config/polybar/status.sh tor
-
-format-background = ${colors.formatbg}
-format-foreground = ${colors.fg}
-format-suffix = ${suffix.top-left-side}
-format-suffix-foreground = ${suffix.top-left-side-foreground}
-format-suffix-background = ${suffix.top-left-side-background}
-
-format-prefix = ${prefix.top-left-side}
-format-prefix-foreground = ${prefix.top-left-side-foreground}
-format-prefix-background = ${prefix.top-left-side-background}
-
-[module/dns]
-type = custom/script
-interval = 6
-label-font = 6
-format-font = 2
-format = <label>
-label =  %output%
-exec = $HOME/.config/polybar/dnslookup.sh
-
-format-background = ${colors.formatbg}
-format-foreground = ${colors.fg}
-format-suffix = ${suffix.top-left-side}
-format-suffix-foreground = ${suffix.top-left-side-foreground}
-format-suffix-background = ${suffix.top-left-side-background}
-
-format-prefix = ${prefix.top-left-side}
-format-prefix-foreground = ${prefix.top-left-side-foreground}
-format-prefix-background = ${prefix.top-left-side-background}
-
-[module/player-mpris-tail]
-type = custom/script
-exec = $HOME/.config/polybar/player-mpris-tail.py -f '{icon} {artist} - {title}'
-tail = true
-label = %output%
-
-format-background = ${colors.formatbg}
-format-foreground = ${colors.fg}
-format-suffix = ${suffix.top-right-side}
-format-suffix-foreground = ${suffix.top-right-side-foreground}
-format-suffix-background = ${suffix.top-right-side-background}
-
-format-prefix = ${prefix.top-left-side}
-format-prefix-foreground = ${prefix.top-left-side-foreground}
-format-prefix-background = ${prefix.top-left-side-background}
-
-[module/news-archlinux]
-type = custom/script
-exec = $HOME/.config/polybar/news-archlinux.py
-interval = 600
-
-[module/weather]
-type = custom/script
-exec = $HOME/.config/polybar/openweathermap-detailed.sh
-interval = 600
-label-font = 7
-
-format-background = ${colors.formatbg}
-format-foreground = ${colors.fg}
-format-prefix = ${prefix.bottom-right-side}
-format-prefix-foreground = ${prefix.bottom-right-side-foreground}
-format-prefix-background = ${prefix.bottom-right-side-background}
-
-format-suffix = ${suffix.bottom-right-side}
-format-suffix-foreground = ${suffix.bottom-right-side-foreground}
-format-suffix-background = ${suffix.bottom-right-side-background}
-
-[module/inbox-reddit]
-format = <label>
-type = custom/script
-exec = $HOME/.config/polybar/inbox-reddit.sh
-interval = 600
-label =  %output%
-label-font = 5
-
-format-background = ${colors.formatbg}
-format-foreground = ${colors.fg}
-format-prefix = ${prefix.bottom-left-side}
-format-prefix-foreground = ${prefix.bottom-left-side-foreground}
-format-prefix-background = ${prefix.bottom-left-side-background}
-
-format-suffix = ${suffix.bottom-left-side}
-format-suffix-foreground = ${suffix.bottom-left-side-foreground}
-format-suffix-background = ${suffix.bottom-left-side-background}
-
-[module/bt]
-label = %output%
-label-font = 5
-type = custom/script
-exec = $HOME/.config/polybar/bluetooth.sh
-interval = 10
-
-format-background = ${colors.formatbg}
-format-foreground = ${colors.fg}
-format-suffix = ${suffix.top-left-side}
-format-suffix-foreground = ${suffix.top-left-side-foreground}
-format-suffix-background = ${suffix.top-left-side-background}
-
-format-prefix = ${prefix.top-left-side}
-format-prefix-foreground = ${prefix.top-left-side-foreground}
-format-prefix-background = ${prefix.top-left-side-background}
-
-[module/coretemp]
-label =  %output%
-label-font = 6
-type = custom/script
-exec = $HOME/.config/polybar/coretemp.sh
-interval = 60
-
-format-background = ${colors.formatbg}
-format-foreground = ${colors.fg}
-format-suffix = ${suffix.bottom-right-side}
-format-suffix-foreground = ${suffix.bottom-right-side-foreground}
-format-suffix-background = ${suffix.bottom-right-side-background}
-
-format-prefix = ${prefix.bottom-right-side}
-format-prefix-foreground = ${prefix.bottom-right-side-foreground}
-format-prefix-background = ${prefix.bottom-right-side-background}
-; vim:ft=dosini
 ; vim:ft=dosini
