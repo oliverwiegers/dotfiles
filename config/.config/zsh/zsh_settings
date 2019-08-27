@@ -65,9 +65,11 @@ fi
 # | |/ |/ / /_/ / /  
 # |__/|__/\__,_/_/   
 
-# &   # Run the process in the background.
-# ( ) # Hide shell job control messages.
-(cat ~/.cache/wal/sequences &)
-# To add support for TTYs this line can be optionally added.
-# shellcheck source=/home/oliverwiegers/.cache/wal/colors-tty.sh
-. "${HOME}/.cache/wal/colors-tty.sh"
+if [ "$(uname)" = "Linux" ]; then
+    # &   # Run the process in the background.
+    # ( ) # Hide shell job control messages.
+    (cat ~/.cache/wal/sequences &)
+    # To add support for TTYs this line can be optionally added.
+    # shellcheck source=/home/oliverwiegers/.cache/wal/colors-tty.sh
+    . "${HOME}/.cache/wal/colors-tty.sh"
+fi
