@@ -1,7 +1,24 @@
 #!/bin/sh
 
+##############################################################
+#           ____ _____ ____ _       ____  _______  ______    #
+#          / __ ) ___// __ \ |     / /  |/  / __ \/ ____/    #
+#         / __  \__ \/ /_/ / | /| / / /|_/ / /_/ / /         #
+#     _  / /_/ /__/ / ____/| |/ |/ / /  / / _, _/ /___       #
+#    (_)/_____/____/_/     |__/|__/_/  /_/_/ |_|\____/       #
+#                                                            #
+##############################################################
+
+#             __             __            
+#       _____/ /_____ ______/ /___  ______ 
+#      / ___/ __/ __ `/ ___/ __/ / / / __ \
+#     (__  ) /_/ /_/ / /  / /_/ /_/ / /_/ /
+#    /____/\__/\__,_/_/   \__/\__,_/ .___/ 
+#                                /_/      
+
 # source the colors.
-source "${HOME}/.cache/wal/colors.sh"
+# shellcheck source=/home/oliverwiegers/.cache/wal/colors.sh
+. "${HOME}/.cache/wal/colors.sh"
 
 # Launch needed software.
 sxhkd &
@@ -12,7 +29,13 @@ xmodmap ~/.Xmodmap
 sh "${HOME}/.config/polybar/polybar.sh" "top"
 .fehbg
 
-# Actual bspwm settings.
+#                 __  __  _                 
+#      ________  / /_/ /_(_)___  ____ ______
+#     / ___/ _ \/ __/ __/ / __ \/ __ `/ ___/
+#    (__  )  __/ /_/ /_/ / / / / /_/ (__  ) 
+#   /____/\___/\__/\__/_/_/ /_/\__, /____/  
+#                             /____/        
+
 if [ "$(xrandr -q | grep -q "DP1 connected")" -eq 1 ]; then
     bspc monitor LVDS1 -d 1 2 
     bspc monitor DP1 -d 3 4 5 
@@ -23,7 +46,11 @@ fi
 bspc config border_width         1
 bspc config window_gap           7
 
-# Rules
+#                  __             
+#      _______  __/ /__  _____    
+#     / ___/ / / / / _ \/ ___/    
+#    / /  / /_/ / /  __(__  )     
+#   /_/   \__,_/_/\___/____/      
 
 bspc rule -a Firefox desktop='^2'
 bspc rule -a TelegramDesktop desktop='^5'
