@@ -7,7 +7,6 @@ source "${HOME}/.cache/wal/colors.sh"
 sxhkd &
 unclutter -idle 2 &
 wal -R
-setxkbmap -option 'caps:ctrl_modifier'
 xset r rate 280 40
 xmodmap ~/.Xmodmap
 sh "${HOME}/.config/polybar/polybar.sh" "top"
@@ -23,7 +22,6 @@ fi
 
 bspc config border_width         1
 bspc config window_gap           7
-
 
 # Rules
 
