@@ -47,7 +47,7 @@ mj() {
 # Get latest commit hash.
 glc() {
     git log \
-        --author 'oliverwiegers' \
+        --author "$USER" \
         --oneline \
         --decorate \
         --graph \

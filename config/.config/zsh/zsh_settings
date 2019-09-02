@@ -15,7 +15,7 @@
 
 export EDITOR=/usr/bin/vim
 export SCRIPT_DIR=$HOME/Documents/scripts
-export PATH="$HOME/.local/bin:$PATH:/usr/lib/plan9/bin"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH:/usr/lib/plan9/bin"
 
 #     __              
 #    / /__  __________
