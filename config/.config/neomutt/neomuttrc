@@ -17,8 +17,10 @@
 source "gpg -dq $HOME/.my-pwds.gpg |"
 set editor=`echo \$EDITOR`
 set charset = "utf-8"
-set sidebar_visible = "yes"
+set send_charset = "utf-8"
+set assumed_charset = "utf-8"
 set mailcap_path = "$HOME/.config/neomutt/mailcap"
+set mail_check_stats = yes
 auto_view text/html
 alternative_order text/enriched text/plain text/html text
 
@@ -32,7 +34,8 @@ alternative_order text/enriched text/plain text/html text
 set realname = "Oliver Wiegers"
 set from = "oliver.wiegers@gmail.com"
 set use_from = yes
-set envelope_from = yes
+set user_agent = yes
+my_hdr User-Agent: Friendly User Agent/1.0
 
 #       _____ __  _____________ 
 #      / ___//  |/  /_  __/ __ \
@@ -65,11 +68,29 @@ set postponed = +[Gmail]/Drafts
 set imap_keepalive = 300
 set mail_check = 120
 
-#        __    _           ___                 
-#       / /_  (_)___  ____/ (_)___  ____ ______
-#      / __ \/ / __ \/ __  / / __ \/ __ `/ ___/
-#     / /_/ / / / / / /_/ / / / / / /_/ (__  ) 
-#    /_.___/_/_/ /_/\__,_/_/_/ /_/\__, /____/  
-#                                /____/        
+#       ____ _____  ____ _
+#      / __ `/ __ \/ __ `/
+#     / /_/ / /_/ / /_/ / 
+#     \__, / .___/\__, /  
+#    /____/_/    /____/   
 
-bind index G imap-fetch-mail
+set crypt_use_gpgme=yes
+set crypt_autosign=yes
+set crypt_verify_sig=yes
+set crypt_replysign=yes
+set crypt_replyencrypt=no
+set crypt_replysignencrypted=no
+set crypt_autoencrypt = no
+set pgp_default_key="4F6D3FBA6BD6D80A42AA7F14A8D17EDCAA20B76B"
+set pgp_check_gpg_decrypt_status_fd
+set pgp_use_gpg_agent = yes
+set pgp_self_encrypt = no
+
+#       _________  __  _______________ 
+#      / ___/ __ \/ / / / ___/ ___/ _ \
+#     (__  ) /_/ / /_/ / /  / /__/  __/
+#    /____/\____/\__,_/_/   \___/\___/ 
+                                  
+source $HOME/.config/neomutt/colors
+source $HOME/.config/neomutt/bindings
+source $HOME/.config/neomutt/sidebar

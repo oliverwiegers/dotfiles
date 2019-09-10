@@ -1,0 +1,27 @@
+#             _     __     __              
+#       _____(_)___/ /__  / /_  ____ ______
+#      / ___/ / __  / _ \/ __ \/ __ `/ ___/
+#     (__  ) / /_/ /  __/ /_/ / /_/ / /    
+#    /____/_/\__,_/\___/_.___/\__,_/_/     
+
+set sidebar_new_mail_only = no
+set sidebar_visible = yes
+set sidebar_width = 25
+set sidebar_short_path = yes
+set sidebar_delim_chars = '/.'
+set sidebar_folder_indent
+set sidebar_indent_string = '  '
+set sidebar_new_mail_only = yes
+set sidebar_next_new_wrap = yes
+set sidebar_on_right = no
+set sidebar_divider_char = '  '
+set sidebar_format = '%B %?N?(%N)?%* %S'
+set sidebar_sort_method = 'path'
+set mail_check_stats = yes
+
+color sidebar_indicator     brightcolor02      default
+color sidebar_highlight     brightcolor223       default
+color sidebar_divider       default             default
+color sidebar_flagged       color243            default
+color sidebar_new           color243            default
+color sidebar_ordinary      color243            default
