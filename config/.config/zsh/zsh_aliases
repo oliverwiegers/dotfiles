@@ -34,6 +34,14 @@ alias unli="curl http://unlicense.org/UNLICENSE > LICENSE"
 #  / __/ /_/ / / / / /__/ /_/ / /_/ / / / (__  ) 
 # /_/  \__,_/_/ /_/\___/\__/_/\____/_/ /_/____/  
 
+# Create header for config files.
+header() {
+    header=$1
+    file=$2
+
+    figlet -f slant "${header}" >> "${file}"
+}
+
 # Change to journal dir and create new journal.
 mj() {
     journal_dir="$HOME/Documents/personal/notes/journal" 
