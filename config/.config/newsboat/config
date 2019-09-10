@@ -1,0 +1,70 @@
+#################################################################
+#        _   _________       _______ ____  ____  ___  ______    #
+#       / | / / ____/ |     / / ___// __ )/ __ \/   |/_  __/    #
+#      /  |/ / __/  | | /| / /\__ \/ __  / / / / /| | / /       #
+#     / /|  / /___  | |/ |/ /___/ / /_/ / /_/ / ___ |/ /        #
+#    /_/ |_/_____/  |__/|__//____/_____/\____/_/  |_/_/         #
+#                                                               #
+#################################################################
+
+#        ____              __    
+#       / __/__  ___  ____/ /____
+#      / /_/ _ \/ _ \/ __  / ___/
+#     / __/  __/  __/ /_/ (__  ) 
+#    /_/  \___/\___/\__,_/____/  
+
+auto-reload yes
+reload-time 120
+reload-threads 4
+download-retries 4
+download-timeout 10
+prepopulate-query-feeds yes
+
+#        __            __  
+#       / /___  ____  / /__
+#      / / __ \/ __ \/ //_/
+#     / / /_/ / /_/ / ,<   
+#    /_/\____/\____/_/|_|  
+
+show-read-feeds yes
+feed-sort-order unreadarticlecount-asc
+
+color info default default reverse
+color listnormal_unread yellow default
+color listfocus blue default reverse bold
+color listfocus_unread blue default reverse bold
+
+text-width 80
+                                                       
+#                          _             __  _           
+#       ____  ____ __   __(_)___ _____ _/ /_(_)___  ____ 
+#      / __ \/ __ `/ | / / / __ `/ __ `/ __/ / __ \/ __ \
+#     / / / / /_/ /| |/ / / /_/ / /_/ / /_/ / /_/ / / / /
+#    /_/ /_/\__,_/ |___/_/\__, /\__,_/\__/_/\____/_/ /_/ 
+#                        /____/                          
+
+goto-next-feed no
+
+# Vim like keybindings.
+bind-key j down all
+bind-key k up all
+bind-key J next-feed articlelist
+bind-key K prev-feed articlelist
+bind-key g home all
+bind-key G end all
+
+#                                         __
+#       ____ ____  ____  ___  _________ _/ /
+#      / __ `/ _ \/ __ \/ _ \/ ___/ __ `/ / 
+#     / /_/ /  __/ / / /  __/ /  / /_/ / /  
+#     \__, /\___/_/ /_/\___/_/   \__,_/_/   
+#    /____/                                 
+
+unbind-key C feedlist
+confirm-exit no
+cleanup-on-quit no
+
+#browser "/bin/firefox"
+notify-program '/bin/notify-send'
+browser "/bin/w3m %u"
+macro f set browser "/bin/firefox %u"; open-in-browser ; set browser "/bin/w3m %u"

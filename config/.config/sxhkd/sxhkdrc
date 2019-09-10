@@ -43,9 +43,13 @@ super + mod1 + {q,r}
 mod1 + q
     . $SCRIPT_DIR/dmenu_prompt.sh -c 'bspc node -k' -m 'Kill current window?' -w
 
-# Sleep
+# Sleep.
 mod1 + shift + s
     . $SCRIPT_DIR/dmenu_prompt.sh -c 'sudo /bin/zzz' -m 'Go to sleep?' -w
+
+# Lock and sleep.
+mod1 + ctrl + q
+    slock&; sudo /bin/zzz
 
 # set the window state
 mod1 + {t,shift + t,s,f}
