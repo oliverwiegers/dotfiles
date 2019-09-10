@@ -13,6 +13,29 @@
 #  / / / / / / /_/ />  <   _/_/    / / / / / / /_/ / /__/ /_/ (__  ) 
 # /_/_/_/ /_/\__,_/_/|_|  /_/     /_/ /_/ /_/\__,_/\___/\____/____/  
 
+# Replace legacy tools with new ones
+
+if [ "$(command -v exa)" ]; then
+    unalias -m 'll'
+    unalias -m 'l'
+    unalias -m 'la'
+    unalias -m 'ls'
+    alias ls='exa'
+    alias l='exa -lah'
+    alias ll='exa -lh'
+fi
+
+if [ "$(command -v bat)" ]; then
+    unalias -m 'cat'
+    alias cat='bat'
+fi
+
+# Sadly the flags are different.
+#if [ "$(command -v rg)" ]; then
+#    unalias -m 'grep'
+#    alias grep='rg'
+#fi
+
 # Open and edit ToDo list.
 alias todo='vim "$HOME/Documents/personal/notes/todo.md"'
 
