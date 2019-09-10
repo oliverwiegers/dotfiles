@@ -215,6 +215,27 @@ ramp-headphones-foreground = #666
 [module/pulseaudio]
 type = internal/pulseaudio
 use-ui-max = false
+speaker-mixer = Speaker
+headphone-mixer = Headphone
+headphone-id = 9
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = " "
+format-muted-foreground = #777
+label-muted = sound muted
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-foreground = #666
+
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+ramp-headphones-foreground = #666
 
 [module/battery]
 type = internal/battery
@@ -225,7 +246,7 @@ format-charging = <animation-charging> <label-charging>
 label-charging = %percentage%% %time%
 
 format-discharging = <ramp-capacity> <label-discharging>
-label-discharging = %percentage%% %time%
+label-discharging = %percentage%%
 
 format-full = <label-full>
 format-full-prefix = " "
