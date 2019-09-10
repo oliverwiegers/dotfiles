@@ -1,0 +1,75 @@
+#####################################################################
+#           __  ___   __  __   ______   ______   ____     ______    #
+#          /  |/  /  / / / /  /_  __/  /_  __/  / __ \   / ____/    #
+#         / /|_/ /  / / / /    / /      / /    / /_/ /  / /         #
+#     _  / /  / /  / /_/ /    / /      / /    / _, _/  / /___       #
+#    (_)/_/  /_/   \____/    /_/      /_/    /_/ |_|   \____/       #
+#                                                                   #
+#####################################################################
+                                                             
+#                                         __
+#       ____ ____  ____  ___  _________ _/ /
+#      / __ `/ _ \/ __ \/ _ \/ ___/ __ `/ / 
+#     / /_/ /  __/ / / /  __/ /  / /_/ / /  
+#     \__, /\___/_/ /_/\___/_/   \__,_/_/   
+#    /____/                                 
+
+source "gpg -dq $HOME/.my-pwds.gpg |"
+set editor=`echo \$EDITOR`
+set charset = "utf-8"
+set sidebar_visible = "yes"
+set mailcap_path = "$HOME/.config/neomutt/mailcap"
+auto_view text/html
+alternative_order text/enriched text/plain text/html text
+
+#        _     __           __  _ __       
+#       (_)___/ /__  ____  / /_(_) /___  __
+#      / / __  / _ \/ __ \/ __/ / __/ / / /
+#     / / /_/ /  __/ / / / /_/ / /_/ /_/ / 
+#    /_/\__,_/\___/_/ /_/\__/_/\__/\__, /  
+#                                 /____/   
+
+set realname = "Oliver Wiegers"
+set from = "oliver.wiegers@gmail.com"
+set use_from = yes
+set envelope_from = yes
+
+#       _____ __  _____________ 
+#      / ___//  |/  /_  __/ __ \
+#      \__ \/ /|_/ / / / / /_/ /
+#     ___/ / /  / / / / / ____/ 
+#    /____/_/  /_/ /_/ /_/      
+
+set smtp_url = "smtps://oliver.wiegers@gmail.com@smtp.gmail.com:465/"
+set smtp_pass = "$my_pass"
+# Gmail does automatically save to "+[Gmail]/Send"
+unset record
+
+#        ______  ______    ____ 
+#       /  _/  |/  /   |  / __ \
+#       / // /|_/ / /| | / /_/ /
+#     _/ // /  / / ___ |/ ____/ 
+#    /___/_/  /_/_/  |_/_/      
+
+mailboxes = "+INBOX"
+unset imap_passive
+set imap_user = "oliver.wiegers@gmail.com"
+set imap_pass = "$my_pass"
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set ssl_force_tls = yes
+set imap_check_subscribed
+set header_cache = ~/.cache/mutt
+set message_cachedir = "~/.cache/mutt"
+set postponed = +[Gmail]/Drafts
+set imap_keepalive = 300
+set mail_check = 120
+
+#        __    _           ___                 
+#       / /_  (_)___  ____/ (_)___  ____ ______
+#      / __ \/ / __ \/ __  / / __ \/ __ `/ ___/
+#     / /_/ / / / / / /_/ / / / / / /_/ (__  ) 
+#    /_.___/_/_/ /_/\__,_/_/_/ /_/\__, /____/  
+#                                /____/        
+
+bind index G imap-fetch-mail
