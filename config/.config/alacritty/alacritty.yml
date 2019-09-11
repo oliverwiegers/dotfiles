@@ -1,0 +1,47 @@
+env:
+  TERM: xterm-256color
+
+scrolling:
+  history: 10000
+  multiplier: 3
+  faux_multiplier: 3
+  auto_scroll: false
+
+tabspaces: 4
+
+draw_bold_text_with_bright_colors: true
+
+font:
+  normal:
+    family: SauceCodePro Nerd Font Mono
+    style: Regular
+  bold:
+    family: SauceCodePro Nerd Font Mono
+    style: Bold
+  italic:
+    family: SauceCodePro Nerd Font Mono
+    style: Light Italic
+  size: 7.0
+  scale_with_dpi: true
+  use_thin_strokes: true
+debug.render_timer: false
+
+custom_cursor_colors: false
+
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+mouse:
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+
+dynamic_title: true
+hide_cursor_when_typing: true
+cursor_style: Block
+unfocused_hollow_cursor: true
+live_config_reload: true
+visual_bell:
+  animation: EaseOutExpo
+  duration: 0

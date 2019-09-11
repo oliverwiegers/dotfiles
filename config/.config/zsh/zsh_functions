@@ -1,0 +1,183 @@
+####################################################################################
+#     _____  _____ __  __   ________  ___   ______________________  _   _______    #
+#    /__  / / ___// / / /  / ____/ / / / | / / ____/_  __/  _/ __ \/ | / / ___/    #
+#      / /  \__ \/ /_/ /  / /_  / / / /  |/ / /     / /  / // / / /  |/ /\__ \     #
+#     / /_____/ / __  /  / __/ / /_/ / /|  / /___  / / _/ // /_/ / /|  /___/ /     #
+#    /____/____/_/ /_/  /_/    \____/_/ |_/\____/ /_/ /___/\____/_/ |_//____/      #
+#                                                                                  #
+####################################################################################
+
+#     ___                        __                                  
+#    / (_)___  __  ___  __     _/_/  ____ ___  ____ __________  _____
+#   / / / __ \/ / / / |/_/   _/_/   / __ `__ \/ __ `/ ___/ __ \/ ___/
+#  / / / / / / /_/ />  <   _/_/    / / / / / / /_/ / /__/ /_/ (__  ) 
+# /_/_/_/ /_/\__,_/_/|_|  /_/     /_/ /_/ /_/\__,_/\___/\____/____/  
+
+# Create header for config files.
+header() {
+    header=$1
+    file=$2
+
+    figlet -f slant "${header}" >> "${file}"
+}
+
+# Change to journal dir and create new journal.
+mj() {
+    journal_dir="$HOME/Documents/personal/notes/journal" 
+    if [ ! "$PWD" = "$journal_dir" ]; then
+        cd "$journal_dir" || exit 1
+    fi
+    cp dummy "$(date "+%Y-%m-%d").yaml"
+    vim "$(date "+%Y-%m-%d").yaml"
+}
+
+# Get latest commit hash.
+glc() {
+    git log \
+        --author "$USER" \
+        --oneline \
+        --decorate \
+        --graph \
+        --all \
+        | awk 'NR==1 {print $2}'
+}
+
+# Create and edit executeable python file.
+pytest() {
+	echo "#!/usr/bin/env python" > ./test.py
+	vim ./test.py
+	chmod 0700 ./test.py
+}
+
+# Create and edit executeable bash file.
+tsh() {
+	printf "#!/usr/bin/env sh\n" > ./test.sh
+	vim ./test.sh
+	chmod 0700 ./test.sh
+}
+
+# Create README for project.
+mkread(){
+	[ -f README.md ] && rm README.md
+	touch README.md
+	printf "# %s\n" "$(pwd | rev | cut -d'/' -f1 | rev)" >> README.md
+	echo "Please insert simple description."
+	read -r desc
+    { printf "> %s\n" "${desc}";
+	printf "## Requirements\n";
+	printf "## Build\n";
+	printf "## Install";
+	printf "## Run\n"; } >> README.md
+
+}
+
+# Create new project.
+mkpro() {
+	[ "$#" -ne 1 ] && printf "Please provide name of project as argument.\nExiting." && return 1
+	take "$1"
+	unli
+	mkread
+	printf "Hey! Cool, you started another project\nPlease insert the name of the first file\n=>"
+	read -r name
+	touch "${name}"
+}
+
+#     ___                 
+#    / (_)___  __  ___  __
+#   / / / __ \/ / / / |/_/
+#  / / / / / / /_/ />  <  
+# /_/_/_/ /_/\__,_/_/|_|  
+
+if [ "$(uname)" = "Linux" ]; then
+	# Change monitor settings.
+	changemon() {
+		PS3="What setup would you like to run?"
+		select choice in "Internal monitor" "External monitor" "Both"; do
+			case $choice in
+				"Internal monitor" )
+					xrandr --output LVDS1 --auto --output DP1 --off && sh $HOME/.fehbg
+					return 0
+					break
+					;;
+				"External monitor" )
+					xrandr --output DP1 --auto --output LVDS1 --off && $HOME/.fehbg
+					return 0
+					break
+					;;
+				"Both" )
+					xrandr --output DP1 --auto --primary --output LVDS1 --auto --noprimary --below DP1 && $HOME/.fehbg
+					return 0
+					break
+					;;
+				*)
+					echo "Wrong input."
+					return 1
+					break
+					;;
+			esac
+		done
+	}
+fi
+
+#    ____ ___  ____ __________  _____
+#   / __ `__ \/ __ `/ ___/ __ \/ ___/
+#  / / / / / / /_/ / /__/ /_/ (__  ) 
+# /_/ /_/ /_/\__,_/\___/\____/____/  
+
+if [ "$(uname)" = "Darwin" ]; then
+	if [ "$(whoami)" = owiegers ]; then
+        alias jblu="caffeinate -i -- ssh -t jumpblu -- \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
+        alias jbki="caffeinate -i -- ssh -t jumpbki -- \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
+        
+		hp() {
+			git commit -am "$@"
+			git pull
+			git push
+		}
+	fi
+fi
+
+#              __  
+#  ____  _____/ /_ 
+# /_  / / ___/ __ \
+#  / /_(__  ) / / /
+# /___/____/_/ /_/ 
+
+_zsh_greeting() {
+    if [ "$(uname)" = "Linux" ]; then
+        # Variables.
+        os=$(grep '^NAME' /etc/os-release | cut -d'"' -f2 | tr -d '"')
+        hostname=$(hostname)
+        uptime=$(uptime -p | sed 's/up //;')
+        network=$(ip -4 -o a | tail -n+2 | awk '{print $2 " " $4}')
+        cpu_usage=$(awk \
+            '/cpu /{usage=($2+$4)*100/($2+$4+$5); printf("%3.2f %\n", usage)}' \
+            /proc/stat)
+        total_ram=$( awk \
+            '/MemTotal: /{total=$2/1024/1024; printf("%3.0f\n", total+1)}' \
+            /proc/meminfo)
+        used_ram=$( awk \
+            '/MemAvailable: /{avail=$2;}; /MemTotal: /{total=$2;}; {used=(total-avail)/1024/1024} END { printf("%3.1f\n", used)}' \
+            /proc/meminfo)
+        disk_usage=$(df -t f2fs -h | awk -v OFS="\t" '{$1 = ""; print}')
+
+        # Print statements.
+        printf "\033[1mOS:\033[0m \033[0;36m%s\n\033[0m" "${os}"
+        printf "\033[1mUptime:\033[0m \033[0;36m%s\n\033[0m" "${uptime}"
+        printf "\033[1mHostname:\033[0m \033[0;36m%s\n\033[0m" "${hostname}"
+
+        printf "\n\033[1mCPU usage:\033[0m \033[0;36m%s\n\033[0m" "${cpu_usage}"
+        printf "\033[1mRAM usage:\033[0m \033[0;36m%sGiB /%s.0GiB\n\033[0m" \
+            "${used_ram}" "${total_ram}"
+
+        printf "\n\033[1mNetwork:\033[0m\n\n\033[0;32m\t%s\033[0m\n" \
+            "${network}"
+
+        printf "\n\033[1mDisk Usage:\033[0m\n\n\033[0;32m%s\033[0m\n" \
+            "${disk_usage}"
+    elif [ "$(uname)" = "Darwin" ]; then
+        printf "And again. The Os of agony: macOS\n"
+    else
+        printf "Okay cool. Something new: \033[1;36m%s\n\033[0m" "$(uname)"
+    fi
+}

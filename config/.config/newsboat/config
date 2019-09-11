@@ -64,7 +64,6 @@ unbind-key C feedlist
 confirm-exit no
 cleanup-on-quit no
 
-#browser "/bin/firefox"
 notify-program '/bin/notify-send'
 browser "/bin/w3m %u"
 macro f set browser "/bin/firefox %u"; open-in-browser ; set browser "/bin/w3m %u"

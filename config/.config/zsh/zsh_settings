@@ -58,6 +58,8 @@ export LESS_TERMCAP_ZW
 
 # shellcheck source=/home/oliverwiegers/.config/zsh/zsh_aliases
 . "${HOME}/.config/zsh/zsh_aliases"
+# shellcheck source=/home/oliverwiegers/.config/zsh/zsh_functions
+. "${HOME}/.config/zsh/zsh_functions"
 # shellcheck source=/home/oliverwiegers/.config/zsh/zsh_aliases
 . "${HOME}/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
@@ -87,3 +89,5 @@ if [ "$(uname)" = "Linux" ]; then
     # shellcheck source=/home/oliverwiegers/.cache/wal/colors-tty.sh
     . "${HOME}/.cache/wal/colors-tty.sh"
 fi
+
+_zsh_greeting
