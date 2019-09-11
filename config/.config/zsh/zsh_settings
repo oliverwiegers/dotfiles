@@ -90,4 +90,12 @@ if [ "$(uname)" = "Linux" ]; then
     . "${HOME}/.cache/wal/colors-tty.sh"
 fi
 
+#                                      __
+#    ____ ____  ____  ___  _________ _/ /
+#   / __ `/ _ \/ __ \/ _ \/ ___/ __ `/ / 
+#  / /_/ /  __/ / / /  __/ /  / /_/ / /  
+#  \__, /\___/_/ /_/\___/_/   \__,_/_/   
+# /____/                                 
+
+# Call function to welcome the user.
 _zsh_greeting
