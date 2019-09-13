@@ -1,3 +1,6 @@
 [user]
 	email = oliver.wiegers@gmail.com
 	name = oliverwiegers
+	signingkey = 244D3FF3276A942F8666536FDE9FDB17F778EFDA
+[commit]
+	gpgsign = true

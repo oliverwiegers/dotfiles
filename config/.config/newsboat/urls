@@ -6,10 +6,15 @@ https://www.tagesschau.de/xml/rss2 "~Tagesschau"news
 https://rss.golem.de/rss.php?feed=RSS2.0 tech news
 https://www.archlinux.org/feeds/news/ arch linux
 https://voidlinux.org/atom
-www.linuxtoday.com/biglt.rss
 https://feeds.feedburner.com/bmofeed
 https://hackaday.com/blog/feed/
 https://blog.mozilla.org/rss
 https://blog.cloudflare.com/rss/
 https://codewithoutrules.com/atom.xml
 https://feeds.feedburner.com/ThePragmaticEngineer
+https://blog.torproject.org/rss.xml "~TOR Project"
+https://www.eff.org/rss/updates.xml "~EFF"
+https://act.eff.org/action.atom
+https://theintercept.com/feed/?rss
+https://micahflee.com/feed.xml "~Mica Lee"
+https://www.greenpeace.de/rss.xml

@@ -68,7 +68,6 @@ mkread(){
 	printf "## Build\n";
 	printf "## Install";
 	printf "## Run\n"; } >> README.md
-
 }
 
 # Create new project.
@@ -175,6 +174,9 @@ _zsh_greeting() {
 
         printf "\n\033[1mDisk Usage:\033[0m\n\n\033[0;32m%s\033[0m\n" \
             "${disk_usage}"
+
+        printf "\n\033[1mTODOs:\033[0m\n" 
+        task list -WORK
     elif [ "$(uname)" = "Darwin" ]; then
         printf "And again. The Os of agony: macOS\n"
     else

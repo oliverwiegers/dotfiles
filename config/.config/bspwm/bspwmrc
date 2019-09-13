@@ -55,3 +55,4 @@ bspc config window_gap           7
 
 bspc rule -a Firefox desktop='^2'
 bspc rule -a TelegramDesktop desktop='^5'
+bspc rule -a Zathura state=tiled
