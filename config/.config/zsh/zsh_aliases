@@ -52,6 +52,7 @@ alias bench='for i in $(seq 1 10000); do echo $i; done'
 # Workaround for resetting terminal colors in alacritty.
 alias neomutt='TERM=screen-256color neomutt'
 alias newsboat='TERM=screen-256color newsboat'
+alias ranger='TERM=screen-256color ranger'
 
 # Creating license file containing unlicense.
 alias unli="curl http://unlicense.org/UNLICENSE > LICENSE"
