@@ -28,6 +28,7 @@ xset r rate 280 40
 setxkbmap us -variant intl
 xmodmap ~/.Xmodmap
 sh "${HOME}/.config/polybar/polybar.sh" "top"
+eval "$(ssh-agent)"
 .fehbg
 
 #                 __  __  _                 

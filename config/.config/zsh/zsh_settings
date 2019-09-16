@@ -71,7 +71,7 @@ export LESS_TERMCAP_ZW
 
 if [ "$(uname)" = "Linux" ]; then
 	if [ ! "${DISPLAY}" ]; then
-	  exec startx &
+	  ssh-agent startx
 	fi
 fi
 
