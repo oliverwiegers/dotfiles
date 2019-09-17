@@ -71,8 +71,12 @@ if [ "$(uname)" = "Linux" ]; then
 	alias pac='. "${SCRIPT_DIR}/pacman.sh"'
 	alias invade='. "${SCRIPT_DIR}/invaders.sh"'
 
-    # Alias for jumphost connection.
-    alias jump="ssh -t jumphost"
+    # Alias for jumphost connection and opening tmux session.
+    # TERM=xterm-256color LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8 --> make
+    # powerline font working
+    # TERM=xterm make wal colors on remote working
+    alias jump="ssh -t jumphost -- \"TERM=xterm-256color LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8 bash -c \\\"TERM=xterm tmux -L tmux new-session -As fun\\\"\""
+    alias jjump="ssh -t jumphost -- \"bash -c \\\"TERM=xterm tmux -L tmux new-session -As fun\\\"\""
 fi
 
 #    ____ ___  ____ __________  _____
