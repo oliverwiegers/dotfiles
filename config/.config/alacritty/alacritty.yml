@@ -1,6 +1,6 @@
 env:
-  #TERM: xterm-256color
-  TERM: alacritty
+  TERM: xterm-256color
+  #TERM: alacritty
   # Neomutt resets colors so following is a workaround for: https://github.com/neomutt/neomutt/issues/518
   #TERM: screen-256color
 

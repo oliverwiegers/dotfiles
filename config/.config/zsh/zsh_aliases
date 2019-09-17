@@ -71,9 +71,8 @@ if [ "$(uname)" = "Linux" ]; then
 	alias pac='. "${SCRIPT_DIR}/pacman.sh"'
 	alias invade='. "${SCRIPT_DIR}/invaders.sh"'
 
-    # Alias for jumphost connection and opening tmux. Set TERM variable because
-    # alacritty is not widely known
-    alias jump="TERM=xterm-256color ssh -t jumphost -- \"bash -c \\\"tmux -L tmux new-session -As fun\\\"\""
+    # Alias for jumphost connection.
+    alias jump="ssh -t jumphost"
 fi
 
 #    ____ ___  ____ __________  _____
