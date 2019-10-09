@@ -53,10 +53,14 @@ alias bench='for i in $(seq 1 10000); do echo $i; done'
 alias tmux="TERM=xterm tmux"
 
 # Creating license file containing unlicense.
-alias unli="curl http://unlicense.org/UNLICENSE > LICENSE"
+alias unli="curl -L https://unlicense.org/UNLICENSE > LICENSE"
 
 # Configure my system.
 alias reload='source $HOME/.zshrc && printf "Successfully reloaded zsh_config_files\n"'
+
+# Python aliases
+alias vtree='tree -I .venv'
+alias act='. .venv/bin/activate'
 	
 #     ___                 
 #    / (_)___  __  ___  __
