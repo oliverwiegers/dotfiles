@@ -1,13 +1,14 @@
+---
 env:
   TERM: xterm-256color
-  #TERM: alacritty
-  # Neomutt resets colors so following is a workaround for: https://github.com/neomutt/neomutt/issues/518
-  #TERM: screen-256color
+  # TERM: alacritty
+  # Neomutt resets colors so following is a workaround for:
+  # https://github.com/neomutt/neomutt/issues/518
+  # TERM: screen-256color
 
 scrolling:
   history: 10000
   multiplier: 3
-  faux_multiplier: 3
   auto_scroll: false
 
 tabspaces: 4
@@ -32,11 +33,11 @@ debug.render_timer: false
 custom_cursor_colors: false
 
 mouse_bindings:
-  - { mouse: Middle, action: PasteSelection }
+  - {mouse: Middle, action: PasteSelection}
 
 mouse:
-  double_click: { threshold: 300 }
-  triple_click: { threshold: 300 }
+  double_click: {threshold: 300}
+  triple_click: {threshold: 300}
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 

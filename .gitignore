@@ -28,3 +28,4 @@ config/.config/neofetch
 config/.config/newsboat/cache*
 config/.config/newsboat/history*
 config/.config/keybase
+config/.config/Qt*
