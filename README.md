@@ -21,7 +21,7 @@ Clean desktop
 
 ## Installation
 
-This script will clone this repo, [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and will ask to clone my [Vim config](https://github.com/oliverwiegers/vim_config), my [Tmux config](https://github.com/oliverwiegers/.tmuxist) and my personnal [scripts](https://github.com/oliverwiegers/scripts).
+This script will clone this repo, [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and will ask to clone my [Vim config](https://github.com/oliverwiegers/vim_config), my [Tmux config](https://github.com/oliverwiegers/.tmuxist) and my personnal [scripts](https://github.com/oliverwiegers/scripts).
 
 ```bash
 $ cd $HOME
@@ -43,7 +43,7 @@ This list provides links to the repositories/websites of software I use.
 ### Visible software
 
 - [bspwm](https://github.com/baskerville/bspwm)
-- [st](https://st.suckless.org/)
+- [alacritty](https://github.com/alacritty/alacritty)
 - [dmenu](https://tools.suckless.org/dmenu/)
 - [Ranger](https://github.com/ranger/ranger)
 - [Polybar](https://github.com/jaagr/polybar)
@@ -66,6 +66,7 @@ seen in the screenshots.
 - [Zathura](https://git.pwmt.org/pwmt/zathura)
 - [gpicview](https://github.com/onlyshk/GPicView)
 - [Ranger](https://github.com/ranger/ranger)
+- [bat](https://github.com/sharkdp/bat)
 
 ### Software I also use
 
