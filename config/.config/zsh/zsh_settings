@@ -65,6 +65,8 @@ export LESS_TERMCAP_ZW
 . "${HOME}/.config/zsh/zsh_functions"
 # shellcheck source=/home/oliverwiegers/.config/zsh/zsh_aliases
 . "${HOME}/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# shellcheck source=/home/oliverwiegers/.config/zsh/zsh_aliases
+. "${HOME}/.zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 #          __             __      
 #    _____/ /_____ ______/ /__  __
@@ -102,3 +104,6 @@ fi
 
 # Call function to welcome the user.
 _zsh_greeting
+
+# Bind key for autosuggestions
+bindkey '^ ' autosuggest-accept

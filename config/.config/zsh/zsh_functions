@@ -44,41 +44,41 @@ glc() {
 
 # Create and edit executeable python file.
 pytest() {
-	echo "#!/usr/bin/env python" > ./test.py
-	vim ./test.py
-	chmod 0700 ./test.py
+    echo "#!/usr/bin/env python" > ./test.py
+    vim ./test.py
+    chmod 0700 ./test.py
 }
 
 # Create and edit executeable bash file.
 tsh() {
-	printf "#!/usr/bin/env sh\n" > ./test.sh
-	vim ./test.sh
-	chmod 0700 ./test.sh
+    printf "#!/usr/bin/env sh\n" > ./test.sh
+    vim ./test.sh
+    chmod 0700 ./test.sh
 }
 
 # Create README for project.
 mkread(){
-	[ -f README.md ] && rm README.md
-	touch README.md
-	printf "# %s\n" "$(pwd | rev | cut -d'/' -f1 | rev)" >> README.md
-	echo "Please insert simple description."
-	read -r desc
+    [ -f README.md ] && rm README.md
+    touch README.md
+    printf "# %s\n" "$(pwd | rev | cut -d'/' -f1 | rev)" >> README.md
+    echo "Please insert simple description."
+    read -r desc
     { printf "> %s\n" "${desc}";
-	printf "## Requirements\n";
-	printf "## Build\n";
-	printf "## Install";
-	printf "## Run\n"; } >> README.md
+    printf "## Requirements\n";
+    printf "## Build\n";
+    printf "## Install";
+    printf "## Run\n"; } >> README.md
 }
 
 # Create new project.
 mkpro() {
-	[ "$#" -ne 1 ] && printf "Please provide name of project as argument.\nExiting." && return 1
-	take "$1"
-	unli
-	mkread
-	printf "Hey! Cool, you started another project\nPlease insert the name of the first file\n=>"
-	read -r name
-	touch "${name}"
+    [ "$#" -ne 1 ] && printf "Please provide name of project as argument.\nExiting." && return 1
+    take "$1"
+    unli
+    mkread
+    printf "Hey! Cool, you started another project\nPlease insert the name of the first file\n=>"
+    read -r name
+    touch "${name}"
 }
 
 vimses() {
@@ -98,37 +98,37 @@ vimses() {
 # /_/_/_/ /_/\__,_/_/|_|  
 
 if [ "$(uname)" = "Linux" ]; then
-	# Change monitor settings.
-	changemon() {
-		PS3="What setup would you like to run?"
-		select choice in "Internal monitor" "External monitor" "Both"; do
-			case $choice in
-				"Internal monitor" )
-					xrandr --output LVDS1 --auto --output DP1 --off \
-					    && sh "$HOME/.fehbg"
-					return 0
-					break
-					;;
-				"External monitor" )
-					xrandr --output DP1 --auto --output LVDS1 --off \
-					    && "$HOME/.fehbg"
-					return 0
-					break
-					;;
-				"Both" )
-					xrandr --output DP1 --auto --primary --output LVDS1 \
-					    --auto --noprimary --below DP1 && "$HOME/.fehbg"
-					return 0
-					break
-					;;
-				*)
-					echo "Wrong input."
-					return 1
-					break
-					;;
-			esac
-		done
-	}
+    # Change monitor settings.
+    changemon() {
+        PS3="What setup would you like to run?"
+        select choice in "Internal monitor" "External monitor" "Both"; do
+            case $choice in
+                "Internal monitor" )
+                    xrandr --output LVDS1 --auto --output DP1 --off \
+                        && sh "$HOME/.fehbg"
+                    return 0
+                    break
+                    ;;
+                "External monitor" )
+                    xrandr --output DP1 --auto --output LVDS1 --off \
+                        && "$HOME/.fehbg"
+                    return 0
+                    break
+                    ;;
+                "Both" )
+                    xrandr --output DP1 --auto --primary --output LVDS1 \
+                        --auto --noprimary --below DP1 && "$HOME/.fehbg"
+                    return 0
+                    break
+                    ;;
+                *)
+                    echo "Wrong input."
+                    return 1
+                    break
+                    ;;
+            esac
+        done
+    }
 fi
 
 #    ____ ___  ____ __________  _____
@@ -137,16 +137,16 @@ fi
 # /_/ /_/ /_/\__,_/\___/\____/____/  
 
 if [ "$(uname)" = "Darwin" ]; then
-	if [ "$(whoami)" = owiegers ]; then
+    if [ "$(whoami)" = owiegers ]; then
         alias jblu="caffeinate -i -- ssh -t jumpblu -- \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
         alias jbki="caffeinate -i -- ssh -t jumpbki -- \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
         
-		hp() {
-			git commit -am "$@"
-			git pull
-			git push
-		}
-	fi
+        hp() {
+            git commit -am "$@"
+            git pull
+            git push
+        }
+    fi
 fi
 
 #              __  
