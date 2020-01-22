@@ -15,7 +15,7 @@ and Tmux from other repositories listed down below.
 ## Look
 
 Neofetch, alacritty, ZSH, oh-my-zsh, and Vim
-![img](shots/buisy.png "Neofetch st Vim")
+![img](shots/buisy.png "Neofetch Alacritty Vim")
 Clean desktop
 ![img](shots/clean.png "Clean")
 
@@ -24,10 +24,17 @@ Clean desktop
 This script will clone this repo, [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and will ask to clone my [Vim config](https://github.com/oliverwiegers/vim_config), my [Tmux config](https://github.com/oliverwiegers/.tmuxist) and my personnal [scripts](https://github.com/oliverwiegers/scripts).
 
 ```bash
-$ cd $HOME
-$ git clone https://github.com/oliverwiegers/dotfiles .dotfiles
-$ cd .dotfiles
-$ ./install.sh
+$ curl -fsSL https://raw.githubusercontent.com/oliverwiegers/dotfiles/master/install.sh -o install.sh && chmod +x install.sh && ./install.sh
+```
+
+## Testing
+
+This script of course can be tested inside a docker container.
+
+```bash
+$ docker container run -it ubuntu bash
+$ apt update && apt install -y git curl fontconfig vim stow
+$ curl -fsSL https://raw.githubusercontent.com/oliverwiegers/dotfiles/master/install.sh -o install.sh && chmod +x install.sh && ./install.sh
 ```
 
 ### Requirements

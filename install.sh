@@ -1,68 +1,84 @@
 #!/usr/bin/env bash
 
 if ! [ "$(command -v stow)" ] || ! [ "$(command -v git)" ]; then
-    printf '\e[31mYou need to have GNU stow and git installed.\nExiting...'
+    printf '\e[31mYou need to have GNU stow and git installed.\nExiting...\n'
     exit 1
 fi
 
-header="
-.___                   __           .__   .__   .__
-|   |  ____    _______/  |_ _____   |  |  |  |  |__|  ____     ____
-|   | /    \  /  ___/\   __\\__  \  |  |  |  |  |  | /    \   / ___\
-|   ||   |  \ \___ \  |  |   / __ \_|  |__|  |__|  ||   |  \ / /_/  >
-|___||___|  //____  > |__|  (____  /|____/|____/|__||___|  / \___  /
-          \/      \/             \/                      \/ /_____/
-________             __     _____ .__ .__
-\______ \    ____  _/  |_ _/ ____\|__||  |    ____    ______
- |    |  \  /  _ \ \   __\\   __\ |  ||  |  _/ __ \  /  ___/
- |    |   \(  <_> ) |  |   |  |   |  ||  |__\  ___/  \___ \ 
-/_______  / \____/  |__|   |__|   |__||____/ \___  >/____  >
-        \/                                       \/      \/
- 
- /\  /\  /\ 
- \/  \/  \/ "
-printf '\e[34m%s\e[0m' "${header}"
+echo -e "\e[34m"
+echo '.___                   __           .__   .__   .__'
+echo '|   |  ____    _______/  |_ _____   |  |  |  |  |__|  ____     ____'
+echo '|   | /    \  /  ___/\   __\\__  \  |  |  |  |  |  | /    \   / ___\'
+echo '|   ||   |  \ \___ \  |  |   / __ \_|  |__|  |__|  ||   |  \ / /_/  >'
+echo '|___||___|  //____  > |__|  (____  /|____/|____/|__||___|  / \___  /'
+echo '          \/      \/             \/                      \/ /_____/'
+echo '________             __     _____ .__ .__'
+echo '\______ \    ____  _/  |_ _/ ____\|__||  |    ____    ______'
+echo ' |    |  \  /  _ \ \   __\\   __\ |  ||  |  _/ __ \  /  ___/'
+echo ' |    `   \(  <_> ) |  |   |  |   |  ||  |__\  ___/  \___ \ '
+echo '/_______  / \____/  |__|   |__|   |__||____/ \___  >/____  >'
+echo '        \/                                       \/      \/'
+echo ' '
+echo ' /\  /\  /\ '
+echo ' \/  \/  \/ '
+echo -e "\e[0m "
 
-sleep 1
+dotfiles_target="$HOME/.dotfiles"
+printf '\e[32mCloning repo into: \e[34m"%s"\e[0m\n' "${dotfiles_target}"
+git clone https://github.com/oliverwiegers/dotfiles "${dotfiles_target}" \
+    || exit 1
+cd "${dotfiles_target}" || exit 1
 
-backup_folder="$HOME/config_backup/"
+printf 'Going on will potentially overwrite files in "%s" Proceed? (1/2).\n' \
+    "$HOME"
 
-printf '\e[32mCreating backup folder: \e[34m%s\e[0m\n' "${backup_folder}"
-mkdir "${backup_folder}"
+select choice in 'Yes' 'No'; do
+    case "${choice}" in
+        'Yes' )
+            printf 'Okay. Going on...\n'
+            break
+            ;;
+        'No' )
+            printf 'Okay. Exiting...\n'
+            exit 0
+            ;;
+        '*' )
+            printf '\e[31mWrong input. Try again.\e[0m\n'
+    esac
+done
 
-printf "Moving: \e[32m\n%s/.config \n%s/.fehbg \n%s/.themes\n %s/.xinitrc\n %s/.zshrc\n\e[0m to \e[34m%s.\e[0m.\n" \
-    "$HOME" "$HOME" "$HOME" "$HOME" "$HOME" "${backup_folder}"
-mv "$HOME/.config" "$HOME/.fehbg" "$HOME/.themes" "$HOME/.xinitrc" \
-    "$HOME/.zshrc" "${backup_folder}" 2> /dev/null 
-
-printf '\e[32mCloning oh-my-zsh into: \e[34m%s/.oh-my-zsh\e[0m' "$HOME"
-git clone https://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
+omz_target="$HOME/.oh-my-zsh"
+printf '\e[32mCloning oh-my-zsh into: \e[34m%s\e[0m\n' "${omz_target}"
+git clone https://github.com/robbyrussell/oh-my-zsh.git "${omz_target}" \
+    || exit 1
 printf '\e[32mDone.\n\e[0m'
 
-prinf '\e[32mCloning zsh-syntax-highlighting into: \e[34m%s/.zsh-syntax-hihghlighting\e[0m' \
-    "$HOME"
+highlight_target="$HOME/.zsh-syntax-highlighting"
+printf '\e[32mCloning zsh-syntax-highlighting into: \e[34m%s\e[0m\n' \
+    "${highlight_target}"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
-	"$HOME/.zsh-syntax-highlighting"
+    "${highlight_target}" || exit 1
 printf '\e[32mDone.\n\e[0m'
 
-printf '\e[32mCloning zsh-autosuggestions into: \e[34m%s/.zsh-autosuggestions\e[0m' \
-    "$HOME"
+suggest_target="$HOME/.zsh-autosuggestions"
+printf '\e[32mCloning zsh-autosuggestions into: \e[34m%s\e[0m\n' \
+    "${suggest_target}"
 git clone https://github.com/zsh-users/zsh-autosuggestions.git \
-    "$HOME/.zsh-autosuggestions"
+    "${suggest_target}" || exit 1
 printf '\e[32mDone.\n\e[0m'
 
 cd "$HOME/.dotfiles" || exit 1
 
-printf '"Automatically create symlinks via GNU Stow? (1/2).'
+printf '"Automatically create symlinks via GNU Stow? (1/2).\n'
 
 select choice in "Yes" "No"; do
     case $choice in
         "Yes" )
-            if [[ "$(uname)" == "Linux" ]]; then
+            if [ "$(uname)" = "Linux" ]; then
                 stow homedir
                 stow config
-            elif [[ "$(uname)" == "Darwin" ]]; then
-                if [[ ! -d $HOME/.config ]]; then
+            elif [ "$(uname)" = "Darwin" ]; then
+                if [ ! -d "$HOME/.config" ]; then
                     mkdir -p "$HOME/.config/"
                 fi
                 ln -s "$HOME/.dotfiles/config/.config/zsh/" "$HOME/.config/zsh"
@@ -75,45 +91,47 @@ select choice in "Yes" "No"; do
             break
             ;;
         "No" )
-            echo -e "Okay. Going on...\n"
+            printf 'Okay. Going on...\n'
             break
             ;;
         "*" )
-            echo -e "\e[31mWrong input. Try again.\e[0m"
+            printf '\e[31mWrong input. Try again.\e[0m\n'
     esac
 done
 
 if [ "$(uname)" = "Linux" ]; then
-    echo -e "Want to download and install Source Code Pro Nerdfont too? (1/2)."
-    
+    printf 'Want to download and install Source Code Pro Nerdfont too? (1/2).\n'
     select choice in "Yes" "No"; do
-        case $choice in
+        case ${choice} in
             "Yes" )
                 curl -O https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf
                 curl -O https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Light-Italic/complete/Sauce%20Code%20Pro%20Light%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
                 curl -O https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Bold/complete/Sauce%20Code%20Pro%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
+                if [ ! -d '/usr/share/fonts/TTF/' ]; then
+                    mkdir -p '/usr/share/fonts/TTF/'
+                fi
                 mv ./*.ttf /usr/share/fonts/TTF/
                 fc-cache -f
                 break
                 ;;
             "No" )
-                echo -e "Okay. Going on...\n"
+                printf 'Okay. Going on...\n'
                 break
                 ;;
             "*" )
-                echo -e "\e[31mWrong input. Try again.\e[0m"
+                printf '\e[31mWrong input. Try again.\e[0m\n'
         esac
     done
 fi
 
-printf 'Want to install Vim config too? (1/2).'
+printf 'Want to install Vim config too? (1/2).\n'
 
 select choice in 'Yes' 'No'; do
     case "${choice}" in
         'Yes' )
             cd "$HOME" || exit 1
             git clone --recursive https://github.com/oliverwiegers/vim_config \
-                .vim
+                .vim || exit 1
             cd "$HOME/.vim" || exit 1
             stow vimrc
             printf '\e[32mDone installing Vim config..\n\e[0m'
@@ -121,20 +139,21 @@ select choice in 'Yes' 'No'; do
             ;;
         'No' )
             printf 'Okay. Going on...\n'
-            break ;;
+            break
+            ;;
         '*' )
-            printf '\e[31mWrong input. Try again.\e[0m'
+            printf '\e[31mWrong input. Try again.\e[0m\n'
     esac
 done
 
-printf 'Want to install .tmuxist too? (1/2).'
+printf 'Want to install .tmuxist too? (1/2).\n'
 
 select choice in 'Yes' 'No'; do
     case "${choice}" in
         'Yes' )
             cd "$HOME" || exit 1
             git clone --recursive https://github.com/chrootzius/.tmuxist \
-                .tmuxist
+                .tmuxist || exit 1
             cd "$HOME/.tmuxist" || exit 1
             stow tmux
             printf '\e[32mDone installing Tmux config..\n\e[0m'
@@ -145,11 +164,11 @@ select choice in 'Yes' 'No'; do
             break
             ;;
         '*' )
-            printf '\e[31mWrong input. Try again.\e[0m'
+            printf '\e[31mWrong input. Try again.\e[0m\n'
     esac
 done
 
-printf 'Want to install helper scripts too? (1/2).'
+printf 'Want to install helper scripts too? (1/2).\n'
 
 select choice in 'Yes' 'No'; do
     case "${choice}" in
@@ -159,7 +178,7 @@ select choice in 'Yes' 'No'; do
                 mkdir -p "$HOME/Documents/"
             fi
             git clone https://github.com/oliverwiegers/scripts \
-                "$HOME/Documents/scripts"
+                "$HOME/Documents/scripts" || exit 1
             printf '\e[32mDone installing scripts..\n\e[0m'
             break
             ;;
@@ -168,7 +187,7 @@ select choice in 'Yes' 'No'; do
             break
             ;;
         '*' )
-            printf '\e[31mWrong input. Try again.\e[0m'
+            printf '\e[31mWrong input. Try again.\e[0m\n'
     esac
 done
 
