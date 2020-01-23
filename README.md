@@ -54,6 +54,8 @@ from the right branch and checkout the right branch after cloning. The default
 is the master branch.
 
 ```bash
+$ git clone git@github.com:oliverwiegers/dotfiles.git
+$ cd dotfiles
 $ docker build -t install_test --build-arg GIT_BRANCH="$(git rev-parse --abbrev-ref HEAD)" .
 $ docker container run -it install_test:latest
 $ NON_INTERACTIVE=true ./install.sh
