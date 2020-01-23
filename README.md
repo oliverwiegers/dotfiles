@@ -33,7 +33,7 @@ This script of course can be tested inside a docker container.
 
 ```bash
 $ docker container run -it ubuntu bash
-$ apt update && apt install -y git curl fontconfig vim stow
+$ apt update && apt install -y git curl fontconfig vim stow zsh shellcheck iproute2
 $ curl -fsSL https://raw.githubusercontent.com/oliverwiegers/dotfiles/master/install.sh -o install.sh && chmod +x install.sh && ./install.sh
 ```
 
