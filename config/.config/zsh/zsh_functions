@@ -13,6 +13,11 @@
 #  / / / / / / /_/ />  <   _/_/    / / / / / / /_/ / /__/ /_/ (__  ) 
 # /_/_/_/ /_/\__,_/_/|_|  /_/     /_/ /_/ /_/\__,_/\___/\____/____/  
 
+# curl cheat.sh/command as a command.
+chtsh() {
+    curl "https://cheat.sh/$*"
+}
+
 # Create header for config files.
 header() {
     header=$1
@@ -23,7 +28,7 @@ header() {
 
 # Change to journal dir and create new journal.
 mj() {
-    journal_dir="$HOME/Documents/personal/notes/journal" 
+    journal_dir="$HOME/Documents/personal/notes/journal"
     if [ ! "$PWD" = "$journal_dir" ]; then
         cd "$journal_dir" || exit 1
     fi
@@ -72,11 +77,14 @@ mkread(){
 
 # Create new project.
 mkpro() {
-    [ "$#" -ne 1 ] && printf "Please provide name of project as argument.\nExiting." && return 1
+    [ "$#" -ne 1 ] && printf\
+        "Please provide name of project as argument.\nExiting.\n" && return 1
     take "$1"
     unli
     mkread
-    printf "Hey! Cool, you started another project\nPlease insert the name of the first file\n=>"
+    printf\
+        "Hey! Cool, you started another project.
+Please insert the name of the first file\n=>"
     read -r name
     touch "${name}"
 }
@@ -140,7 +148,7 @@ if [ "$(uname)" = "Darwin" ]; then
     if [ "$(whoami)" = owiegers ]; then
         alias jblu="caffeinate -i -- ssh -t jumpblu -- \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
         alias jbki="caffeinate -i -- ssh -t jumpbki -- \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
-        
+
         hp() {
             git commit -am "$@"
             git pull
@@ -158,43 +166,45 @@ fi
 _zsh_greeting() {
     if [ "$(uname)" = "Linux" ]; then
         # Variables.
-        os=$(grep '^NAME' /etc/os-release | cut -d'"' -f2 | tr -d '"')
-        hostname=$(hostname)
+        os=$(awk -F'"' '/^NAME/ { print $2 }' /etc/os-release)
+        hostname=$HOST
         uptime=$(uptime -p | sed 's/up //;')
-        network=$(ip -4 -o a | tail -n+2 | awk '{print "\011" $2 "\011" $4}')
-        cpu_usage=$(awk \
-            '/cpu /{usage=($2+$4)*100/($2+$4+$5); printf("%3.2f\n", usage)}' \
-            /proc/stat)
-        total_ram=$( awk \
-            '/MemTotal: /{total=$2/1024/1024; printf("%3.0f\n", total+1)}' \
-            /proc/meminfo)
-        used_ram=$( awk \
-            '/MemAvailable: /{avail=$2;}; /MemTotal: /{total=$2;}; {used=(total-avail)/1024/1024} END { printf("%3.1f\n", used)}' \
-            /proc/meminfo)
+        network=$(ip -4 -o a\
+            | awk '/127.0.0.1/ { next } { print "\011" $2 "\011" $4 }')
+        cpu_usage=$(top | awk '/%Cpu/ { print $2 } NR==10 { exit }')
+        total_ram=$(free\
+            | awk '/Mem:/{ total=$2/1000/1000; printf ("%3.1f\n", total) }')
+        used_ram=$(free\
+            | awk '/Mem:/{ used=$3/1000/1000; printf ("%3.1f\n", used) }')
         disk_usage=$(\
             df -h --output=target,size,used,avail,pcent --total \
             -x tmpfs -x cgroup -x devtmpfs | sed 's/^/\t/')
 
-        # Print statements.
-        printf "\033[1mOS:\033[0m \033[0;36m%s\n\033[0m" "${os}"
-        printf "\033[1mUptime:\033[0m \033[0;36m%s\n\033[0m" "${uptime}"
-        printf "\033[1mHostname:\033[0m \033[0;36m%s\n\033[0m" "${hostname}"
-
-        printf "\n\033[1mCPU usage:\033[0m \033[0;36m%s\n\033[0m" "${cpu_usage}"
-        printf "\033[1mRAM usage:\033[0m \033[0;36m%sGiB /%s.0GiB\n\033[0m" \
+        # Print system info.
+        printf "\033[1m%-10s\033[0m \033[0;36m%s\n\033[0m"\
+            "OS:" "${os}"
+        printf "\033[1m%-10s\033[0m \033[0;36m%s\n\033[0m"\
+            "Uptime:" "${uptime}"
+        printf "\033[1m%-10s\033[0m \033[0;36m%s\n\033[0m"\
+            "Hostname:" "${hostname}"
+        printf "\033[1mCPU usage:\033[0m \033[0;36m%s %%\n\033[0m"\
+            "${cpu_usage}"
+        printf "\033[1mRAM usage:\033[0m \033[0;36m%s GB / %s GB\n\033[0m"\
             "${used_ram}" "${total_ram}"
 
-        printf "\n\033[1mNetwork:\033[0m\n\n\033[0;32m%s\033[0m\n" \
+        printf "\n\033[1mNetwork:\033[0m\n\n\033[0;32m%s\033[0m\n"\
             "${network}"
 
-        printf "\n\033[1mDisk Usage:\033[0m\n\n\033[0;32m%s\033[0m\n" \
+        printf "\n\033[1mDisk Usage:\033[0m\n\n\033[0;32m%s\033[0m\n"\
             "${disk_usage}"
 
-        printf "\n\033[1mTODOs:\033[0m\n" 
+        # Print todos.
+        printf "\n\033[1mTODOs:\033[0m\n"
         task list -WORK
+        printf "\n"
     elif [ "$(uname)" = "Darwin" ]; then
         printf "And again. The Os of agony: macOS\n"
     else
-        printf "Okay cool. Something new: \033[1;36m%s\n\033[0m" "$(uname)"
+        printf "Okay cool. Something different: \033[1;36m%s\n\033[0m" "$(uname)"
     fi
 }

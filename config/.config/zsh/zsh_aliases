@@ -51,7 +51,8 @@ alias tmux="TERM=xterm tmux"
 alias unli="curl -L https://unlicense.org/UNLICENSE > LICENSE"
 
 # Configure my system.
-alias reload='source $HOME/.zshrc && printf "Successfully reloaded zsh_config_files\n"'
+alias reload='source $HOME/.zshrc'\
+    '&& printf "Successfully reloaded zsh_config_files\n"'
 
 # Python aliases
 alias vtree='tree -I .venv'
@@ -72,7 +73,9 @@ if [ "$(uname)" = "Linux" ]; then
     # TERM=xterm-256color LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8 --> make
     # powerline font working
     # TERM=xterm make wal colors on remote working
-    alias jump="ssh -t jumphost -- \"TERM=xterm-256color LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8 bash -c \\\"TERM=xterm tmux -L tmux new-session -As fun\\\"\""
+    alias jump="ssh -t jumphost --\
+        \"TERM=xterm-256color LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8\
+        bash -c \\\"TERM=xterm tmux -L tmux new-session -As fun\\\"\""
 
     # Workaround for resetting terminal colors in alacritty.
     alias neomutt='TERM=screen-256color neomutt'
@@ -90,8 +93,10 @@ fi
 
 if [ "$(uname)" = "Darwin" ]; then
     if [ "$(whoami)" = owiegers ]; then
-        alias jblu="caffeinate -i -- ssh -t jumpblu -- \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
-        alias jbki="caffeinate -i -- ssh -t jumpbki -- \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
+        alias jblu="caffeinate -i -- ssh -t jumpblu --\
+            \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
+        alias jbki="caffeinate -i -- ssh -t jumpbki --\
+            \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
         
         hp() {
             git commit -am "$@"
@@ -100,5 +105,6 @@ if [ "$(uname)" = "Darwin" ]; then
         }
     fi
 
-    alias jump="caffeinate -i -- ssh -t jumphost -- \"bash -c \\\"tmux -L tmux new-session -As fun\\\"\""
+    alias jump="caffeinate -i -- ssh -t jumphost --\
+        \"bash -c \\\"tmux -L tmux new-session -As fun\\\"\""
 fi

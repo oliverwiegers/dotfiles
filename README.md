@@ -21,6 +21,12 @@ Neofetch, alacritty, ZSH, oh-my-zsh, and Vim
 Clean desktop
 ![img](shots/clean.png "Clean")
 
+## Requirements
+
+- git
+- stow
+- all the software this repository provides config files for
+
 ## Installation
 
 This script will clone this repo, [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and will ask to clone my [Vim config](https://github.com/oliverwiegers/vim_config), my [Tmux config](https://github.com/oliverwiegers/.tmuxist) and my personal [scripts](https://github.com/oliverwiegers/scripts).
@@ -53,20 +59,30 @@ Dockerfile both know the `GIT_BRANCH` env variable to curl the install script
 from the right branch and checkout the right branch after cloning. The default
 is the master branch.
 
+### Testing remote changes
+
 ```bash
 $ git clone git@github.com:oliverwiegers/dotfiles.git
 $ cd dotfiles
-$ docker build -t install_test --build-arg GIT_BRANCH="$(git rev-parse --abbrev-ref HEAD)" .
-$ docker container run -it install_test:latest
+$ export branch="$(git rev-parse --abbrev-ref HEAD)"
+$ docker build -t install_test:"${branch}" --build-arg GIT_BRANCH="${branch}" .
+$ docker container run -it install_test:"${branch}"
 $ NON_INTERACTIVE=true ./install.sh
 $ zsh
 ```
 
-### Requirements
+### Testing local changes
 
-- git
-- stow
-- all the software this repository provides config files for
+```bash
+$ git clone git@github.com:oliverwiegers/dotfiles.git
+$ cd dotfiles
+$ export branch="$(git rev-parse --abbrev-ref HEAD)"
+$ docker build -t install_test:"${branch}" --build-arg GIT_BRANCH="${branch}" .
+$ docker container run -v $PWD:/root/.dotfiles -it install_test:"${branch}"
+$ cd .dotfiles
+$ NON_INTERACTIVE=true ./install.sh
+$ zsh
+```
 
 ## Software list
 

@@ -21,7 +21,8 @@ GPG_TTY=$(tty)
 export GPG_TTY
 
 if [ -d "$HOME/.kube" ]; then
-    KUBECONFIG="$(find ~/.kube/configs -iname 'kubeconfig-*' -exec printf '%s:' '{}' +)${HOME}/.kube/config"
+    KUBECONFIG="$(find ~/.kube/configs -iname 'kubeconfig-*' -exec\
+        printf '%s:' '{}' +)${HOME}/.kube/config"
     export KUBECONFIG
 fi
 
@@ -79,7 +80,7 @@ export LESS_TERMCAP_ZW
 #  (__  ) /_/ /_/ / /  / /__>  <  
 # /____/\__/\__,_/_/   \__/_/|_|  
 
-if [ "$(uname)" = "Linux" ] && [ "$(command -v starx)" ]; then
+if [ "$(uname)" = "Linux" ] && [ "$(command -v startx)" ]; then
     if [ ! "${DISPLAY}" ]; then
       ssh-agent startx
     fi

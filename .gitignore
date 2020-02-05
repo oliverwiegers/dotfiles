@@ -30,3 +30,4 @@ config/.config/newsboat/history*
 config/.config/keybase
 config/.config/Qt*
 config/.config/VirtualBox
+config/.config/wtf/
