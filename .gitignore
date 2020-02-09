@@ -31,3 +31,4 @@ config/.config/keybase
 config/.config/Qt*
 config/.config/VirtualBox
 config/.config/wtf/
+config/.config/Trolltech.conf

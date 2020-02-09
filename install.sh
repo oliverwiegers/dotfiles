@@ -128,6 +128,7 @@ omz_target="$HOME/.oh-my-zsh"
 printf '\e[32mCloning oh-my-zsh into: \e[34m%s\e[0m\n' "${omz_target}"
 git clone https://github.com/robbyrussell/oh-my-zsh.git "${omz_target}" \
     || exit 1
+cp "$HOME/.dotfiles/oliverwiegers.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/"
 printf '\e[32mDone.\n\e[0m'
 
 highlight_target="$HOME/.zsh-syntax-highlighting"
