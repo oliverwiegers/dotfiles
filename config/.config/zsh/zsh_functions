@@ -167,6 +167,9 @@ _zsh_greeting() {
     if [ "$(uname)" = "Linux" ]; then
         # Variables.
         os=$(awk -F'"' '/^NAME/ { print $2 }' /etc/os-release)
+        if [ "$(awk -F/ '$2 == "docker"' /proc/self/cgroup | read -r)" ]; then
+            return 0
+        fi
         hostname=$HOST
         uptime=$(uptime -p | sed 's/up //;')
         network=$(ip -4 -o a\
