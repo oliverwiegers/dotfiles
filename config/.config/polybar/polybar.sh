@@ -9,6 +9,6 @@ if [ "$#" -eq 0 ]; then
 fi
 
 killall -q polybar
-for i in $@; do
-    polybar $i &
+for bar in "$@"; do
+    polybar "${bar}" &
 done

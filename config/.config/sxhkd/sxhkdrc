@@ -8,7 +8,11 @@ mod1 + Return
 
 # Open rofi run dialog.
 mod1 + @space
-    ${SCRIPT_DIR}/dmen.sh
+    ${SCRIPT_DIR}/menu_launcher.sh "dmenu_run"
+
+# Open clipmenu dialog.
+mod1 + shift + v
+    ${SCRIPT_DIR}/menu_launcher.sh "clipmenu"
 
 # Reload sxhkd config.
 mod1 + Escape
@@ -16,7 +20,7 @@ mod1 + Escape
 
 #
 # Media keys.
-# 
+#
 
 XF86AudioLowerVolume
     pactl set-sink-mute 0 0 && pactl set-sink-volume 0 -5%
@@ -67,17 +71,18 @@ mod1 + {t,shift + t,s,f}
 mod1 + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
 
+# preselect the direction
+mod1 + ctrl + {h,j,k,l}
+    bspc node -p {west,south,north,east}
 
 #
 # Desktops
 #
 
-# foces desktop by number.
+# Focus desktop by number.
 mod1 + {_,shift + }{1-9}
     bspc {desktop -f, node -d} '^{1-9}'
 
 # Focus last node.
 mod1 + Tab
     bspc node -f last
-
-

@@ -114,19 +114,19 @@ if [ "$(uname)" = "Linux" ]; then
                 "Internal monitor" )
                     xrandr --output LVDS1 --auto --output DP1 --off \
                         && sh "$HOME/.fehbg"
-                    return 0
+                    bspc wm -r
                     break
                     ;;
                 "External monitor" )
                     xrandr --output DP1 --auto --output LVDS1 --off \
                         && "$HOME/.fehbg"
-                    return 0
+                    bspc wm -r
                     break
                     ;;
                 "Both" )
                     xrandr --output DP1 --auto --primary --output LVDS1 \
                         --auto --noprimary --below DP1 && "$HOME/.fehbg"
-                    return 0
+                    bspc wm -r
                     break
                     ;;
                 *)

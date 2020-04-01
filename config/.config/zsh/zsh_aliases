@@ -43,6 +43,7 @@ alias dev="ls /dev/"
 alias pingit="ping -c3 www.google.com"
 alias weather="curl -H \"Accept-Language: de\" wttr.in/Berlin"
 alias bench='for i in $(seq 1 10000); do echo $i; done'
+alias curllook='curl -w @"$HOME/Documens/lookup" -o /dev/null -s'
 
 # Use wal colors for tmux
 alias tmux="TERM=xterm tmux"
@@ -67,7 +68,6 @@ alias act='. .venv/bin/activate'
 if [ "$(uname)" = "Linux" ]; then
     # Fun
     alias pac='. "${SCRIPT_DIR}/pacman.sh"'
-    alias invade='. "${SCRIPT_DIR}/invaders.sh"'
 
     # Alias for jumphost connection and opening tmux session.
     # TERM=xterm-256color LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8 --> make

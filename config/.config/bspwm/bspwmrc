@@ -23,13 +23,22 @@
 # Launch needed software.
 sxhkd &
 unclutter -idle 2 &
+clipmenud &
 wal -R
 xset r rate 280 40
 setxkbmap us -variant intl
 xmodmap ~/.Xmodmap
-sh "${HOME}/.config/polybar/polybar.sh" "top"
 eval "$(ssh-agent)"
 .fehbg
+
+if xrandr -q | grep -q "DP1 connected"; then
+    bspc monitor DP1 -d 1 2
+    bspc monitor LVDS1 -d 3 4 5
+    sh "${HOME}/.config/polybar/polybar.sh" "top-internal" "top-external"
+else
+    bspc monitor LVDS1 -d 1 2 3 4 5
+    sh "${HOME}/.config/polybar/polybar.sh" "top-internal"
+fi
 
 #                 __  __  _                 
 #      ________  / /_/ /_(_)___  ____ ______
@@ -38,15 +47,11 @@ eval "$(ssh-agent)"
 #   /____/\___/\__/\__/_/_/ /_/\__, /____/  
 #                             /____/        
 
-if [ "$(xrandr -q | grep -q "DP1 connected")" -eq 1 ]; then
-    bspc monitor LVDS1 -d 1 2 
-    bspc monitor DP1 -d 3 4 5 
-else
-    bspc monitor LVDS1 -d 1 2 3 4 5
-fi
+bspc config border_width                1
+bspc config window_gap                  7
+bspc config remove_disabled_monitors    true
+bspc config remove_unplugged_monitors   true
 
-bspc config border_width         1
-bspc config window_gap           7
 
 #                  __             
 #      _______  __/ /__  _____    

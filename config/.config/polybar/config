@@ -1,12 +1,12 @@
 ;###################################################
-:#        ____  ____  ____  ______  ___    ____    #
-:#       / __ \/ __ \/ /\ \/ / __ )/   |  / __ \   #
-:#      / /_/ / / / / /  \  / __  / /| | / /_/ /   #
-:#     / ____/ /_/ / /___/ / /_/ / ___ |/ _, _/    #
-:#    /_/    \____/_____/_/_____/_/  |_/_/ |_|     #
+;#        ____  ____  ____  ______  ___    ____    #
+;#       / __ \/ __ \/ /\ \/ / __ )/   |  / __ \   #
+;#      / /_/ / / / / /  \  / __  / /| | / /_/ /   #
+;#     / ____/ /_/ / /___/ / /_/ / ___ |/ _, _/    #
+;#    /_/    \____/_____/_/_____/_/  |_/_/ |_|     #
 ;#                                                 #
 ;###################################################
-                                          
+
 [colors]
 black1= ${xrdb:color0:#<COLOR0>}
 black2 = ${xrdb:color8:#<COLOR8>}
@@ -31,6 +31,10 @@ accent = ${xrdb:color2:#<COLOR2>}
 linecolor = ${xrdb:color2:#<COLOR2>}
 bordercolor = ${xrdb:color8:#<COLOR8>}
 
+[vars]
+scriptdir = ${env:SCRIPT_DIR}
+
+
 [settings]
 screenchange-reload = true
 
@@ -38,7 +42,7 @@ screenchange-reload = true
 margin-top = 0
 margin-bottom = 0
 
-[bar/top]
+[bar/top-internal]
 enable-ipc = true
 monitor = ${env:MONITOR:LVDS1}
 width = 100%
@@ -58,9 +62,9 @@ module-margin-right = 1
 font-0 = dina:pixelsize=10;1
 font-1 = siji:pixelsize=11;1
 font-2 = unifont:size=10;1
-modules-left = power-menu wifi memory cpu 
+modules-left = power-menu wifi memory cpu
 modules-center = bspwm
-modules-right = pulseaudio battery date
+modules-right = tor pulseaudio battery date
 tray-position = right
 tray-padding = 4
 tray-maxsize = 16
@@ -68,10 +72,49 @@ wm-restack = bspwm
 bspwm-focused-overline = ${colors.linecolor}
 bspwm-focused-underline = #cc333333
 
-[bar/bottom]
-inherit = bar/top
+[bar/bottom-internal]
+inherit = bar/top-internal
+bottom = true
+underline-size = ${bar/top.overline-size}
+overline-size = ${bar/top.underline-size}
+modules-left = bspwm
+modules-right =fs-root date power-menu
+tray-position = none
+bspwm-focused-overline = #cc333333
+bspwm-focused-underline = ${colors.linecolor}
+
+[bar/top-external]
 enable-ipc = true
-monitor = ${env:MONITOR:LVDS1}
+monitor = ${env:MONITOR:DP1}
+width = 100%
+height = 24
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-color = ${colors.linecolor}
+underline-size = 1
+overline-size = 2
+border-bottom-size = 2
+border-bottom-color = ${colors.bordercolor}
+padding-left = 2
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 1
+font-0 = dina:pixelsize=10;1
+font-1 = siji:pixelsize=11;1
+font-2 = unifont:size=10;1
+modules-left = ${bar/top.modules-left}
+modules-center = ${bar/top.modules-center}
+modules-right = ${bar/top.modules-right}
+tray-position = right
+tray-padding = 4
+tray-maxsize = 16
+wm-restack = bspwm
+bspwm-focused-overline = ${colors.linecolor}
+bspwm-focused-underline = #cc333333
+
+[bar/bottom-external]
+inherit = bar/top-internal
 bottom = true
 underline-size = ${bar/top.overline-size}
 overline-size = ${bar/top.underline-size}
@@ -297,5 +340,11 @@ menu-2-0-exec = sudo poweroff
 menu-2-1 = Cancel
 menu-2-1-foreground = ${colors.accent}
 menu-2-1-exec = menu-open-0
+
+[module/tor]
+type = custom/script
+label = %{F#666}%{F-} %output%
+interval = 5
+exec = bash -c /home/oliverwiegers/Documents/scripts/polybar_tor.sh
 
 ; vim:ft=dosini
