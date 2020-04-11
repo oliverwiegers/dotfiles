@@ -34,10 +34,12 @@ eval "$(ssh-agent)"
 if xrandr -q | grep -q "DP1 connected"; then
     bspc monitor DP1 -d 1 2
     bspc monitor LVDS1 -d 3 4 5
-    sh "${HOME}/.config/polybar/polybar.sh" "top-internal" "top-external"
+    sh "${HOME}/.config/polybar/polybar.sh" \
+        "top-internal" "top-external" "bottom-external"
 else
     bspc monitor LVDS1 -d 1 2 3 4 5
     sh "${HOME}/.config/polybar/polybar.sh" "top-internal"
+    bspc config bottom_padding 0
 fi
 
 #                 __  __  _                 

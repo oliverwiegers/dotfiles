@@ -34,7 +34,6 @@ bordercolor = ${xrdb:color8:#<COLOR8>}
 [vars]
 scriptdir = ${env:SCRIPT_DIR}
 
-
 [settings]
 screenchange-reload = true
 
@@ -73,19 +72,9 @@ bspwm-focused-overline = ${colors.linecolor}
 bspwm-focused-underline = #cc333333
 
 [bar/bottom-internal]
-inherit = bar/top-internal
-bottom = true
-underline-size = ${bar/top.overline-size}
-overline-size = ${bar/top.underline-size}
-modules-left = bspwm
-modules-right =fs-root date power-menu
-tray-position = none
-bspwm-focused-overline = #cc333333
-bspwm-focused-underline = ${colors.linecolor}
-
-[bar/top-external]
 enable-ipc = true
-monitor = ${env:MONITOR:DP1}
+monitor = ${env:MONITOR:LVDS1}
+bottom = true
 width = 100%
 height = 24
 fixed-center = true
@@ -94,8 +83,8 @@ foreground = ${colors.foreground}
 line-color = ${colors.linecolor}
 underline-size = 1
 overline-size = 2
-border-bottom-size = 2
-border-bottom-color = ${colors.bordercolor}
+border-top-size = 2
+border-top-color = ${colors.bordercolor}
 padding-left = 2
 padding-right = 2
 module-margin-left = 1
@@ -103,31 +92,30 @@ module-margin-right = 1
 font-0 = dina:pixelsize=10;1
 font-1 = siji:pixelsize=11;1
 font-2 = unifont:size=10;1
-modules-left = ${bar/top.modules-left}
-modules-center = ${bar/top.modules-center}
-modules-right = ${bar/top.modules-right}
+modules-left =
+modules-center = fs
+modules-right =
 tray-position = right
 tray-padding = 4
 tray-maxsize = 16
 wm-restack = bspwm
-bspwm-focused-overline = ${colors.linecolor}
-bspwm-focused-underline = #cc333333
+
+[bar/top-external]
+
+inherit = bar/top-internal
+monitor = ${env:MONITOR:DP1}
 
 [bar/bottom-external]
-inherit = bar/top-internal
-bottom = true
-underline-size = ${bar/top.overline-size}
-overline-size = ${bar/top.underline-size}
-modules-left = bspwm
-modules-right =fs-root date power-menu
-tray-position = none
-bspwm-focused-overline = #cc333333
-bspwm-focused-underline = ${colors.linecolor}
+inherit = bar/bottom-internal
+monitor = ${env:MONITOR:DP1}
 
-[module/fs-root]
+[module/fs]
 type = internal/fs
 mount-0 = /
-label-mounted = %{F#e60053}%percentage_used%%%{F-} used of %mountpoint%
+mount-1 = /boot
+mount-2 = /home
+mount-3 = /tmp
+label-mounted =%{F#666}%mountpoint%%{F-}: %used%/%total%
 
 [module/bspwm]
 type = internal/bspwm
