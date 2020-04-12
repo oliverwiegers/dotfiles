@@ -81,7 +81,7 @@ export LESS_TERMCAP_ZW
 # /____/\__/\__,_/_/   \__/_/|_|  
 
 if [ "$(uname)" = "Linux" ] && [ "$(command -v startx)" ]; then
-    if [ ! "${DISPLAY}" ]; then
+    if [ ! "${DISPLAY}" ] && [ -z "${SSH_TTY}" ]; then
       ssh-agent startx
     fi
 fi

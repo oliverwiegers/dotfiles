@@ -92,7 +92,7 @@ module-margin-right = 1
 font-0 = dina:pixelsize=10;1
 font-1 = siji:pixelsize=11;1
 font-2 = unifont:size=10;1
-modules-left =
+modules-left = eyestrain hackspeed ssh-sessions
 modules-center = fs
 modules-right =
 tray-position = right
@@ -335,4 +335,18 @@ label = %{F#666}%{F-} %output%
 interval = 5
 exec = bash -c /home/oliverwiegers/Documents/scripts/polybar_tor.sh
 
+[module/eyestrain]
+type = custom/script
+exec = ~/.config/polybar-scripts/polybar-scripts/info-eyestrain/info-eyestrain.sh
+interval = 60
+
+[module/hackspeed]
+type = custom/script
+exec = ~/.config/polybar-scripts/polybar-scripts/info-hackspeed/info-hackspeed.sh
+tail = true
+
+[module/ssh-sessions]
+type = custom/script
+exec = ~/.config/polybar-scripts/polybar-scripts/info-ssh-sessions/info-ssh-sessions.sh
+interval = 5
 ; vim:ft=dosini
