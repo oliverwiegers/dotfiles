@@ -16,10 +16,16 @@ and Tmux from other repositories listed down below or not.
 
 These are screenshots from my current Void Linux system.
 
-Neofetch, alacritty, ZSH, oh-my-zsh, and Vim
+Neofetch, alacritty, ZSH, oh-my-zsh, ranger and Vim.
 ![img](shots/buisy.png "Neofetch Alacritty Vim")
-Clean desktop
+
+Clean desktop.
 ![img](shots/clean.png "Clean")
+
+Dmenu using
+[menu_launcher](https://github.com/oliverwiegers/scripts/blob/master/menu_launcher.sh)
+script.
+![img](shots/dmenu.png "Dmenu")
 
 ## Requirements
 
