@@ -33,3 +33,6 @@ config/.config/VirtualBox
 config/.config/wtf/
 config/.config/Trolltech.conf
 config/.config/clipped/
+config/.config/coc/
+config/.config/configstore/
+config/.config/Dharkael/

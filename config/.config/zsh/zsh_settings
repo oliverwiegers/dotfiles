@@ -13,6 +13,7 @@
 # | |/ / /_/ / /  / / /_/ / /_/ / /  __(__  ) 
 # |___/\__,_/_/  /_/\__,_/_.___/_/\___/____/  
 
+export RANGER_LOAD_DEFAULT_RC=false
 export EDITOR=/usr/bin/vim
 export SCRIPT_DIR=$HOME/Documents/scripts
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH:/usr/lib/plan9/bin:/opt/texlive/2019/bin/x86_64-linux"
@@ -110,6 +111,9 @@ fi
 
 # Call function to welcome the user.
 _zsh_greeting
+
+source /usr/share/doc/fzf/key-bindings.zsh
+source /usr/share/doc/fzf/completion.zsh
 
 # Bind key for autosuggestions
 bindkey '^ ' autosuggest-accept

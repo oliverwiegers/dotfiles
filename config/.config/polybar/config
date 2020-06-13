@@ -61,7 +61,7 @@ module-margin-right = 1
 font-0 = dina:pixelsize=10;1
 font-1 = siji:pixelsize=11;1
 font-2 = unifont:size=10;1
-modules-left = power-menu wifi memory cpu
+modules-left = power-menu wifi ethernet memory cpu
 modules-center = bspwm
 modules-right = tor pulseaudio battery date
 tray-position = right
@@ -199,12 +199,6 @@ format-connected-prefix-foreground = #666
 format-connected-prefix-offset = -6
 label-connected = %local_ip%
 
-format-disconnected = <label-disconnected>
-format-disconnected-prefix = " "
-format-disconnected-prefix-foreground = #666
-label-disconnected = not connected
-label-disconnected-foreground = #999
-
 ramp-signal-0 = 
 ramp-signal-1 = 
 ramp-signal-2 = 
@@ -212,10 +206,20 @@ ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = #666
 
+[module/ethernet]
+type = internal/network
+interface = enp0s25
+interval = 3.0
+
+format-connected = <label-connected>
+format-connected-prefix-foreground = #666
+format-connected-prefix-offset = -6
+label-connected = %local_ip%
+
 [module/date]
 type = internal/date
 label = %{F#666}%{F-} %date%  %{F#91aa97}%{F-} %time%
-date = %Y-%m-%d
+date = %d-%m-%Y
 time = %H:%M
 interval = 5
 
@@ -334,6 +338,8 @@ type = custom/script
 label = %{F#666}%{F-} %output%
 interval = 5
 exec = bash -c /home/oliverwiegers/Documents/scripts/polybar_tor.sh
+click-left= sudo sh /home/oliverwiegers/Documents/scripts/tor_switch.sh start
+click-right= sudo sh /home/oliverwiegers/Documents/scripts/tor_switch.sh stop
 
 [module/eyestrain]
 type = custom/script

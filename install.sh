@@ -145,6 +145,14 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git \
     "${suggest_target}" || exit 1
 printf '\e[32mDone.\n\e[0m'
 
+ranger_devicons_target="$HOME/.config/ranger/plugins"
+[ ! -d "${ranger_devicons_target}" ] && mkdir -p "${ranger_devicons_target}"
+printf '\e[32mCloning ranger-devicons into: \e[34m%s\e[0m\n' \
+    "${ranger_devicons_target}"
+git clone https://github.com/alexanderjeurissen/ranger_devicons \
+    "${ranger_devicons_target}" || exit 1
+printf '\e[32mDone.\n\e[0m'
+
 cd "$HOME/.dotfiles" || exit 1
 
 if [ -n "${interactive}" ]; then

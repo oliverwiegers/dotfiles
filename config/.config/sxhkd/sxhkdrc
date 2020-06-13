@@ -2,6 +2,12 @@
 # WM independent bindings.
 #
 
+# Take screenshots.
+super + shift + 3
+    flameshot full -p ${HOME}/Pictures/screenshots/
+super + shift + 4
+    flameshot gui -p ${HOME}/Pictures/screenshots/
+
 # Open terminal emulator.
 mod1 + Return
     alacritty
