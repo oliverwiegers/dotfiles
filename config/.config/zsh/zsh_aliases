@@ -28,7 +28,7 @@ fi
 # Colorized cat.
 if [ "$(command -v bat)" ]; then
     unalias -m 'cat'
-    alias cat='bat -pp'
+    alias cat='bat -pp --theme="base16"'
 fi
 
 # Open and edit ToDo list.
