@@ -62,8 +62,8 @@ mod1 + ctrl + q
     slock&; sudo /bin/zzz
 
 # set the window state
-mod1 + {t,shift + t,s,f}
-  bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+mod1 + {t,f,shift + f}
+  bspc node -t {tiled,floating,fullscreen}
 
 #
 # Stage/Flags.
@@ -92,3 +92,10 @@ mod1 + {_,shift + }{1-9}
 # Focus last node.
 mod1 + Tab
     bspc node -f last
+
+# Resize
+mod1 + e : {h,j,k,l,v,o}
+    ${SCRIPT_DIR}/bspwm_resize -e {west,south,north,east,vertical,horizontal} -s 25
+
+mod1 + c : {h,j,k,l,v,o}
+    ${SCRIPT_DIR}/bspwm_resize -c {west,south,north,east,vertical,horizontal} -s 25
