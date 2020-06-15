@@ -112,8 +112,9 @@ fi
 # Call function to welcome the user.
 _zsh_greeting
 
-source /usr/share/doc/fzf/key-bindings.zsh
-source /usr/share/doc/fzf/completion.zsh
+[ -f /usr/share/doc/fzf/key-bindings.zsh ] && source /usr/share/doc/fzf/key-bindings.zsh
+[ -f /usr/share/doc/fzf/completion.zsh ] && source /usr/share/doc/fzf/completion.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Bind key for autosuggestions
 bindkey '^ ' autosuggest-accept
