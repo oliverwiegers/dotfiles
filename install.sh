@@ -8,7 +8,7 @@ fi
 
 # Parse environment variables for repo branch to use and noninteractive mode.
 if [ -z "${GIT_BRANCH}" ]; then
-    GIT_BRANCH='master'
+    GIT_BRANCH='prod'
 fi
 
 if [ -z "${NON_INTERACTIVE}" ]; then

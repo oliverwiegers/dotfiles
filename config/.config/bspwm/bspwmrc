@@ -29,7 +29,8 @@ xset r rate 280 40
 setxkbmap us -variant intl
 xmodmap ~/.Xmodmap
 eval "$(ssh-agent)"
-.fehbg
+# shellcheck source=/home/oliverwiegers/.fehbg
+. "${HOME}/.fehbg"
 
 if xrandr -q | grep -q "DP1 connected"; then
     bspc monitor DP1 -d 1 2

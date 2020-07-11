@@ -23,7 +23,7 @@ Clean desktop.
 ![img](shots/clean.png "Clean Desktop")
 
 Dmenu using
-[menu_launcher](https://github.com/oliverwiegers/scripts/blob/master/menu_launcher.sh)
+[menu_launcher](https://github.com/oliverwiegers/scripts/blob/prod/menu_launcher.sh)
 script.
 ![img](shots/dmenu.png "Dmenu launcher script")
 
@@ -41,7 +41,7 @@ The [install.sh](install.sh) won't install any packages, only config files.
 ### Interactive installation
 
 ```bash
-$ curl -fsSL https://raw.githubusercontent.com/oliverwiegers/dotfiles/master/install.sh -o install.sh && chmod +x install.sh && ./install.sh
+$ curl -fsSL https://raw.githubusercontent.com/oliverwiegers/dotfiles/prod/install.sh -o install.sh && chmod +x install.sh && ./install.sh
 ```
 
 ### Non-interactive installation
@@ -50,7 +50,7 @@ The `NON_INTERACTIVE` env variable can be set to clone all repositories and
 components without asking. Be careful, you might loose your own config files.
 
 ```bash
-$ curl -fsSL https://raw.githubusercontent.com/oliverwiegers/dotfiles/master/install.sh -o install.sh && chmod +x install.sh && NON_INTERACTIVE=true ./install.sh
+$ curl -fsSL https://raw.githubusercontent.com/oliverwiegers/dotfiles/prod/install.sh -o install.sh && chmod +x install.sh && NON_INTERACTIVE=true ./install.sh
 ```
 
 ## Development and Testing
@@ -63,7 +63,7 @@ the script itself but the functionality of the configuration afterwards.
 In addition to the `NON_INTERACTIVE` env variable the install script and the
 Dockerfile both know the `GIT_BRANCH` env variable to curl the install script
 from the right branch and checkout the right branch after cloning. The default
-is the master branch.
+is the prod branch.
 
 ### Testing remote changes
 
