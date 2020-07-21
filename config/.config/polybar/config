@@ -199,7 +199,7 @@ label-connected = %local_ip%
 
 [module/ethernet]
 type = internal/network
-interface = ${env:WIRED_INTERFACE:wlp3s0}
+interface = ${env:WIRED_INTERFACE:enp0s25}
 interval = 3.0
 
 format-connected = <label-connected>
