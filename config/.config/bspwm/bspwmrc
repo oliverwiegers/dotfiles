@@ -23,7 +23,6 @@
 # Launch needed software.
 sxhkd &
 unclutter -idle 2 &
-clipmenud &
 wal -R
 xset r rate 280 40
 setxkbmap us -variant intl
@@ -37,6 +36,13 @@ if xrandr -q | grep -q "DP1 connected"; then
     bspc monitor LVDS1 -d 3 4 5
     sh "${HOME}/.config/polybar/polybar.sh" \
         "top-internal" "top-external" "bottom-external"
+elif xrandr -q | grep -q "LVDS-1 connected"; then
+    bspc monitor LVDS-1 -d 1 2 3 4 5
+    WIRELESS_INTERFACE='wlan0'\
+        WIRED_INTERFAC='eth0'\
+        MONITOR='LVDS-1'\
+        sh "${HOME}/.config/polybar/polybar.sh" "top-internal"
+    bspc config bottom_padding 0
 else
     bspc monitor LVDS1 -d 1 2 3 4 5
     sh "${HOME}/.config/polybar/polybar.sh" "top-internal"
