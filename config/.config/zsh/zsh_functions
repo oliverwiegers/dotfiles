@@ -26,16 +26,6 @@ header() {
     figlet -f slant "${header}" >> "${file}"
 }
 
-# Change to journal dir and create new journal.
-mj() {
-    journal_dir="$HOME/Documents/personal/notes/journal"
-    if [ ! "$PWD" = "$journal_dir" ]; then
-        cd "$journal_dir" || exit 1
-    fi
-    cp dummy "$(date "+%Y-%m-%d").yaml"
-    vim "$(date "+%Y-%m-%d").yaml"
-}
-
 # Get latest commit hash.
 glc() {
     git log \
@@ -89,14 +79,14 @@ Please insert the name of the first file\n=>"
     touch "${name}"
 }
 
-vimses() {
-    if [ -n "$1" ]; then
-        export session="$HOME/.vim/sessions/$1" 
-        vim -S "$session.vim"
-        unset session
-    else
-        vim -S "$HOME/.vim/sessions/latest"
-    fi
+gccd() {
+    git clone "$@"
+    dir="$( echo "$@"\
+        | rev\
+        | cut -d'/' -f1\
+        | rev\
+        | cut -d'.' -f1)"
+    cd "${dir}" || exit 1
 }
 
 #     ___                 
