@@ -155,7 +155,7 @@ fi
 
 _zsh_greeting() {
     if [ "$(uname)" = "Linux" ]; then
-        . "$HOME/Documents/projects/code/shell/shello/shello.sh"
+        shello.sh
     elif [ "$(uname)" = "Darwin" ]; then
         printf "And again. The Os of agony: macOS\n"
     else
