@@ -81,9 +81,6 @@ if [ "$(uname)" = "Linux" ]; then
     alias neomutt='TERM=screen-256color neomutt'
     alias newsboat='TERM=screen-256color newsboat'
     alias ranger='TERM=screen-256color ranger'
-
-    # Open terminal in current working dir
-    alias cloneterm='. $SCRIPT_DIR/clone_terminal.sh'
 fi
 
 #    ____ ___  ____ __________  _____
