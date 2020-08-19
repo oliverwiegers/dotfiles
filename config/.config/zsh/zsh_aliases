@@ -89,18 +89,20 @@ fi
 # /_/ /_/ /_/\__,_/\___/\____/____/  
 
 if [ "$(uname)" = "Darwin" ]; then
-    if [ "$(whoami)" = owiegers ]; then
-        alias jblu="caffeinate -i -- ssh -t jumpblu --\
-            \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
-        alias jbki="caffeinate -i -- ssh -t jumpbki --\
-            \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
-        
-        hp() {
-            git commit -am "$@"
-            git pull
-            git push
-        }
-    fi
+    alias jblu="caffeinate -i -- ssh -t jumpblu --\
+        \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
+    alias jbki="caffeinate -i -- ssh -t jumpbki --\
+        \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
+    alias jdbl="caffeinate -i -- ssh -t jumpdbl --\
+        \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
+    alias jcbk="caffeinate -i -- ssh -t jumpcbk --\
+        \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
+    
+    hp() {
+        git commit -am "$@"
+        git pull
+        git push
+    }
 
     alias jump="caffeinate -i -- ssh -t jumphost --\
         \"bash -c \\\"tmux -L tmux new-session -As fun\\\"\""
