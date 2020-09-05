@@ -25,23 +25,3 @@ font:
   size: 7.5
   scale_with_dpi: true
   use_thin_strokes: true
-debug.render_timer: false
-
-custom_cursor_colors: false
-
-mouse_bindings:
-  - {mouse: Middle, action: PasteSelection}
-
-mouse:
-  double_click: {threshold: 300}
-  triple_click: {threshold: 300}
-selection:
-  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
-
-hide_cursor_when_typing: true
-cursor_style: Block
-unfocused_hollow_cursor: true
-live_config_reload: true
-bell:
-  animation: EaseOutExpo
-  duration: 0

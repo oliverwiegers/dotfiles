@@ -39,3 +39,10 @@ config/.config/Dharkael/
 config/.config/ranger/plugins/
 config/.config/asciinema/
 config/.config/chromium/
+config/.config/helm/
+config/.config/amass/
+config/.config/bashtop/
+config/.config/bpytop/
+config/.config/discord/
+config/.config/helm/
+config/.config/helm/

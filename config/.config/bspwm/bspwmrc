@@ -26,7 +26,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # Launch needed software.
 sxhkd &
 unclutter -idle 2 &
-wal -R
+wal -R || wal --theme "$HOME/.config/wal/colorschemes/dark/gruvbox-tweaked.json"
 xset r rate 280 40
 setxkbmap us -variant intl
 xmodmap ~/.Xmodmap

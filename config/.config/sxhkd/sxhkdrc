@@ -29,11 +29,11 @@ mod1 + Escape
 #
 
 XF86AudioLowerVolume
-    pactl set-sink-mute 0 0 && pactl set-sink-volume 0 -5%
+    pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5%
 XF86AudioRaiseVolume
-    pactl set-sink-mute 0 0 && pactl set-sink-volume 0 +5%
+    pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5%
 XF86AudioMute
-    pactl set-sink-mute 0 toggle
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 #Brightness control
 XF86MonBrightnessDown
