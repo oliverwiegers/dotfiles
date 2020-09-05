@@ -86,7 +86,7 @@ gccd() {
         | cut -d'/' -f1\
         | rev\
         | cut -d'.' -f1)"
-    cd "${dir}" || exit 1
+    cd "${dir}" || return 1
 }
 
 #     ___                 
@@ -98,24 +98,29 @@ gccd() {
 if [ "$(uname)" = "Linux" ]; then
     # Change monitor settings.
     changemon() {
+        monitors="$(xrandr -q | grep -w 'connected' | awk '{ print $1 }')"
+        ext_mon="$(echo "${monitors}" | grep -v LVDS)"
+        int_mon="$(echo "${monitors}" | grep LVDS)"
         PS3="What setup would you like to run?"
         select choice in "Internal monitor" "External monitor" "Both"; do
             case $choice in
                 "Internal monitor" )
-                    xrandr --output LVDS1 --auto --output DP1 --off \
+                    xrandr --output "${int_mon}" --auto\
                         && sh "$HOME/.fehbg"
                     bspc wm -r
                     break
                     ;;
                 "External monitor" )
-                    xrandr --output DP1 --auto --output LVDS1 --off \
+                    xrandr --output "${ext_mon}" --auto\
+                        --output "${int_mon}" --off \
                         && "$HOME/.fehbg"
                     bspc wm -r
                     break
                     ;;
                 "Both" )
-                    xrandr --output DP1 --auto --primary --output LVDS1 \
-                        --auto --noprimary --below DP1 && "$HOME/.fehbg"
+                    xrandr --output "${ext_mon}" --auto --primary\
+                        --output "${int_mon}" --auto --noprimary --below DP1\
+                        && "$HOME/.fehbg"
                     bspc wm -r
                     break
                     ;;

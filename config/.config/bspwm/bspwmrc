@@ -16,6 +16,9 @@
 #    /____/\__/\__,_/_/   \__/\__,_/ .___/ 
 #                                /_/      
 
+# Java applications behave wierd without this.
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # source the colors.
 # shellcheck source=/home/oliverwiegers/.cache/wal/colors.sh
 . "${HOME}/.cache/wal/colors.sh"
@@ -31,24 +34,6 @@ eval "$(ssh-agent)"
 # shellcheck source=/home/oliverwiegers/.fehbg
 . "${HOME}/.fehbg"
 
-if xrandr -q | grep -q "DP1 connected"; then
-    bspc monitor DP1 -d 1 2
-    bspc monitor LVDS1 -d 3 4 5
-    sh "${HOME}/.config/polybar/polybar.sh" \
-        "top-internal" "top-external" "bottom-external"
-elif xrandr -q | grep -q "LVDS-1 connected"; then
-    bspc monitor LVDS-1 -d 1 2 3 4 5
-    WIRELESS_INTERFACE='wlan0'\
-        WIRED_INTERFAC='eth0'\
-        MONITOR='LVDS-1'\
-        sh "${HOME}/.config/polybar/polybar.sh" "top-internal"
-    bspc config bottom_padding 0
-else
-    bspc monitor LVDS1 -d 1 2 3 4 5
-    sh "${HOME}/.config/polybar/polybar.sh" "top-internal"
-    bspc config bottom_padding 0
-fi
-
 #                 __  __  _                 
 #      ________  / /_/ /_(_)___  ____ ______
 #     / ___/ _ \/ __/ __/ / __ \/ __ `/ ___/
@@ -63,8 +48,6 @@ bspc config remove_unplugged_monitors   true
 bspc config pointer_modifier            mod1
 bspc config pointer_action1             move
 
-
-
 #                  __             
 #      _______  __/ /__  _____    
 #     / ___/ / / / / _ \/ ___/    
@@ -72,5 +55,50 @@ bspc config pointer_action1             move
 #   /_/   \__,_/_/\___/____/      
 
 bspc rule -a Firefox desktop='^2'
+bspc rule -a discord desktop='^5'
 bspc rule -a TelegramDesktop desktop='^5'
+bspc rule -a Pavucontrol desktop='^6'
+bspc rule -a install4j-burp-StartBurp desktop='^7'
+
 bspc rule -a Zathura state=tiled
+
+#                             _ __                 
+#      ____ ___  ____  ____  (_) /_____  __________
+#     / __ `__ \/ __ \/ __ \/ / __/ __ \/ ___/ ___/
+#    / / / / / / /_/ / / / / / /_/ /_/ / /  (__  ) 
+#   /_/ /_/ /_/\____/_/ /_/_/\__/\____/_/  /____/  
+
+monitors="$(xrandr -q | grep -w 'connected' | awk '{ print $1 }')"
+if [ "$(echo "${monitors}" | wc -l)" -eq 2 ]; then
+    # Internal and external monitor.
+    ext_mon="$(echo "${monitors}" | grep -v LVDS)"
+    int_mon="$(echo "${monitors}" | grep LVDS)"
+
+    xrandr --output "${ext_mon}" --primary --auto\
+        --output "${int_mon}" --auto --below "${ext_mon}"
+
+    bspc monitor "${ext_mon}" -d 1 2 3 4
+    bspc monitor "${int_mon}" -d 5 6 7
+
+    EXTMONITOR="${ext_mon}" sh "${HOME}/.config/polybar/polybar.sh" \
+        "top-internal" "top-external" "bottom-external"
+else
+    # Internal monitor only.
+    int_mon="$(echo "${monitors}" | grep LVDS)"
+    xrandr --output "${int_mon}" --auto
+    for display in $(xrandr -q | grep -w 'disconnected' | awk '{print $1}'); do
+        xrandr --output "${display}" --off
+    done
+    if [ "${int_mon}" = "LVDS-1" ]; then
+        bspc monitor "${int_mon}" -d 1 2 3 4 5 6 7
+        WIRELESS_INTERFACE='wlan0'\
+            WIRED_INTERFACE='eth0'\
+            MONITOR="${int_mon}"\
+            sh "${HOME}/.config/polybar/polybar.sh" "top-internal"
+        bspc config bottom_padding 0
+    else
+        bspc monitor "${int_mon}" -d 1 2 3 4 5 6 7
+        sh "${HOME}/.config/polybar/polybar.sh" "top-internal"
+        bspc config bottom_padding 0
+    fi
+fi

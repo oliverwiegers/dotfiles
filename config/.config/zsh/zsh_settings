@@ -16,15 +16,16 @@
 export RANGER_LOAD_DEFAULT_RC=false
 export EDITOR=/usr/bin/vim
 export SCRIPT_DIR=$HOME/Documents/scripts
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH:/usr/lib/plan9/bin:/opt/texlive/2019/bin/x86_64-linux"
+export PATH="$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH:/usr/lib/plan9/bin:/opt/texlive/2019/bin/x86_64-linux"
 # fix terminal gpg
 GPG_TTY=$(tty)
 export GPG_TTY
 
 if [ -d "$HOME/.kube" ]; then
-    KUBECONFIG="$(find ~/.kube/configs -iname 'kubeconfig-*' -exec\
-        printf '%s:' '{}' +)${HOME}/.kube/config"
-    export KUBECONFIG
+    export KUBECONFIG="$(find ~/.kube/configs/ -type f -exec printf '%s:' '{}' +)"
+    #KUBECONFIG="$(find ~/.kube/configs -iname 'kubeconfig-*' -exec\
+    #    printf '%s:' '{}' +)${HOME}/.kube/config"
+    #export KUBECONFIG
 fi
 
 #     __              
