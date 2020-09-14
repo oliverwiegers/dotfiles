@@ -131,6 +131,13 @@ git clone https://github.com/robbyrussell/oh-my-zsh.git "${omz_target}" \
 cp "$HOME/.dotfiles/oliverwiegers.zsh-theme" "$HOME/.oh-my-zsh/custom/themes/"
 printf '\e[32mDone.\n\e[0m'
 
+powerlevel10k_target="$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+printf '\e[32mCloning powerlevel10k into: \e[34m%s\e[0m\n' \
+    "${powerlevel10k_target}"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
+    "${powerlevel10k_target}" || exit 1
+printf '\e[32mDone.\n\e[0m'
+
 highlight_target="$HOME/.zsh-syntax-highlighting"
 printf '\e[32mCloning zsh-syntax-highlighting into: \e[34m%s\e[0m\n' \
     "${highlight_target}"
