@@ -35,14 +35,12 @@ fi
 alias todo='vim "$HOME/Documents/personal/notes/todo.md"'
 
 # Net.
-alias serv="python -m SimpleHTTPServer"
-alias wanip="curl -s http://whatismijnip.nl |cut -d' ' -f 5"
+alias serv="python3 -m SimpleHTTPServer"
+alias wanip='curl -s4 https://ip.syseleven.de'
 
 # Useful.
 alias dev="ls /dev/"
-alias pingit="ping -c3 www.google.com"
 alias weather="curl -H \"Accept-Language: de\" wttr.in/Berlin"
-alias bench='for i in $(seq 1 10000); do echo $i; done'
 alias curllook='curl -w @"$HOME/Documens/lookup" -o /dev/null -s'
 
 # Use wal colors for tmux
@@ -58,6 +56,9 @@ alias reload='source $HOME/.zshrc'\
 # Python aliases
 alias vtree='tree -I .venv'
 alias act='. .venv/bin/activate'
+
+# Ugly command names
+alias btop='bpytop'
 
 #     ___                 
 #    / (_)___  __  ___  __
