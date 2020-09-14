@@ -35,7 +35,7 @@ script.
 
 ## Installation
 
-This script will clone this repo, [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and will ask to clone my [Vim config](https://github.com/oliverwiegers/vim_config), my [Tmux config](https://github.com/oliverwiegers/.tmuxist) and my personal [scripts](https://github.com/oliverwiegers/scripts).
+This script will clone this repo, [powerlevel10k](https://github.com/romkatv/powerlevel10k), [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and will ask to clone my [Vim config](https://github.com/oliverwiegers/vim_config), my [Tmux config](https://github.com/oliverwiegers/.tmuxist) and my personal [scripts](https://github.com/oliverwiegers/scripts).
 The [install.sh](install.sh) won't install any packages, only config files.
 
 ### Interactive installation

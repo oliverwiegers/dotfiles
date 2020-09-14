@@ -27,6 +27,7 @@ _create_symlinks() {
         fi
         ln -s "$HOME/.dotfiles/config/.config/zsh/" "$HOME/.config/zsh"
         ln -s "$HOME/.dotfiles/homedir/.zshrc" "$HOME/.zshrc"
+        ln -s "$HOME/.dotfiles/homedir/.p10k.zsh" "$HOME/.p10k.zsH"
         ln -s "$HOME/.dotfiles/config/.config/neofetch/" \
             "$HOME/.config/neofetch"
         ln -s "$HOME/.dotfiles/config/.config/ranger/" \
