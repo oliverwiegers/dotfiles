@@ -94,8 +94,8 @@ mod1 + Tab
     bspc node -f last
 
 # Resize
-mod1 + e : {h,j,k,l,v,o}
-    ${SCRIPT_DIR}/bspwm_resize -e {west,south,north,east,vertical,horizontal} -s 25
-
-mod1 + c : {h,j,k,l,v,o}
-    ${SCRIPT_DIR}/bspwm_resize -c {west,south,north,east,vertical,horizontal} -s 25
+#mod1 + e : {h,j,k,l,v,o}
+#    ${SCRIPT_DIR}/bspwm_resize -e {west,south,north,east,vertical,horizontal} -s 25
+#
+#mod1 + c : {h,j,k,l,v,o}
+#    ${SCRIPT_DIR}/bspwm_resize -c {west,south,north,east,vertical,horizontal} -s 25

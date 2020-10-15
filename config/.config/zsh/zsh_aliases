@@ -14,7 +14,6 @@
 # /_/_/_/ /_/\__,_/_/|_|  /_/     /_/ /_/ /_/\__,_/\___/\____/____/  
 
 # Replace legacy tools with new ones
-
 if [ "$(command -v exa)" ]; then
     unalias -m 'll'
     unalias -m 'l'
@@ -23,6 +22,7 @@ if [ "$(command -v exa)" ]; then
     alias ls='exa'
     alias l='exa -lah'
     alias ll='exa -lh'
+    alias lt='exa -T'
 fi
 
 # Colorized cat.
@@ -42,12 +42,14 @@ alias wanip='curl -s4 https://ip.syseleven.de'
 alias dev="ls /dev/"
 alias weather="curl -H \"Accept-Language: de\" wttr.in/Berlin"
 alias curllook='curl -w @"$HOME/Documens/lookup" -o /dev/null -s'
+alias getcommittext='curl -s http://whatthecommit.com/index.txt'
 
 # Use wal colors for tmux
 alias tmux="TERM=xterm tmux"
 
-# Creating license file containing unlicense.
-alias unli="curl -L https://unlicense.org/UNLICENSE > LICENSE"
+# Creating license file.
+alias unli="curl -sL https://unlicense.org/UNLICENSE > LICENSE"
+alias ggpl='wget -q https://www.gnu.org/licenses/gpl-3.0.txt -O LICENSE'
 
 # Configure my system.
 alias reload='source $HOME/.zshrc'\
