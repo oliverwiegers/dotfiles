@@ -160,7 +160,7 @@ fi
 
 _zsh_greeting() {
     if [ "$(uname)" = "Linux" ]; then
-        shello.sh
+        shello.sh || true
     elif [ "$(uname)" = "Darwin" ]; then
         printf "And again. The Os of agony: macOS\n"
     else
