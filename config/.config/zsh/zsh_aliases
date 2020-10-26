@@ -57,6 +57,7 @@ alias reload='source $HOME/.zshrc'\
 # Python aliases
 alias vtree='tree -I .venv'
 alias act='. .venv/bin/activate'
+alias venv='python3 -m virtualenv .venv'
 
 # Ugly command names
 alias btop='bpytop'

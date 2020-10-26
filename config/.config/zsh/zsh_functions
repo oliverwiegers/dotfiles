@@ -13,6 +13,24 @@
 #  / / / / / / /_/ />  <   _/_/    / / / / / / /_/ / /__/ /_/ (__  ) 
 # /_/_/_/ /_/\__,_/_/|_|  /_/     /_/ /_/ /_/\__,_/\___/\____/____/  
 
+# Curl time lookup
+clookup() {
+    lookup_file="$(mktemp)"
+    cat <<EOF > "${lookup_file}"
+time_namelookup:    %{time_namelookup}\n
+time_connect:       %{time_connect}\n
+time_appconnect:    %{time_appconnect}\n
+time_pretransfer:   %{time_pretransfer}\n
+time_redirect:      %{time_redirect}\n
+time_starttransfer: %{time_starttransfer}\n
+                    --------\n
+time_total:         %{time_total}\n
+EOF
+
+    curl -s -L $@ -w "@${lookup_file}" -o /dev/null
+    rm "${lookup_file}"
+}
+
 # curl cheat.sh/command as a command.
 chtsh() {
     curl "https://cheat.sh/$*"
