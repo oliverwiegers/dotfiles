@@ -14,6 +14,8 @@ RUN curl -fsSL\
     && git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf \
     && ./.fzf/install --no-update-rc --no-key-bindings --no-completion \
     && mkdir -p /usr/share/doc/fzf/examples/ \
-    && cp ./.fzf/plugin/fzf.vim /usr/share/doc/fzf/examples/
+    && cp ./.fzf/plugin/fzf.vim /usr/share/doc/fzf/examples/ \
+    && curl -LO https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb \
+    && dpkg -i ripgrep_12.1.1_amd64.deb
 
 CMD ["/bin/zsh"]
