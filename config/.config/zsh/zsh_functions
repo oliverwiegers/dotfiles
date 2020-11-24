@@ -159,14 +159,25 @@ fi
 
 if [ "$(uname)" = "Darwin" ]; then
     if [ "$(whoami)" = owiegers ]; then
-        alias jblu="caffeinate -i -- ssh -t jumpblu -- \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
-        alias jbki="caffeinate -i -- ssh -t jumpbki -- \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
-
         hp() {
             git commit -am "$@"
             git pull
             git push
         }
+
+    daily() {
+        current_pwd=$PWD
+        cd "$HOME/Documents/notes/sys11/resources/daily" || exit 1
+        today_daily="$(date +%d.%m.%Y).md"
+        if [ -f "${today_daily}" ]; then
+            vim "${today_daily}"
+        else
+            last_daily="$(ls -1 | sort -n -t'.' -k3 -k2 -k1 | tail -n1)" 
+            cp "${last_daily}" "${today_daily}"
+            vim "${today_daily}"
+        fi
+        cd "${current_pwd}" || exit 1
+    }
     fi
 fi
 

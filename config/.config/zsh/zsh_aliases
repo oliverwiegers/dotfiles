@@ -104,12 +104,6 @@ if [ "$(uname)" = "Darwin" ]; then
     alias jcbk="caffeinate -i -- ssh -t jumpcbk --\
         \"bash -c \\\"tmux -L tmux new-session -As work\\\"\""
     
-    hp() {
-        git commit -am "$@"
-        git pull
-        git push
-    }
-
     alias jump="caffeinate -i -- ssh -t jumphost --\
         \"bash -c \\\"tmux -L tmux new-session -As fun\\\"\""
 fi
