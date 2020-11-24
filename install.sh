@@ -36,6 +36,8 @@ _create_symlinks() {
 }
 
 _install_fonts() {
+    # Reset colors. Is a workaround for not found bug.
+    printf '\e[0m'
     curl -O https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf
     curl -O https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Light-Italic/complete/Sauce%20Code%20Pro%20Light%20Italic%20Nerd%20Font%20Complete%20Mono.ttf
     curl -O https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Bold/complete/Sauce%20Code%20Pro%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
