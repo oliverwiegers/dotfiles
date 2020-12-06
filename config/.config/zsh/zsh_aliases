@@ -34,7 +34,7 @@ fi
 alias todo='vim "$HOME/Documents/personal/notes/todo.md"'
 
 # Net.
-alias serv="python3 -m SimpleHTTPServer"
+alias serv="python3 -m http.server"
 alias wanip='curl -s4 https://ip.syseleven.de'
 
 # Useful.
