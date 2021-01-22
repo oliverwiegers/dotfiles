@@ -47,4 +47,5 @@ config/.config/discord/
 config/.config/helm/
 config/.config/helm/
 config/.config/flameshot/
-
+config/.config/Signal/
+config/.config/menus/

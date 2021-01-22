@@ -51,7 +51,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cargo sudo kubectl kube-ps1 jsontools systemadmin vi-mode)
+plugins=(git cargo sudo kubectl kube-ps1 jsontools systemadmin vi-mode copybuffer fancy-ctrl-z)
 ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
 

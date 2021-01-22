@@ -34,13 +34,13 @@ fi
 alias todo='vim "$HOME/Documents/personal/notes/todo.md"'
 
 # Net.
-alias serv="python3 -m http.server"
+alias serv="python3 -m SimpleHTTPServer"
 alias wanip='curl -s4 https://ip.syseleven.de'
 
 # Useful.
 alias dev="ls /dev/"
 alias weather="curl -H \"Accept-Language: de\" wttr.in/Berlin"
-alias curllook='curl -w @"$HOME/Documens/lookup" -o /dev/null -s'
+alias curllook='curl -w @"$HOME/Documents/resources/lookup" -o /dev/null -s'
 alias getcommittext='curl -s http://whatthecommit.com/index.txt'
 
 # Use wal colors for tmux
