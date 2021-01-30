@@ -56,6 +56,7 @@ _install_vim_config() {
         .vim || exit 1
     cd "$HOME/.vim" || exit 1
     stow vimrc
+    ./helper-scripts/manage-coc.sh -i
     printf '\e[32mDone installing Vim config..\n\e[0m'
 }
 
