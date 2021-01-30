@@ -58,7 +58,7 @@ padding-left = 2
 padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
-font-0 = DinaRemaster:pixelsize=10;1
+font-0 = Dina:pixelsize=10;1
 font-1 = SauceCodePro Nerd Font Mono:pixelsize=13;2
 modules-left = power-menu wifi ethernet memory cpu
 modules-center = bspwm
@@ -88,7 +88,7 @@ padding-left = 2
 padding-right = 2
 module-margin-left = 1
 module-margin-right = 1
-font-0 = DinaRemaster:pixelsize=10;1
+font-0 = Dina:pixelsize=10;1
 font-1 = SauceCodePro Nerd Font Mono:pixelsize=11;1
 modules-left = eyestrain hackspeed ssh-sessions
 modules-center = fs

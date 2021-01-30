@@ -97,14 +97,17 @@ rm "${tmp_file}"
 # Java applications behave wierd without this.
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+wal -R || wal --theme "$HOME/.config/wal/colorschemes/dark/gruvbox-tweaked.json"
+
 # source the colors.
-# shellcheck source=/home/oliverwiegers/.cache/wal/colors.sh
-. "${HOME}/.cache/wal/colors.sh"
+if [ -f "${HOME}/.cache/wal/colors.sh" ]; then
+    # shellcheck source=/home/oliverwiegers/.cache/wal/colors.sh
+    . "${HOME}/.cache/wal/colors.sh"
+fi
 
 # Launch needed software.
 sxhkd &
 unclutter -idle 2 &
-wal -R || wal --theme "$HOME/.config/wal/colorschemes/dark/gruvbox-tweaked.json"
 xset r rate 280 40
 setxkbmap us -variant intl
 xmodmap ~/.Xmodmap
