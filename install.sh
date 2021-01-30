@@ -103,8 +103,8 @@ _print_header
 
 dotfiles_target="$HOME/.dotfiles"
 printf '\e[32mCloning repo into: \e[34m"%s"\e[0m\n' "${dotfiles_target}"
-git clone https://github.com/oliverwiegers/dotfiles "${dotfiles_target}" \
-    || exit 1
+git clone --recursive https://github.com/oliverwiegers/dotfiles \
+    "${dotfiles_target}" || exit 1
 cd "${dotfiles_target}" || exit 1
 
 git checkout "${GIT_BRANCH}"
