@@ -21,6 +21,8 @@ _create_symlinks() {
     if [ "$(uname)" = "Linux" ]; then
         stow homedir
         stow config
+        mkdir "$HOME/.themes"
+        ln -s "$HOME/.dotfiles/gruvbox-gtk" "$HOME/.themes/"
     elif [ "$(uname)" = "Darwin" ]; then
         if [ ! -d "$HOME/.config" ]; then
             mkdir -p "$HOME/.config/"

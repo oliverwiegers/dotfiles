@@ -4,3 +4,6 @@
 [submodule "config/.config/ranger/plugins/ranger_devicons"]
 	path = config/.config/ranger/plugins/ranger_devicons
 	url = https://github.com/alexanderjeurissen/ranger_devicons
+[submodule "gruvbox-gtk"]
+	path = gruvbox-gtk
+	url = https://github.com/bennetthardwick/gruvbox-gtk

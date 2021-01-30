@@ -49,3 +49,5 @@ config/.config/helm/
 config/.config/flameshot/
 config/.config/Signal/
 config/.config/menus/
+config/.config/torbrowser/
+config/.config/vlc/
