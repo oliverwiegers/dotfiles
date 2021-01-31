@@ -52,6 +52,11 @@ _install_fonts() {
 
 _install_vim_config() {
     cd "$HOME" || exit 1
+
+    if [ -d "$HOME/.vim" ]; then
+	    rm -r "$HOME/.vim"
+    fi
+
     git clone --recursive https://github.com/oliverwiegers/vim_config \
         .vim || exit 1
     cd "$HOME/.vim" || exit 1
