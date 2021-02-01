@@ -198,7 +198,7 @@ format-connected-prefix = "直 "
 format-connected-prefix-foreground = #666
 format-connected-prefix-offset = -6
 #label-connected = %local_ip%
-label-connected = %downspedd%
+label-connected = %downspeed%
 
 [module/ethernet]
 type = internal/network
@@ -349,4 +349,5 @@ tail = true
 type = custom/script
 exec = ~/.config/polybar-scripts/polybar-scripts/info-ssh-sessions/info-ssh-sessions.sh
 interval = 5
+
 ; vim:ft=dosini

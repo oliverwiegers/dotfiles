@@ -46,8 +46,6 @@ _install_fonts() {
         https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Bold/complete/Sauce%20Code%20Pro%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
     wget -O "${HOME}/.local/share/fonts/source_code_pro_regular.ttf" \
         https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf
-    wget -O "$HOME/.loca/share/fonts/cryptocoins.ttf" \
-        https://github.com/AllienWorks/cryptocoins/raw/master/webfont/cryptocoins.ttf
 
     fc-cache -r
 }

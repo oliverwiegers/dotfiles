@@ -8,7 +8,7 @@ if [ "$#" -eq 0 ]; then
     usage
 fi
 
-killall -q polybar
+pkill -q polybar
 for bar in "$@"; do
     polybar "${bar}" &
 done

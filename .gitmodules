@@ -7,3 +7,9 @@
 [submodule "gruvbox-gtk"]
 	path = gruvbox-gtk
 	url = https://github.com/bennetthardwick/gruvbox-gtk
+[submodule "config/.config/polybar-crypto"]
+	path = config/.config/polybar-crypto
+	url = https://github.com/willHol/polybar-crypto.git
+[submodule "config/.config/polybar/polybar-crypto"]
+	path = config/.config/polybar/polybar-crypto
+	url = https://github.com/willHol/polybar-crypto.git
