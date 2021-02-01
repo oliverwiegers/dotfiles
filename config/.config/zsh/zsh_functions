@@ -56,7 +56,7 @@ glc() {
 }
 
 # Create and edit executeable python file.
-pytest() {
+ptest() {
     echo "#!/usr/bin/env python" > ./test.py
     vim ./test.py
     chmod 0700 ./test.py

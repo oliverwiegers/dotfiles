@@ -34,13 +34,12 @@ fi
 alias todo='vim "$HOME/Documents/personal/notes/todo.md"'
 
 # Net.
-alias serv="python3 -m SimpleHTTPServer"
+alias serv="python3 -m http.server"
 alias wanip='curl -s4 https://ip.syseleven.de'
 
 # Useful.
 alias dev="ls /dev/"
 alias weather="curl -H \"Accept-Language: de\" wttr.in/Berlin"
-alias curllook='curl -w @"$HOME/Documents/resources/lookup" -o /dev/null -s'
 alias getcommittext='curl -s http://whatthecommit.com/index.txt'
 
 # Use wal colors for tmux
@@ -59,11 +58,12 @@ alias vtree='tree -I .venv'
 alias act='. .venv/bin/activate'
 alias venv='python3 -m virtualenv .venv'
 
-# Ugly command names
-alias btop='bpytop'
-
 # Docker drop in replacements.
 alias powershell='docker run --rm -it mcr.microsoft.com/powershell'
+
+# Kubernetes.
+alias kubectx='kubectl ctx'
+alias kubens='kubectl ns'
 
 #     ___                 
 #    / (_)___  __  ___  __
