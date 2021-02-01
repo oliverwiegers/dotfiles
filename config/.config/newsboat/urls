@@ -2,7 +2,6 @@ https://news.ycombinator.com/rss hackernews
 https://github.com/void-linux/void-packages/commits/master.atom "~Void packages" void linux packages
 https://lobste.rs/rss "~Lobste.rs" lobsters
 http://wp.links-netz.de/?feed=rss2 politics
-https://www.tagesschau.de/xml/rss2 "~Tagesschau"news
 https://rss.golem.de/rss.php?feed=RSS2.0 tech news
 https://www.archlinux.org/feeds/news/ arch linux
 https://voidlinux.org/atom
@@ -15,8 +14,6 @@ https://feeds.feedburner.com/ThePragmaticEngineer
 https://blog.torproject.org/rss.xml "~TOR Project"
 https://www.eff.org/rss/updates.xml "~EFF"
 https://act.eff.org/action.atom
-https://theintercept.com/feed/?rss
 https://micahflee.com/feed.xml "~Mica Lee"
 https://www.greenpeace.de/rss.xml
-https://www.neues-deutschland.de/rss/neues-deutschland.xml "~Neues Deutschland Tagesausgabe"
-https://www.neues-deutschland.de/rss/aktuell.php "~Neues Deutschland Artikel"
+https://captnemo.in/atom.xml

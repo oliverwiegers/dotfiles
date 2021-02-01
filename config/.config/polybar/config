@@ -197,7 +197,8 @@ format-connected = <label-connected>
 format-connected-prefix = "直 "
 format-connected-prefix-foreground = #666
 format-connected-prefix-offset = -6
-label-connected = %local_ip%
+#label-connected = %local_ip%
+label-connected = %downspedd%
 
 [module/ethernet]
 type = internal/network

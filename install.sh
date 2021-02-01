@@ -46,6 +46,8 @@ _install_fonts() {
         https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Bold/complete/Sauce%20Code%20Pro%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
     wget -O "${HOME}/.local/share/fonts/source_code_pro_regular.ttf" \
         https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf
+    wget -O "$HOME/.loca/share/fonts/cryptocoins.ttf" \
+        https://github.com/AllienWorks/cryptocoins/raw/master/webfont/cryptocoins.ttf
 
     fc-cache -r
 }
@@ -54,7 +56,7 @@ _install_vim_config() {
     cd "$HOME" || exit 1
 
     if [ -d "$HOME/.vim" ]; then
-	    rm -r "$HOME/.vim"
+        rm -r "$HOME/.vim"
     fi
 
     git clone --recursive https://github.com/oliverwiegers/vim_config \
