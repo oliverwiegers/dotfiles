@@ -90,7 +90,7 @@ $ NON_INTERACTIVE=true ./install.sh
 $ zsh
 ```
 
-## Software list
+## Software
 
 This list provides links to the repositories/websites of software I use.
 
@@ -131,3 +131,20 @@ A big shoutout to [dylanaraps](https://github.com/dylanaraps/) for
 [pywal](https://github.com/dylanaraps/pywal). This is an awesome tool. It took 
 me some time to reconfigure my system to use the full potential, but it is worth
 it a thousand times.
+
+### Firefox notes
+
+Firefox is highly customized using `userChrome.css` and
+[Vimium](https://addons.mozilla.org/en-US/firefox/addon/vimium-ff/).
+
+#### userChrome.css
+
+- Open about:config
+- Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`.
+- Enable userChrome.css support. (FF 69+)
+- Open about:profile
+- Find out currently used profile.
+- Create `$HOME/.mozilla/firefox/$profile_name/chrome` directory.
+- Create `$HOME/.mozilla/firefox/$profile_name/chrome/userChrome.css` file.
+- Add some rules
+- Restart Firefox
