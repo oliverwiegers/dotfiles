@@ -43,7 +43,7 @@ alias weather="curl -H \"Accept-Language: de\" wttr.in/Berlin"
 alias getcommittext='curl -s http://whatthecommit.com/index.txt'
 
 # Use wal colors for tmux
-alias tmux="TERM=xterm tmux"
+alias tmux='tmux -2'
 
 # Creating license file.
 alias unli="curl -sL https://unlicense.org/UNLICENSE > LICENSE"
@@ -74,14 +74,6 @@ alias kubens='kubectl ns'
 if [ "$(uname)" = "Linux" ]; then
     # Fun
     alias pac='. "${SCRIPT_DIR}/pacman.sh"'
-
-    # Alias for jumphost connection and opening tmux session.
-    # TERM=xterm-256color LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8 --> make
-    # powerline font working
-    # TERM=xterm make wal colors on remote working
-    alias jump="ssh -t jumphost --\
-        \"TERM=xterm-256color LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8\
-        bash -c \\\"TERM=xterm tmux -L tmux new-session -As fun\\\"\""
 
     # Workaround for resetting terminal colors in alacritty.
     alias neomutt='TERM=screen-256color neomutt'
