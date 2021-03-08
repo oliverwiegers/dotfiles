@@ -57,7 +57,7 @@ The install script will clone the following repos:
 - [gruvbox-gtk](https://github.com/3ximus/gruvbox-gtk.git)
 - [ranger-devicons](https://github.com/alexanderjeurissen/ranger_devicons)
 
-The install script will ask to clone the following repos:
+The install script will ask to clone / setup the following repos:
 
 - [Vim config](https://github.com/oliverwiegers/vim_config)
 - [Tmux config](https://github.com/oliverwiegers/.tmuxist)
