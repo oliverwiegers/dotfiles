@@ -97,10 +97,10 @@ assign [app_id="org.telegram.desktop.desktop"] 5
 bindsym $mod+Return exec $term
 
 # Kill focused window
-bindsym $mod+q exec sh /home/oliverwiegers/Documents/scripts/wofi_promt.sh -m "Kill window?" -c "swaymsg kill"
+bindsym $mod+q exec wofi_promt.sh -m "Kill window?" -c "swaymsg kill"
 
 # Lock screen and go to sleep.
-bindsym $mod+Shift+q exec sh /home/oliverwiegers/Documents/scripts/wofi_promt.sh -m "Lock screen and sleep?" -c "grim /tmp/screen_lock.png && convert /tmp/screen_lock.png -blur 0x9 /tmp/screen_lock_blurred.png && rm /tmp/screen_lock.png && swaylock --image /tmp/screen_lock_blurred.png --daemonize && sleep 5 && sudo zzz"
+bindsym $mod+Shift+q exec wofi_promt.sh -m "Lock screen and sleep?" -c "grim /tmp/screen_lock.png && convert /tmp/screen_lock.png -blur 0x9 /tmp/screen_lock_blurred.png && rm /tmp/screen_lock.png && swaylock --image /tmp/screen_lock_blurred.png --daemonize && sleep 5 && sudo zzz"
 
 # Reload the configuration file
 bindsym $mod+Shift+r reload

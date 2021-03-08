@@ -1,3 +1,6 @@
+*__init__.py*
+*__pycache__*
+*.swp*
 config/.config/autostart
 config/.config/dconf
 config/.config/gconf
@@ -35,7 +38,6 @@ config/.config/clipped/
 config/.config/coc/
 config/.config/configstore/
 config/.config/Dharkael/
-config/.config/ranger/plugins/
 config/.config/asciinema/
 config/.config/chromium/
 config/.config/helm/

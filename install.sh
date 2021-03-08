@@ -76,11 +76,10 @@ _install_tmux_config() {
 
 _install_scripts() {
     cd "$HOME" || exit 1
-    if [ ! -d "$HOME/Documents" ]; then
-        mkdir -p "$HOME/Documents/"
+    if [ ! -d "$HOME/.local/bin/" ]; then
+        mkdir -p "$HOME/.local/bin/"
     fi
-    git clone https://github.com/oliverwiegers/scripts \
-        "$HOME/Documents/scripts" || exit 1
+    ln -s "$HOME/.dotfiles/extra/bin/scripts" "$HOME/.local/bin/"
     printf '\e[32mDone installing scripts..\n\e[0m'
 }
 

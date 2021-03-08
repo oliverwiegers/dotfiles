@@ -55,6 +55,7 @@ The install script will clone the following repos:
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 - [gruvbox-gtk](https://github.com/3ximus/gruvbox-gtk.git)
+- [ranger-devicons](https://github.com/alexanderjeurissen/ranger_devicons)
 
 The install script will ask to clone the following repos:
 

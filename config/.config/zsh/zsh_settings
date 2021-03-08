@@ -16,7 +16,7 @@
 export RANGER_LOAD_DEFAULT_RC=false
 export EDITOR=/usr/bin/vim
 export SCRIPT_DIR=$HOME/Documents/scripts
-export PATH="$PATH:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.krew/bin"
+export PATH="$PATH:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.krew/bin:$HOME/.local/bin/scripts"
 
 if [ "$(uname)" = "Darwin" ]; then
     export PATH="/usr/local/sbin:$PATH"
