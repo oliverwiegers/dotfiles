@@ -1,15 +1,21 @@
 [submodule "config/.config/polybar-scripts"]
-	path = config/.config/polybar-scripts
-	url = https://github.com/polybar/polybar-scripts.git
-[submodule "config/.config/ranger/plugins/ranger_devicons"]
-	path = config/.config/ranger/plugins/ranger_devicons
-	url = https://github.com/alexanderjeurissen/ranger_devicons
-[submodule "gruvbox-gtk"]
-	path = gruvbox-gtk
-	url = https://github.com/bennetthardwick/gruvbox-gtk
+    path = config/.config/polybar-scripts
+    url = https://github.com/polybar/polybar-scripts.git
 [submodule "config/.config/polybar-crypto"]
-	path = config/.config/polybar-crypto
-	url = https://github.com/willHol/polybar-crypto.git
+    path = config/.config/polybar-crypto
+    url = https://github.com/willHol/polybar-crypto.git
 [submodule "config/.config/polybar/polybar-crypto"]
-	path = config/.config/polybar/polybar-crypto
-	url = https://github.com/willHol/polybar-crypto.git
+    path = config/.config/polybar/polybar-crypto
+    url = https://github.com/willHol/polybar-crypto.git
+[submodule "extra/zsh_custom/themes/powerlevel10k"]
+    path = extra/zsh_custom/themes/powerlevel10k
+    url = https://github.com/romkatv/powerlevel10k.git
+[submodule "extra/zsh_custom/plugins/zsh-syntax-highlighting"]
+    path = extra/zsh_custom/plugins/zsh-syntax-highlighting
+    url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "extra/zsh_custom/plugins/zsh-autosuggestions"]
+    path = extra/zsh_custom/plugins/zsh-autosuggestions
+    url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "extra/gruvbox-gtk"]
+	path = extra/gruvbox-gtk
+	url = https://github.com/3ximus/gruvbox-gtk.git

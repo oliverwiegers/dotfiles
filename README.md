@@ -1,42 +1,75 @@
-# Dotfiles
+<p align="center">
+  <img width="25%" src=".assets/home.png"/>
+</p>
 
-> Dotfiles flying around
+<p align="center">
+  <b>There's no place like ~/</b>
+</p>
 
-I use this repository to backup and restore my daily drivers and because I keep
-forgetting things I keep all the information on my config in this README.
+<hr>
 
-I use the configuration mostly on my Linux systems but partly on a mac for work.
-The install script is os aware and will only create symlinks for macOS useable
-software if executed on macOS.
+### Nice to have you!
 
-Furthermore the script will ask wether to install configuration files for Vim
-and Tmux from other repositories listed down below or not.
+<img src=".assets/shots/buisy.png" alt="img" align="right" width="400px">
+<img src=".assets/shots/clean.png" alt="img" align="right" width="400px">
 
-## Look
+These are the dotfiles for my current setup.
 
-These are screenshots from my current Void Linux system.
+This configuration aims to be simple and portable. Yet there are some parts
+that wont work on MacOS.
 
-Neofetch.
-![img](shots/buisy.png "Neofetch Alacritty ")
+The [Installation section](#installation) will guide you through the
+installation process.
 
-Clean desktop.
-![img](shots/clean.png "Clean Desktop")
+For some visuals refer to the [Gallery section](#gallery).
 
-Dmenu using
-[menu_launcher](https://github.com/oliverwiegers/scripts/blob/prod/menu_launcher.sh)
-script.
-![img](shots/dmenu.png "Dmenu launcher script")
+Main software:
 
-## Requirements
-
-- git
-- stow
-- all the software this repository provides config files for
+- **WM**: [Sway](https://github.com/swaywm/sway)
+- **OS**: [Void Linux](https://voidlinux.org/)
+- **Shell**: [ZSH](https://github.com/zsh-users/zsh)
+- **Terminal**: [Alacritty](https://github.com/alacritty/alacritty)
+- **Editor**: [Vim](https://github.com/neovim/neovim/)
+- **Launcher**: [Wofi](https://hg.sr.ht/~scoopta/wofi)
+- **Browser**: Firefox -> See [Firefox section](#firefox)
+- **Theme**: [Gruvbox](https://github.com/morhetz/gruvbox)
+- **Wallpaper**: [Wallpaper
+  Flare](https://www.wallpaperflare.com/red-mountains-and-moon-digital-wallpaper-red-mountain-illustration-wallpaper-pu)
 
 ## Installation
 
-This script will clone this repo, [powerlevel10k](https://github.com/romkatv/powerlevel10k), [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting), [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions), [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and will ask to clone my [Vim config](https://github.com/oliverwiegers/vim_config), my [Tmux config](https://github.com/oliverwiegers/.tmuxist) and my personal [scripts](https://github.com/oliverwiegers/scripts).
-The [install.sh](install.sh) won't install any packages, only config files.
+I use the configuration mostly on my Linux systems but partly on a mac for work.
+The install script is OS aware and will only create symlinks for macOS useable
+software if executed on macOS.
+
+Furthermore the script will ask wether or not to install configuration files for
+Vim and Tmux from other repositories listed down below.
+
+The [install.sh](install.sh) wont install any packages, only config files.
+
+The install script will clone the following repos:
+
+- This repo.
+- [powerlevel10k](https://github.com/romkatv/powerlevel10k)
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+- [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+- [gruvbox-gtk](https://github.com/3ximus/gruvbox-gtk.git)
+
+The install script will ask to clone the following repos:
+
+- [Vim config](https://github.com/oliverwiegers/vim_config)
+- [Tmux config](https://github.com/oliverwiegers/.tmuxist)
+- [scripts](https://github.com/oliverwiegers/scripts)
+
+Furthermore the
+[SourceCodePro Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro) will be installed.
+
+### Requirements
+
+- git
+- stow
+- wget
 
 ### Interactive installation
 
@@ -55,9 +88,9 @@ $ curl -fsSL https://raw.githubusercontent.com/oliverwiegers/dotfiles/prod/insta
 
 ## Development and Testing
 
-This script of course can be tested inside a docker container. The repository
-provides a Dockerfile to build an Ubuntu image including all needed packages to
-run my shell configuration. Some of the installed packages aren't needed to test
+This script can be tested inside a docker container. The repository provides a 
+Dockerfile to build an Ubuntu image including all needed packages to run my
+shell configuration. Some of the installed packages aren't needed to test
 the script itself but the functionality of the configuration afterwards.
 
 In addition to the `NON_INTERACTIVE` env variable the install script and the
@@ -92,52 +125,47 @@ $ zsh
 
 ## Software
 
-This list provides links to the repositories/websites of software I use.
+The install script intalls configuration files for the following software.
 
-### Visible software
+### Included in this repo
 
-- [bspwm](https://github.com/baskerville/bspwm)
-- [alacritty](https://github.com/alacritty/alacritty)
-- [dmenu](https://tools.suckless.org/dmenu/)
+- [Sway](https://github.com/swaywm/sway)
+- [Wofi](https://hg.sr.ht/~scoopta/wofi)
+- Firefox -> See [Firefox section](#firefox)
+- [Alacritty](https://github.com/alacritty/alacritty)
 - [Ranger](https://github.com/ranger/ranger)
-- [Polybar](https://github.com/jaagr/polybar)
 - [ZSH](https://github.com/zsh-users/zsh)
-- [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+- [Oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+- [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
+- [Zathura](https://git.pwmt.org/pwmt/zathura)
+- [Ranger](https://github.com/ranger/ranger)
+- [Bat](https://github.com/sharkdp/bat)
+- [Urlview](https://github.com/sigpipe/urlview)
+- [Mako](https://github.com/emersion/mako)
+- [Pywal](https://github.com/dylanaraps/pywal)
 
-### Config files in other repositories
+### Cloned from other repos
 
 For Vim and Tmux I use different repositories.
 
 - [Vim](https://github.com/oliverwiegers/vim_config)
 - [Tmux](https://github.com/oliverwiegers/.tmuxist)
 
-### Honorable mentions
-
-This repository contains also my config files for the following software not 
-seen in the screenshots.
-
-- [Dunst](https://github.com/dunst-project/dunst.git)
-- [Zathura](https://git.pwmt.org/pwmt/zathura)
-- [gpicview](https://github.com/onlyshk/GPicView)
-- [Ranger](https://github.com/ranger/ranger)
-- [bat](https://github.com/sharkdp/bat)
-
-### Software I also use
-
-- [Glances](https://github.com/nicolargo/glances)
-- [htop](https://github.com/hishamhm/htop)
-
 A big shoutout to [dylanaraps](https://github.com/dylanaraps/) for 
 [pywal](https://github.com/dylanaraps/pywal). This is an awesome tool. It took 
 me some time to reconfigure my system to use the full potential, but it is worth
 it a thousand times.
 
-### Firefox notes
+### Firefox
 
 Firefox is highly customized using `userChrome.css` and
 [Vimium](https://addons.mozilla.org/en-US/firefox/addon/vimium-ff/).
 
 #### userChrome.css
+
+The [userChrome.css](extra/firefox/userchrome.css) uses the colors created bu
+pywal. These are stored in `~/.cache/wal/colors.css` by default. To enable this
+do the following:
 
 - Open about:config
 - Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`.
@@ -148,3 +176,51 @@ Firefox is highly customized using `userChrome.css` and
 - Create `$HOME/.mozilla/firefox/$profile_name/chrome/userChrome.css` file.
 - Add some rules
 - Restart Firefox
+
+#### Vimium-FF
+
+To apply the Vimium config you need to apply the config in the plugin settings
+inside of Firefox. I didn't find a way to import the pywal colors so you need to
+generate the final config by hand.
+
+- Generate config.
+    - `cat ~/.cache/wal/colors.css ~/.dotfiles/extra/firefox/vimium_theme | clipcopy`
+- Open Firefox
+- Type `about:addons` into URL bar and hit Enter.
+- Go to Vimium preferences.
+- Open "Advanced Options"
+- Clear "CSS for Vimium UI"
+- Paste the genereted config into the empty text field.
+- Save changes
+
+## Gallery
+
+These are screenshots from my current Void Linux system.
+
+### Fake Buisy
+
+![img](.assets/shots/buisy.png "Alacritty")
+
+### Clean Desktop
+
+![img](.assets/shots/clean.png "Clean Desktop")
+
+### Locked Screen
+
+![img](.assets/shots/swaylock.png "Swaylock")
+
+### Firefox
+
+![img](.assets/shots/firefox.png "Firefox")
+
+### Firefox Tabbar
+
+![img](.assets/shots/tabbar.png "Firefox Tabbar")
+
+### Firefox Vimium-FF
+
+![img](.assets/shots/vimium-ff.png "Firefox Vimium-FF")
+
+### Tmux
+
+![img](.assets/shots/tmux.png "Tmux")

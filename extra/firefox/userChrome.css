@@ -1,17 +1,8 @@
 /* https://www.reddit.com/r/FirefoxCSS/ for an explanation on how to customize */
-
 /*# */
 /*# Set colors.*/
 /*# */
-:root {
-  --base00: #1c1c1c;
-  --base01: #1c1c1c;
-  --base02: #a89984;
-  --base03: #a89984;
-  --base04: #0d0d0d;
-  --base05: #a89984;
-  --base06: #ebdbb2;
-}
+@import url("../../../../.cache/wal/colors.css");
 
 /*# */
 /*# Hide some stuff.*/
@@ -65,8 +56,8 @@
   padding: 0 !important;
 }
 #navigator-toolbox #urlbar {
-  background: var(--base00) !important;
-  color: var(--base06) !important;
+  background: var(--color0) !important;
+  color: var(--cursor) !important;
   padding: 0 !important;
   padding-left: 6px !important;
 }
@@ -85,25 +76,25 @@
   border: none !important;
 }
 #navigator-toolbox #nav-bar {
-  background: var(--base00) !important;
+  background: var(--color0) !important;
 }
 #navigator-toolbox .toolbarbutton-1 {
   background: pink;
   width: 26px;
-  background: var(--base01);
-  border-left: solid 1px var(--base00);
+  background: var(--color0);
+  border-left: solid 1px var(--color0);
   box-shadow: none !important;
 }
 #navigator-toolbox #PanelUI-menu-button {
-  background: var(--base00);
+  background: var(--color0);
   border: none;
 }
 #navigator-toolbox toolbarbutton image {
-  color: var(--base06) !important;
+  color: var(--cursor) !important;
 }
 #navigator-toolbox #PanelUI-menu-button image {
   display: block;
-  color: var(--base06) !important;
+  color: var(--cursor) !important;
 }
 
 /*# */
@@ -120,16 +111,16 @@
   min-height: 0 !important;
 }
 #navigator-toolbox .toolbar-items {
-  background: var(--base01);
+  background: var(--color0);
 }
 #navigator-toolbox .tab-background {
-  background: var(--base01) !important;
+  background: var(--color0) !important;
   border: none !important;
   box-shadow: none !important;
   border: none !important;
 }
 #navigator-toolbox .tabbrowser-tab .tab-label {
-  color: var(--base05) !important;
+  color: var(--color7) !important;
 }
 #navigator-toolbox .tab-background .tab-line {
   display: none;
@@ -142,10 +133,10 @@
 }
 
 #navigator-toolbox .tab-background[selected='true'] {
-  background: var(--base04) !important;
+  background: var(--color7) !important;
 }
 #navigator-toolbox .tabbrowser-tab[selected='true'] .tab-label {
-  color: var(--base06) !important;
+  color: var(--color0) !important;
 }
 
 

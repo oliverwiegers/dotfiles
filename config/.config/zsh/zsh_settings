@@ -22,6 +22,16 @@ if [ "$(uname)" = "Darwin" ]; then
     export PATH="/usr/local/sbin:$PATH"
 fi
 
+# Wayland fixes.
+
+if [ -n "${WAYLAND_DISPLAY}" ]; then
+    export DISPLAY=$WAYLAND_DISPLAY
+fi
+export XCURSOR_PATH=/usr/share/icons
+export GDK_BACKEND=wayland
+export QT_QPA_PLATFORM=wayland
+export MOZ_ENABLE_WAYLAND=1
+
 # fix terminal gpg
 GPG_TTY=$(tty)
 export GPG_TTY
@@ -39,10 +49,6 @@ fi
 . "${HOME}/.config/zsh/zsh_aliases"
 # shellcheck source=/home/oliverwiegers/.config/zsh/zsh_functions
 . "${HOME}/.config/zsh/zsh_functions"
-# shellcheck source=/home/oliverwiegers/.config/zsh/zsh_aliases
-. "${HOME}/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-# shellcheck source=/home/oliverwiegers/.config/zsh/zsh_aliases
-. "${HOME}/.zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 #          __             __      
 #    _____/ /_____ ______/ /__  __
@@ -50,9 +56,11 @@ fi
 #  (__  ) /_/ /_/ / /  / /__>  <  
 # /____/\__/\__,_/_/   \__/_/|_|  
 
-if [ "$(uname)" = "Linux" ] && [ "$(command -v startx)" ]; then
+if [ "$(uname)" = "Linux" ]; then
     if [ ! "${DISPLAY}" ] && [ -z "${SSH_TTY}" ]; then
-      ssh-agent startx
+        _JAVA_AWT_WM_NONREPARENTING=1 
+        eval "$(ssh-agent)"
+        dbus-run-session sway
     fi
 fi
 

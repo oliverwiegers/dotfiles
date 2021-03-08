@@ -22,9 +22,6 @@ font:
   italic:
     family: SauceCodePro Nerd Font Mono
     style: Light Italic
-  size: 8
+  size: 10
   scale_with_dpi: true
   use_thin_strokes: true
-key_bindings:
-  - { key: V, mods: Alt, action: Paste }
-  - { key: C, mods: Alt, action: Copy }

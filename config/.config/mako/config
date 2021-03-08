@@ -1,0 +1,17 @@
+border-size=3
+border-radius=0
+margin=10,10,10
+default-timeout=3000
+font=Iosevka 10
+
+# Nord
+#background-color=#2e3440e0
+#text-color=#eceff4
+#border-color=#eceff4
+#progress-color=source #d08770
+
+# Gruvbox
+background-color=#282828e0
+text-color=#ebdbb2
+border-color=#ebdbb2
+progress-color=source #cc241d

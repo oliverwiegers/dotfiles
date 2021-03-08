@@ -50,3 +50,4 @@ config/.config/Signal/
 config/.config/menus/
 config/.config/torbrowser/
 config/.config/vlc/
+*sec.conf*
