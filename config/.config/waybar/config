@@ -42,11 +42,13 @@
         },
 
         "clock": {
-            "format": "{:%d.%m.%Y %H:%m}",
+            "interval": 60,
+            "format": "{:%d.%m.%Y %H:%M}",
             "tooltip": false
         },
 
         "battery": {
+            "interval": 60,
             "states": {
                 "full": 98,
                 "good": 95,
@@ -61,6 +63,7 @@
         },
 
         "network": {
+            "interval": 60,
             "format-wifi": " {signalStrength}%",
             "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
             "format-linked": "{ifname} (No IP) ",
@@ -69,6 +72,7 @@
         },
 
         "pulseaudio": {
+            "interval": 60,
             "format": "{icon} {volume}%",
             "format-muted": "{format_source}",
             "format-source": "{volume}% ",
