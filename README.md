@@ -229,3 +229,15 @@ These are screenshots from my current Void Linux system.
 ## ToDo
 
 - Create Keybing Section
+- Create theming mechanism / script
+    - Copy wallpaper to ~/.cache/wallpaper.png
+    - Talk to pywal
+    - Set GTK theme
+    - generate vimium theme
+    - Themes
+        - Gruvbox
+        - Nord
+        - Dracula
+        - Onehalf
+        - Spaceduck
+        - Iceberg
