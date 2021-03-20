@@ -40,6 +40,8 @@ if [ -d "$HOME/.kube" ]; then
     export KUBECONFIG="$(find ~/.kube/configs/ -type f -exec printf '%s:' '{}' +)"
 fi
 
+export OS_CLOUD='openstack'
+
 #    _________  __  _______________ 
 #   / ___/ __ \/ / / / ___/ ___/ _ \
 #  (__  ) /_/ / /_/ / /  / /__/  __/
