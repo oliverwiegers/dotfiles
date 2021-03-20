@@ -1,0 +1,36 @@
+Host *
+    IgnoreUnknown UseKeychain
+    UseKeychain yes
+    ForwardAgent yes
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/id_ed25519
+
+Host kali
+    User root
+    Hostname 10.5.0.5
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no
+    RequestTTY yes
+    RemoteCommand tmux -L tmux new-session -As hacktheplanet
+
+Host hackthebox
+    User root
+    Hostname 10.10.0.10
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no
+    RequestTTY yes
+    RemoteCommand tmux -L tmux new-session -As hacktheplanet
+
+Host openwrt
+    User root
+    Hostname 192.168.1.1
+    IdentityFile ~/.ssh/id_rsa
+    RequestTTY yes
+    RemoteCommand TERM=xterm-256color tmux -L tmux new-session -As openwrt
+
+Host pi
+    User pi
+    Hostname 192.168.1.153
+    IdentityFile ~/.ssh/id_rsa
+    RequestTTY yes
+    RemoteCommand tmux -L tmux new-session -As pi
