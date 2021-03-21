@@ -25,11 +25,11 @@ _create_current_config_backup() {
     mkdir "$current_config_backup_dir/themes"
 
     for file in $(ls -a1 $HOME/.dotfiles/homedir/); do
-        mv "$HOME/$file" "$current_config_backup_dir/homedir/"
+        mv "$HOME/$file" "$current_config_backup_dir/homedir/" || true
     done
     
-    mv "$HOME/.config" "$current_config_backup_dir/config/"
-    mv "$HOME/.themes" "$current_config_backup_dir/themes/"
+    mv "$HOME/.config" "$current_config_backup_dir/config/" || true
+    mv "$HOME/.themes" "$current_config_backup_dir/themes/" || true
 }
 
 _create_symlinks() {
@@ -121,9 +121,6 @@ _print_header() {
 # Print header.
 _print_header
 
-# Create backup of current config.
-_create_current_config_backup
-
 dotfiles_target="$HOME/.dotfiles"
 printf '\e[32mCloning repo into: \e[34m"%s"\e[0m\n' "${dotfiles_target}"
 git clone --recursive https://github.com/oliverwiegers/dotfiles \
@@ -132,6 +129,9 @@ cd "${dotfiles_target}" || exit 1
 
 git checkout "${GIT_BRANCH}"
 git pull origin "${GIT_BRANCH}"
+
+# Create backup of current config.
+_create_current_config_backup
 
 if [ -n "${interactive}" ]; then
     printf 'Going on will potentially overwrite files in "%s" Proceed? (1/2).\n' \

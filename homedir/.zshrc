@@ -58,6 +58,7 @@ plugins=(
     kubectl
     kube-ps1
     jsontools
+    taskwarrior
     systemadmin
     vi-mode
     copybuffer

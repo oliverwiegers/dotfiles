@@ -1,0 +1,27 @@
+# [Created by task 2.5.3 3/20/2021 17:40:08]
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Files
+data.location=~/.task
+
+include /usr/share/doc/task/rc/dark-16.theme
+include /usr/share/doc/task/rc/holidays.de-DE.rc
+
+context.personal=project:personal
+context=personal
+context.sys11=project:work.sys11
+context.work=project:work
+verbose=1
+calendar.details=full
+calendar.holidays=full
+journal.time=1
+weekstart=Monday
