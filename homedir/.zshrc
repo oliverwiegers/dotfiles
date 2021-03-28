@@ -55,8 +55,8 @@ plugins=(
     git
     cargo
     sudo
+    helm
     kubectl
-    kube-ps1
     jsontools
     taskwarrior
     systemadmin
