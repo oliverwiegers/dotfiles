@@ -16,3 +16,6 @@
 [submodule "extra/bin/scripts"]
 	path = extra/bin/scripts
 	url = https://github.com/oliverwiegers/scripts
+[submodule "extra/zsh_custom/plugins/zsh-vi-mode"]
+	path = extra/zsh_custom/plugins/zsh-vi-mode
+	url = https://github.com/jeffreytse/zsh-vi-mode

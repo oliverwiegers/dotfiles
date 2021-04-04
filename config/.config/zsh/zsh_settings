@@ -52,11 +52,12 @@ export OS_CLOUD='openstack'
 # shellcheck source=/home/oliverwiegers/.config/zsh/zsh_functions
 . "${HOME}/.config/zsh/zsh_functions"
 
-#          __             __      
-#    _____/ /_____ ______/ /__  __
-#   / ___/ __/ __ `/ ___/ __/ |/_/
-#  (__  ) /_/ /_/ / /  / /__>  <  
-# /____/\__/\__,_/_/   \__/_/|_|  
+#         __             __            
+#   _____/ /_____ ______/ /___  ______ 
+#  / ___/ __/ __ `/ ___/ __/ / / / __ \
+# (__  ) /_/ /_/ / /  / /_/ /_/ / /_/ /
+#/____/\__/\__,_/_/   \__/\__,_/ .___/ 
+#                             /_/      
 
 if [ "$(uname)" = "Linux" ]; then
     if [ ! "${DISPLAY}" ] && [ -z "${SSH_TTY}" ]; then
