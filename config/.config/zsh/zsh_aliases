@@ -18,10 +18,10 @@ if [ "$(command -v exa)" ]; then
     unalias -m 'l'
     unalias -m 'la'
     unalias -m 'ls'
-    alias ls='exa'
-    alias l='exa -lah'
-    alias ll='exa -lh'
-    alias lt='exa -T'
+    alias ls='exa --icons'
+    alias l='exa -lah --icons'
+    alias ll='exa -lh --icons'
+    alias lt='exa -T --icons'
 fi
 
 # Colorized cat.
