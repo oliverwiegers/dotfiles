@@ -50,8 +50,8 @@ output DP-1 pos 0 0 res 3440x1440
 output LVDS-1 pos 1037 1441 res 1366x768
 
 # Container border colors.
-client.focused $color2 $color0 $color2 $color2 $color2
-client.focused_inactive $color2 $color2 $color2 $color2 $color2
+client.focused $color4 $color0 $color4 $color4 $color4
+client.focused_inactive $color8 $color0 $color8 $color8 $color8
 client.unfocused $color8 $color0 $color8 $color8 $color8
 client.urgent $color1 $color0 $color1 $color1 $color1
 
@@ -81,6 +81,8 @@ exec mako
 #
 
 for_window [app_id="Alacritty"] opacity $opacity
+# Hacky way to reproduce fibonnaci layout.
+for_window [app_id=".*"] split toggle
 
 assign [app_id="pavucontrol"] 6
 assign [app_id="firefox"] 2
@@ -159,6 +161,7 @@ bindsym $mod+v splith
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+
 
 # Make the current focus fullscreen.
 bindsym $mod+f fullscreen

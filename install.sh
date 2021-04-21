@@ -24,7 +24,8 @@ _create_current_config_backup() {
     mkdir "$current_config_backup_dir/config"
     mkdir "$current_config_backup_dir/themes"
 
-    for file in $(ls -a1 $HOME/.dotfiles/homedir/); do
+    for file in "$HOME"/.dotfiles/homedir/.*; do
+        [ -e "${file}" ] || break
         mv "$HOME/$file" "$current_config_backup_dir/homedir/" || true
     done
     
