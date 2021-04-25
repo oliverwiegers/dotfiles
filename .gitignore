@@ -53,3 +53,10 @@ config/.config/menus/
 config/.config/torbrowser/
 config/.config/vlc/
 *sec.conf*
+config/.config/Mumble/
+config/.config/evolution/
+config/.config/gtk-3.0/bookmarks
+config/.config/ibus/
+config/.config/midori/
+config/.config/user-dirs.dirs
+config/.config/user-dirs.locale

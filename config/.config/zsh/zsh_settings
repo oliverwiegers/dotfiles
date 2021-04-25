@@ -17,6 +17,7 @@ export RANGER_LOAD_DEFAULT_RC=false
 export EDITOR=/usr/bin/vim
 export SCRIPT_DIR=$HOME/Documents/scripts
 export PATH="$PATH:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.krew/bin:$HOME/.local/bin/scripts"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 if [ "$(uname)" = "Darwin" ]; then
     export PATH="/usr/local/sbin:$PATH"
@@ -27,9 +28,7 @@ fi
 if [ -n "${WAYLAND_DISPLAY}" ]; then
     export DISPLAY=$WAYLAND_DISPLAY
 fi
-export XCURSOR_PATH=/usr/share/icons
-export GDK_BACKEND=wayland
-export QT_QPA_PLATFORM=wayland
+
 export MOZ_ENABLE_WAYLAND=1
 
 # fix terminal gpg
@@ -63,7 +62,11 @@ if [ "$(uname)" = "Linux" ]; then
     if [ ! "${DISPLAY}" ] && [ -z "${SSH_TTY}" ]; then
         _JAVA_AWT_WM_NONREPARENTING=1 
         eval "$(ssh-agent)"
-        dbus-run-session sway
+        if [ "$(lsb_release -i | awk '/^Distributor ID/ {print $3}' 2> /dev/null)" = 'Ubuntu' ]; then
+            sway
+        else
+            dbus-run-session sway
+        fi
     fi
 fi
 

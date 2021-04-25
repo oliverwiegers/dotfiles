@@ -13,11 +13,10 @@
 # Files
 data.location=~/.task
 
-include /usr/share/doc/task/rc/dark-16.theme
-include /usr/share/doc/task/rc/holidays.de-DE.rc
+#include /usr/share/doc/task/rc/dark-16.theme
+#include /usr/share/doc/task/rc/holidays.de-DE.rc
 
 context.personal=project:personal
-context=personal
 context.sys11=project:work.sys11
 context.work=project:work
 verbose=1

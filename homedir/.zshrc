@@ -54,6 +54,7 @@ ZSH_CUSTOM="$HOME/.dotfiles/extra/zsh_custom/"
 plugins=(
     git
     cargo
+    pass
     sudo
     helm
     kubectl

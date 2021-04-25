@@ -166,21 +166,26 @@ it a thousand times.
 Firefox is highly customized using `userChrome.css` and
 [Vimium](https://addons.mozilla.org/en-US/firefox/addon/vimium-ff/).
 
+#### Show TabBar in fullscreen mode
+
+- Open about:config.
+- Set `browser.fullscreen.autohide` to `false`.
+
 #### userChrome.css
 
 The [userChrome.css](extra/firefox/userchrome.css) uses the colors created bu
 pywal. These are stored in `~/.cache/wal/colors.css` by default. To enable this
 do the following:
 
-- Open about:config
+- Open about:config.
 - Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`.
-- Enable userChrome.css support. (FF 69+)
-- Open about:profile
+- Enable userChrome.css support. (FF 69+).
+- Open about:profile.
 - Find out currently used profile.
 - Create `$HOME/.mozilla/firefox/$profile_name/chrome` directory.
 - Create `$HOME/.mozilla/firefox/$profile_name/chrome/userChrome.css` file.
-- Add some rules
-- Restart Firefox
+- Add some rules.
+- Restart Firefox.
 
 #### Vimium-FF
 
@@ -190,13 +195,13 @@ generate the final config by hand.
 
 - Generate config.
     - `cat ~/.cache/wal/colors.css ~/.dotfiles/extra/firefox/vimium_theme | clipcopy`
-- Open Firefox
+- Open Firefox.
 - Type `about:addons` into URL bar and hit Enter.
 - Go to Vimium preferences.
-- Open "Advanced Options"
-- Clear "CSS for Vimium UI"
+- Open "Advanced Options".
+- Clear "CSS for Vimium UI".
 - Paste the genereted config into the empty text field.
-- Save changes
+- Save changes.
 
 ## Gallery
 
