@@ -19,18 +19,17 @@ fi
 
 _create_current_config_backup() {
     current_config_backup_dir="$HOME/current_config_backup-$(date +%Y%m%d%H%m)"
+    printf 'Moving current dotfiles in: %s to: %s\n' \
+        "$HOME" \
+        "${current_config_backup_dir}"
+
     mkdir "$current_config_backup_dir"
     mkdir "$current_config_backup_dir/homedir"
-    mkdir "$current_config_backup_dir/config"
-    mkdir "$current_config_backup_dir/themes"
 
-    for file in "$HOME"/.dotfiles/homedir/.*; do
-        [ -e "${file}" ] || break
-        mv "$HOME/$file" "$current_config_backup_dir/homedir/" || true
-    done
-    
-    mv "$HOME/.config" "$current_config_backup_dir/config/" || true
-    mv "$HOME/.themes" "$current_config_backup_dir/themes/" || true
+    find "$HOME" \
+        -maxdepth 1 \
+        -name '.*' \
+        -exec mv {} "${current_config_backup_dir}/homedir/" \; || true
 }
 
 _create_symlinks() {
@@ -123,6 +122,9 @@ _print_header() {
 # Print header.
 _print_header
 
+# Create backup of current config.
+_create_current_config_backup
+
 dotfiles_target="$HOME/.dotfiles"
 printf '\e[32mCloning repo into: \e[34m"%s"\e[0m\n' "${dotfiles_target}"
 git clone --recursive https://github.com/oliverwiegers/dotfiles \
@@ -131,9 +133,6 @@ cd "${dotfiles_target}" || exit 1
 
 git checkout "${GIT_BRANCH}"
 git pull origin "${GIT_BRANCH}"
-
-# Create backup of current config.
-_create_current_config_backup
 
 if [ -n "${interactive}" ]; then
     printf 'Going on will potentially overwrite files in "%s" Proceed? (1/2).\n' \
