@@ -9,9 +9,10 @@ include $HOME/.cache/wal/colors-sway
 set $mod Mod1
 set $opacity 0.9
 set $term alacritty
-set $menu wofi --show run
+#set $menu wofi --show run
+set $menu bemenu-run
 
-set $output-internal eDP-1
+set $output-internal LVDS-1
 set $output-external DP-1
 
 # Home row direction keys, like vim

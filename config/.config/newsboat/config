@@ -62,7 +62,7 @@ bind-key G end all
 
 unbind-key C feedlist
 confirm-exit no
-cleanup-on-quit no
+cleanup-on-quit yes
 
 notify-program '/bin/notify-send'
 browser "/bin/w3m %u"

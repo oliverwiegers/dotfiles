@@ -1,59 +1,31 @@
-#                  __               
-#      _________  / /___  __________
-#     / ___/ __ \/ / __ \/ ___/ ___/
-#    / /__/ /_/ / / /_/ / /  (__  ) 
-#    \___/\____/_/\____/_/  /____/  
+# -*-muttrc-*-
+color normal color15 default
+color attachment color1 default
+color hdrdefault color5 default
+color indicator bold color3 default
+color markers color1 default
+color quoted color5 default
+color quoted1 color6 default
+color quoted2 color4 default
 
-# color normal            default             default
-# color indicator         black               red    
-# color tree              default             default 
-# color status            black               red 
-# color error             brightred           default
-# color message           red                 default
-# color signature         red                 default
-# color attachment        yellow              default
-# color search            brightyellow        red 
-# color tilde             brightmagenta       default
-# color markers           red                 default
-# color hdrdefault        cyan                default
-# color bold              green               black  
-# color underline         yellow              black 
-# 
-# color index_flags       black               white           ~D  
-# color index_flags       green               default         ~g 
-# color index_flags       brightgreen         default         ~G 
-# color index_flags       yellow              default         ~N
-# 
-# color index_author      blue                brightred       ~F
-# color index_author      black               green          '%f Bekannte'
-# color index_author      black               red            '%f Work'
-# 
-# color index_number      green               default
-# color index_date        cyan                default 
-# color index_size        cyan                default
-# 
-# color header            brightcyan          default        '^From:'
-# color header            brightcyan          default        '^Subject:'
-# color header            black               brightgreen    '^User-Agent:.*Mutt'
-# 
-# color body              brightwhite         default        "([0-2][0-9]|[0-9]|[1-2][0-9]):[0-5][0-9](:[0-5][0-9])?"
-# color body              brightwhite         default        "([0-3])?[0-9]\\.([0-1])?[0-9]\\.([1-2][0-9])?[0-9][0-9]"
-# color body              brightgreen         default        "(^| )_[[:print:]]+_[ \n]"
-# color body              brightred           default        "(^| )\\*[[:print:]]+\\*[,.?!]?[ \n]"
-# color body              brightdefault       default        "^[[:blank:]]*-[[:print:]]+$"
-# color body              brightdefault       default        "^[[:blank:]]*\\*[[:print:]]+$"
-# color body              brightdefault       blue           "^=+[[:print:]]+$"
-# color body              default             blue           "^===+$"
-# color body              default             blue           "^---+$"
-# color body              brightdefault       blue           "^#+[[:print:]]+$"
-# 
-# color quoted     magenta        default 
-# color quoted1    red            default 
-# color quoted2    green          default 
-# color quoted3    magenta        default 
-# color quoted4    blue           default 
-# color quoted5    cyan           default 
-# color quoted6    green          default 
-# color quoted7    red            default 
-# color quoted8    magenta        default 
-# color quoted9    blue           default 
+color signature color3 default
+
+color status bold color2 default
+
+color tilde color4 default
+color tree color1 default
+
+color header color3 default ^From:
+color header color3 default ^To:
+color header color5 default ^Date
+color header color3 default ^Cc:
+color header color2 default ^Subject:
+color header color5 default ^X-TRASH:
+
+color sidebar_divider bold color4 default
+color sidebar_indicator bold color2 default 
+color sidebar_flagged default default
+color sidebar_highlight bold color2 default
+color sidebar_new bold default default
+color sidebar_ordinary default default
+color sidebar_spoolfile bold color4 default

@@ -8,14 +8,14 @@
     {
         // Bar config.
         "name": "top-intenal-x260",
-        "layer": "top",
+        "layer": "bottom",
         "position": "top",
         "height": 26,
         "margin-top": 6,
         "margin-left": 6,
         "margin-right": 6,
         "margin-bottom": 2,
-        "output": "LVDS1",
+        "output": "LVDS-1",
 
         // Module arangement.
         "modules-left": ["pulseaudio", "network", "battery"],
@@ -86,7 +86,7 @@
     {
         // Bar config.
         "name": "top-intenal-t14s",
-        "layer": "top",
+        "layer": "bottom",
         "position": "top",
         "height": 40,
         "margin-top": 6,
