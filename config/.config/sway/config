@@ -10,7 +10,7 @@ set $mod Mod1
 set $opacity 0.9
 set $term alacritty
 #set $menu wofi --show run
-set $menu bemenu-run
+set $menu bemenu_launcher.sh
 
 set $output-internal LVDS-1
 set $output-external DP-1
