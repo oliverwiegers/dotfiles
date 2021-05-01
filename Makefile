@@ -4,6 +4,18 @@ all: Nothing
 
 .SILENT:
 
+lint: shellcheck markdownlint
+
+shellcheck:
+	docker container run --rm -it -v $(shell pwd):/mnt \
+		koalaman/shellcheck\
+		install.sh
+
+markdownlint:
+	docker container run --rm -it -v $(shell pwd):/data \
+		markdownlint/markdownlint \
+		README.md
+
 install:
 	NON_INTERACTIVE=true ./install.sh
 

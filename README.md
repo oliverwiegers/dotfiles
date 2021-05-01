@@ -64,7 +64,7 @@ The install script will ask to clone / setup the following repos:
 - [scripts](https://github.com/oliverwiegers/scripts)
 
 Furthermore the
-[SourceCodePro Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro) will be installed.
+[SourceCodePro Nerd Font](1) will be installed.
 
 ### Requirements
 
@@ -75,7 +75,12 @@ Furthermore the
 ### Interactive installation
 
 ```bash
-$ curl -fsSL https://raw.githubusercontent.com/oliverwiegers/dotfiles/prod/install.sh -o install.sh && chmod +x install.sh && ./install.sh
+curl \
+    -fsSL \
+    https://raw.githubusercontent.com/oliverwiegers/dotfiles/prod/install.sh \
+    -o install.sh \
+    && chmod +x install.sh \
+    && ./install.sh
 ```
 
 ### Non-interactive installation
@@ -84,7 +89,12 @@ The `NON_INTERACTIVE` env variable can be set to clone all repositories and
 components without asking. Be careful, you might loose your own config files.
 
 ```bash
-$ curl -fsSL https://raw.githubusercontent.com/oliverwiegers/dotfiles/prod/install.sh -o install.sh && chmod +x install.sh && NON_INTERACTIVE=true ./install.sh
+curl \
+    -fsSL \
+    https://raw.githubusercontent.com/oliverwiegers/dotfiles/prod/install.sh \
+    -o install.sh \
+    && chmod +x install.sh \
+    && NON_INTERACTIVE=true ./install.sh
 ```
 
 If there are current configuration files these will be moved to
@@ -93,7 +103,7 @@ not delete or override any files.
 
 ## Development and Testing
 
-This script can be tested inside a docker container. The repository provides a 
+This script can be tested inside a docker container. The repository provides a
 Dockerfile to build an Ubuntu image including all needed packages to run my
 shell configuration. Some of the installed packages aren't needed to test
 the script itself but the functionality of the configuration afterwards.
@@ -106,26 +116,26 @@ is the prod branch.
 ### Testing remote changes
 
 ```bash
-$ git clone git@github.com:oliverwiegers/dotfiles.git
-$ cd dotfiles
-$ export branch="$(git rev-parse --abbrev-ref HEAD)"
-$ docker build -t install_test:"${branch}" --build-arg GIT_BRANCH="${branch}" .
-$ docker container run -it install_test:"${branch}"
-$ NON_INTERACTIVE=true ./install.sh
-$ zsh
+git clone git@github.com:oliverwiegers/dotfiles.git
+cd dotfiles
+export branch="$(git rev-parse --abbrev-ref HEAD)"
+docker build -t install_test:"${branch}" --build-arg GIT_BRANCH="${branch}" .
+docker container run -it install_test:"${branch}"
+NON_INTERACTIVE=true ./install.sh
+zsh
 ```
 
 ### Testing local changes
 
 ```bash
-$ git clone git@github.com:oliverwiegers/dotfiles.git
-$ cd dotfiles
-$ export branch="$(git rev-parse --abbrev-ref HEAD)"
-$ docker build -t install_test:"${branch}" --build-arg GIT_BRANCH="${branch}" .
-$ docker container run -v $PWD:/root/.dotfiles -it install_test:"${branch}"
-$ cd .dotfiles
-$ NON_INTERACTIVE=true ./install.sh
-$ zsh
+git clone git@github.com:oliverwiegers/dotfiles.git
+cd dotfiles
+export branch="$(git rev-parse --abbrev-ref HEAD)"
+docker build -t install_test:"${branch}" --build-arg GIT_BRANCH="${branch}" .
+docker container run -v $PWD:/root/.dotfiles -it install_test:"${branch}"
+cd .dotfiles
+NON_INTERACTIVE=true ./install.sh
+zsh
 ```
 
 ## Software
@@ -156,8 +166,8 @@ For Vim and Tmux I use different repositories.
 - [Vim](https://github.com/oliverwiegers/vim_config)
 - [Tmux](https://github.com/oliverwiegers/.tmuxist)
 
-A big shoutout to [dylanaraps](https://github.com/dylanaraps/) for 
-[pywal](https://github.com/dylanaraps/pywal). This is an awesome tool. It took 
+A big shoutout to [dylanaraps](https://github.com/dylanaraps/) for
+[pywal](https://github.com/dylanaraps/pywal). This is an awesome tool. It took
 me some time to reconfigure my system to use the full potential, but it is worth
 it a thousand times.
 
@@ -219,7 +229,7 @@ These are screenshots from my current Void Linux system.
 
 ![img](.assets/shots/swaylock.png "Swaylock")
 
-### Firefox
+### Firefox Clean
 
 ![img](.assets/shots/firefox.png "Firefox")
 
@@ -250,3 +260,5 @@ These are screenshots from my current Void Linux system.
         - Onehalf
         - Spaceduck
         - Iceberg
+
+[1](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro)
