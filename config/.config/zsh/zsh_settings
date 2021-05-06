@@ -40,6 +40,27 @@ fi
 
 export OS_CLOUD='openstack'
 
+#                  __
+#  _      ______ _/ /
+# | | /| / / __ `/ / 
+# | |/ |/ / /_/ / /  
+# |__/|__/\__,_/_/   
+
+if [ "$(uname)" = "Linux" ] && [ "$(command -v wal)" ]; then
+    # Set wal theme if not done yet.
+    if ! [ -d "$HOME/.cache/wal" ]; then
+        wal --theme gruvbox-tweaked2
+    fi
+
+    # &   # Run the process in the background.
+    # ( ) # Hide shell job control messages.
+    (/bin/cat ~/.cache/wal/sequences &)
+
+    # To add support for TTYs this line can be optionally added.
+    # shellcheck source=/home/oliverwiegers/.cache/wal/colors-tty.sh
+    . "${HOME}/.cache/wal/colors-tty.sh"
+fi
+
 #    _________  __  _______________ 
 #   / ___/ __ \/ / / / ___/ ___/ _ \
 #  (__  ) /_/ / /_/ / /  / /__/  __/
@@ -67,21 +88,6 @@ if [ "$(uname)" = "Linux" ]; then
             dbus-run-session sway
         fi
     fi
-fi
-
-#                  __
-#  _      ______ _/ /
-# | | /| / / __ `/ / 
-# | |/ |/ / /_/ / /  
-# |__/|__/\__,_/_/   
-
-if [ "$(uname)" = "Linux" ] && [ "$(command -v wal)" ]; then
-    # &   # Run the process in the background.
-    # ( ) # Hide shell job control messages.
-    (/bin/cat ~/.cache/wal/sequences &)
-    # To add support for TTYs this line can be optionally added.
-    # shellcheck source=/home/oliverwiegers/.cache/wal/colors-tty.sh
-    . "${HOME}/.cache/wal/colors-tty.sh"
 fi
 
 #                                      __
