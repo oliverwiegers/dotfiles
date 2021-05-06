@@ -97,10 +97,6 @@ curl \
     && NON_INTERACTIVE=true ./install.sh
 ```
 
-If there are current configuration files these will be moved to
-`$HOME/current_config_backup-$(date +%Y%m%d%H%m)"` so the install script should
-not delete or override any files.
-
 ## Development and Testing
 
 This script can be tested inside a docker container. The repository provides a

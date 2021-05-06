@@ -17,21 +17,6 @@ fi
 
 # Function definitions.
 
-_create_current_config_backup() {
-    current_config_backup_dir="$HOME/current_config_backup-$(date +%Y%m%d%H%m)"
-    printf 'Moving current dotfiles in: %s to: %s\n' \
-        "$HOME" \
-        "${current_config_backup_dir}"
-
-    mkdir "$current_config_backup_dir"
-    mkdir "$current_config_backup_dir/homedir"
-
-    find "$HOME" \
-        -maxdepth 1 \
-        -name '.*' \
-        -exec mv {} "${current_config_backup_dir}/homedir/" \; || true
-}
-
 _create_symlinks() {
     if [ "$(uname)" = "Linux" ]; then
         stow homedir
@@ -121,9 +106,6 @@ _print_header() {
 
 # Print header.
 _print_header
-
-# Create backup of current config.
-_create_current_config_backup
 
 dotfiles_target="$HOME/.dotfiles"
 printf '\e[32mCloning repo into: \e[34m"%s"\e[0m\n' "${dotfiles_target}"

@@ -47,7 +47,8 @@ smart_borders on
 Seat * hide_cursor 2000
 
 # Wallpaper
-output * bg $HOME/Pictures/wallpaper/gruvbox/mountain_sun.jpg fill
+output * bg $HOME/Pictures/wallpaper/star_wars/sith/two_lords.jpeg fill
+#output * bg $HOME/Pictures/wallpaper/gruvbox/mountain_sun.jpg fill
 
 output DP-1 pos 0 0 res 3440x1440
 # (3440 - 1366) / 2 = 1037 Needed to arange LVDS-1 in the middle of DP-1
