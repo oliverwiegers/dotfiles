@@ -22,6 +22,6 @@ font:
   italic:
     family: SauceCodePro Nerd Font Mono
     style: Light Italic
-  size: 9
+  size: 10.5
   scale_with_dpi: true
   use_thin_strokes: true

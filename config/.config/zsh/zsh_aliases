@@ -49,6 +49,7 @@ alias ggpl='wget -q https://www.gnu.org/licenses/gpl-3.0.txt -O LICENSE'
 # Configure my system.
 alias reload='source $HOME/.zshrc'\
     '&& printf "Successfully reloaded zsh_config_files\n"'
+alias conf='dotedit'
 
 # Python aliases
 alias vtree='tree -I .venv'

@@ -7,85 +7,7 @@
 [
     {
         // Bar config.
-        "name": "top-intenal-x260",
-        "layer": "bottom",
-        "position": "top",
-        "height": 26,
-        "margin-top": 6,
-        "margin-left": 6,
-        "margin-right": 6,
-        "margin-bottom": 2,
-        "output": "LVDS-1",
-
-        // Module arangement.
-        "modules-left": ["pulseaudio", "network", "battery"],
-        "modules-center": ["sway/workspaces"],
-        "modules-right": ["clock"],
-
-        // Modules.
-        "sway/workspaces": {
-            "disable-scroll": true,
-            "all-outputs": true,
-            "format": "{icon}",
-            "format-icons": {
-                "1": "",
-                "2": "",
-                "3": "",
-                "4": "",
-                "5": "",
-                "6": "",
-                "7": "",
-                "urgent": "",
-                "focused": "",
-                "default": ""
-            }
-        },
-
-        "clock": {
-            "interval": 60,
-            "format": "{:%d.%m.%Y %H:%M}",
-            "tooltip": false
-        },
-
-        "battery": {
-            "interval": 60,
-            "states": {
-                "full": 98,
-                "good": 95,
-                "warning": 30,
-                "critical": 15,
-                "empty": 5
-            },
-            "format": "{icon} {capacity}%",
-            "format-charging": " {capacity}%",
-            "format-alt": "{capacity} {time} {icon}",
-            "format-icons": ["", "", "", "", ""]
-        },
-
-        "network": {
-            "interval": 60,
-            "format-wifi": " {signalStrength}%",
-            "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-            "format-linked": "{ifname} (No IP) ",
-            "format-disconnected": "⚠",
-            "format-alt": "{essid} {signalStrength}% {ifname}: {ipaddr}/{cidr}"
-        },
-
-        "pulseaudio": {
-            "interval": 60,
-            "format": "{icon} {volume}%",
-            "format-muted": "{format_source}",
-            "format-source": "{volume}% ",
-            "format-source-muted": "",
-            "format-icons": {
-                "default": ["", "", ""]
-            }
-        }
-    },
-
-    {
-        // Bar config.
-        "name": "top-intenal-t14s",
+        "name": "top-intenal",
         "layer": "bottom",
         "position": "top",
         "height": 40,
@@ -93,7 +15,7 @@
         "margin-left": 6,
         "margin-right": 6,
         "margin-bottom": 2,
-        "output": "eDP-1",
+        "output": ["DP-3", "eDP-1"],
 
         // Module arangement.
         "modules-left": ["pulseaudio", "network", "battery"],

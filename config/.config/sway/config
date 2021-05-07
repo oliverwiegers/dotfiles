@@ -12,7 +12,7 @@ set $term alacritty
 #set $menu wofi --show run
 set $menu bemenu_launcher.sh
 
-set $output-internal LVDS-1
+set $output-internal DP-3
 set $output-external DP-1
 
 # Home row direction keys, like vim
@@ -48,11 +48,11 @@ Seat * hide_cursor 2000
 
 # Wallpaper
 output * bg $HOME/Pictures/wallpaper/star_wars/sith/two_lords.jpeg fill
-#output * bg $HOME/Pictures/wallpaper/gruvbox/mountain_sun.jpg fill
 
+output LVDS-1 disable
 output DP-1 pos 0 0 res 3440x1440
-# (3440 - 1366) / 2 = 1037 Needed to arange LVDS-1 in the middle of DP-1
-output LVDS-1 pos 1037 1441 res 1366x768
+# (3440 - 1920) / 2 = 1037 Needed to arange DP-3 in the middle of DP-1
+output DP-3 pos 760 1441 res 1366x768
 
 # Container border colors.
 client.focused $color4 $color0 $color4 $color4 $color4
@@ -109,7 +109,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+q exec wofi_promt.sh -m "Kill window?" -c "swaymsg kill"
 
 # Lock screen and go to sleep.
-bindsym $mod+Shift+q exec wofi_promt.sh -m "Lock screen and sleep?" -c "grim /tmp/screen_lock.png && convert /tmp/screen_lock.png -blur 0x9 /tmp/screen_lock_blurred.png && rm /tmp/screen_lock.png && swaylock --image /tmp/screen_lock_blurred.png --daemonize && sleep 2 && sudo zzz"
+bindsym $mod+Shift+q exec wofi_promt.sh -m "Lock screen and sleep?" -c "grim /tmp/screen_lock.png && convert /tmp/screen_lock.png -blur 0x9 /tmp/screen_lock_blurred.png && rm /tmp/screen_lock.png && swaylock --image /tmp/screen_lock_blurred.png --daemonize"
 
 # Reload the configuration file
 bindsym $mod+Shift+r reload
