@@ -29,6 +29,8 @@ input type:keyboard {
     xkb_options ctrl:nocaps
 }
 
+input type:touchpad events disabled
+
 #     __            __      ___        ____          __
 #    / /___  ____  / /__   ( _ )      / __/__  ___  / /
 #   / / __ \/ __ \/ //_/  / __ \/|   / /_/ _ \/ _ \/ / 
