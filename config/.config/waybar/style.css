@@ -4,7 +4,8 @@
   border:        none;
   border-radius: 0.2em;
   font-family:   SauceCodePro Nerd Font Mono;
-  font-size:     0.96em;
+  /*font-size:     0.96em;*/
+  font-size:     1em;
   margin: 0 0.5em; 
   background-color: @color0;
 }

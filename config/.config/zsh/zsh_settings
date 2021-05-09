@@ -28,6 +28,7 @@ if [ -n "${WAYLAND_DISPLAY}" ]; then
     export DISPLAY=$WAYLAND_DISPLAY
 fi
 
+export WLR_DRM_NO_MODIFIERS=1
 export MOZ_ENABLE_WAYLAND=1
 
 # fix terminal gpg
