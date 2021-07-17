@@ -181,6 +181,24 @@ if [ "$(uname)" = "Linux" ]; then
     }
 fi
 
+# Update exploitdb before running searchsploit.
+searchsploit() {
+    pwd="$PWD"
+    cd /opt/exploitdb || exit 1
+    git pull --rebase --quiet
+    cd "${pwd}" || exit 1
+    /opt/exploitdb/searchsploit "$@"
+}
+
+# Update Metasploit-framework before running mfsconsole.
+msfconsole() {
+    pwd="$PWD"
+    cd /opt/metasploit-framework || exit 1
+    git stash clear
+    cd "${pwd}" || exit 1
+    /opt/metasploit-framework/msfupdate > /dev/null 2>&1
+    /opt/metasploit-framework/msfconsole "$@"
+}
 #    ____ ___  ____ __________  _____
 #   / __ `__ \/ __ `/ ___/ __ \/ ___/
 #  / / / / / / /_/ / /__/ /_/ (__  ) 

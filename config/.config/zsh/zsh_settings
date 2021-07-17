@@ -16,30 +16,31 @@
 export RANGER_LOAD_DEFAULT_RC=false
 export EDITOR=/usr/bin/vim
 export SCRIPT_DIR=$HOME/Documents/scripts
-export PATH="$PATH:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.krew/bin:$HOME/.local/bin/scripts"
+export PATH="$PATH:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.krew/bin:$HOME/.local/bin/scripts:/usr/lib/ruby/gems/2.7.0/bin/"
 
 if [ "$(uname)" = "Darwin" ]; then
     export PATH="/usr/local/sbin:$PATH"
 fi
 
 # Wayland fixes.
-
-if [ -n "${WAYLAND_DISPLAY}" ]; then
-    export DISPLAY=$WAYLAND_DISPLAY
-fi
-
 export WLR_DRM_NO_MODIFIERS=1
 export MOZ_ENABLE_WAYLAND=1
+export _JAVA_AWT_WM_NONREPARENTING=1 
 
 # fix terminal gpg
 GPG_TTY=$(tty)
 export GPG_TTY
 
+# Auto merge multiple kubeconfig files.
 if [ -d "$HOME/.kube" ]; then
     export KUBECONFIG="$(find ~/.kube/configs/ -type f -exec printf '%s:' '{}' +)"
 fi
 
+# Set default openstack cloud.
 export OS_CLOUD='openstack'
+
+# Expose wordlist dir.
+export WORDLISTS='/opt/wordlists'
 
 #                  __
 #  _      ______ _/ /
@@ -81,12 +82,15 @@ fi
 
 if [ "$(uname)" = "Linux" ]; then
     if [ ! "${DISPLAY}" ] && [ -z "${SSH_TTY}" ]; then
-        _JAVA_AWT_WM_NONREPARENTING=1 
         eval "$(ssh-agent)"
         if [ "$(lsb_release -i | awk '/^Distributor ID/ {print $3}' 2> /dev/null)" = 'Ubuntu' ]; then
             sway
         else
             dbus-run-session sway
+        fi
+
+        if [ -n "${WAYLAND_DISPLAY}" ]; then
+            export DISPLAY=$WAYLAND_DISPLAY
         fi
     fi
 fi
