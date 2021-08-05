@@ -101,6 +101,7 @@ assign [app_id="pavucontrol"] 4
 assign [app_id="org.telegram.desktop.desktop"] 5
 
 assign [class="Mumble"] 5
+assign [class="OWASP ZAP"] 3
 
 #     __              __    _           ___                 
 #    / /_____  __  __/ /_  (_)___  ____/ (_)___  ____ ______
