@@ -53,8 +53,7 @@ smart_borders on
 Seat * hide_cursor 2000
 
 # Wallpaper
-#output * bg $HOME/Pictures/wallpaper/star_wars/sith/two_lords.jpeg fill
-output * bg $HOME/Pictures/wallpaper/hacktheplanet/doing_silent_things.jpg fill
+output * bg $HOME/Pictures/wallpaper/matrix/follow_the_white_rabbit.png fill
 
 output LVDS-1 disable
 output DP-1 pos 0 0 res 3440x1440

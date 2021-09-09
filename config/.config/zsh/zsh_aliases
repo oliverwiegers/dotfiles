@@ -62,6 +62,8 @@ alias powershell='docker run --rm -it mcr.microsoft.com/powershell'
 # Kubernetes.
 alias kubectx='kubectl ctx'
 alias kubens='kubectl ns'
+alias kcon='kubectl ctx'
+alias kns='kubectl ns'
 alias kk='kubectl krew'
 
 #     ___                 
