@@ -11,11 +11,11 @@
     path = extra/gruvbox-gtk
     url = https://github.com/3ximus/gruvbox-gtk.git
 [submodule "config/.config/ranger/plugins/ranger_devicons"]
-	path = config/.config/ranger/plugins/ranger_devicons
-	url = https://github.com/alexanderjeurissen/ranger_devicons
+    path = config/.config/ranger/plugins/ranger_devicons
+    url = https://github.com/alexanderjeurissen/ranger_devicons
 [submodule "extra/bin/scripts"]
-	path = extra/bin/scripts
-	url = https://github.com/oliverwiegers/scripts
+    path = extra/bin/scripts
+    url = https://github.com/oliverwiegers/scripts
 [submodule "extra/zsh_custom/plugins/zsh-vi-mode"]
-	path = extra/zsh_custom/plugins/zsh-vi-mode
-	url = https://github.com/jeffreytse/zsh-vi-mode
+    path = extra/zsh_custom/plugins/zsh-vi-mode
+    url = https://github.com/jeffreytse/zsh-vi-mode
