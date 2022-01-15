@@ -52,16 +52,17 @@ ZSH_CUSTOM="$HOME/.dotfiles/extra/zsh_custom/"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+    fzf
     git
-    cargo
+    rust
     pass
     sudo
     helm
+    fzf-tab
     kubectl
     jsontools
     taskwarrior
     systemadmin
-    vi-mode
     copybuffer
     fancy-ctrl-z
     zsh-autosuggestions

@@ -17,6 +17,7 @@ export RANGER_LOAD_DEFAULT_RC=false
 export EDITOR=/usr/bin/vim
 export SCRIPT_DIR=$HOME/Documents/scripts
 export PATH="$PATH:$HOME/go/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.krew/bin:$HOME/.local/bin/scripts:/usr/lib/ruby/gems/2.7.0/bin/"
+export FZF_BASE='/usr/share/fzf'
 
 if [ "$(uname)" = "Darwin" ]; then
     export PATH="/usr/local/sbin:$PATH"
@@ -104,14 +105,6 @@ fi
 
 # Call function to welcome the user.
 _zsh_greeting
-
-[ -f /usr/share/doc/fzf/key-bindings.zsh ] && source /usr/share/doc/fzf/key-bindings.zsh
-[ -f /usr/share/doc/fzf/completion.zsh ] && source /usr/share/doc/fzf/completion.zsh
-[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]\
-    && source /usr/share/doc/fzf/examples/key-bindings.zsh
-[ -f /usr/share/doc/fzf/examples/completion.zsh ]\
-    && source /usr/share/doc/fzf/examples/completion.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

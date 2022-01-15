@@ -19,3 +19,12 @@
 [submodule "extra/zsh_custom/plugins/zsh-vi-mode"]
     path = extra/zsh_custom/plugins/zsh-vi-mode
     url = https://github.com/jeffreytse/zsh-vi-mode
+[submodule "extra/zsh_custom/plugins/fzf-zsh-plugin"]
+	path = extra/zsh_custom/plugins/fzf-zsh-plugin
+	url = https://github.com/unixorn/fzf-zsh-plugin
+[submodule "extra/zsh_custom/plugins/fzf-tab"]
+	path = extra/zsh_custom/plugins/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab.git
+[submodule "extra/zsh_custom/plugins/zsh-fzf-pass"]
+	path = extra/zsh_custom/plugins/zsh-fzf-pass
+	url = https://github.com/smeagol74/zsh-fzf-pass.git
