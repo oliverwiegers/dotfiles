@@ -25,7 +25,7 @@ test-remote:
 		bash -c 'NON_INTERACTIVE=true ./install.sh && zsh'
 
 test-local:
-	export branch="$(git rev-parse --abbrev-ref HEAD)"
-	docker build -t install_test:"${branch}" --build-arg GIT_BRANCH="${branch}" .
-	docker container run -v $PWD:/root/.dotfiles -it install_test:"${branch}"\
-		bash -c 'cd .dotfiles && NON_INTERACTIVE=true ./install.sh && zsh'
+	$(eval branch := $(shell git rev-parse --abbrev-ref HEAD))
+	docker build -t install_test:$(branch) --build-arg GIT_BRANCH=$(branch) .
+	docker container run -v $(shell pwd):/root/.dotfiles -it install_test:$(branch) \
+		bash -c 'cd .dotfiles && pwd && ls -la && NON_INTERACTIVE=true ./install.sh && zsh'
