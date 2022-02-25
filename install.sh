@@ -1,29 +1,77 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-# Check for minimum needed software.
-if ! [ "$(command -v stow)" ] || ! [ "$(command -v git)" ]; then
-    printf '\e[31mYou need to have GNU stow and git installed.\nExiting...\n'
+####
+#### Sanity checks.
+####
+
+# Check for supported OSes
+os="$(uname)"
+free_oses='FreeBSD Linux'
+mac_os='Darwin'
+all_oses="${free_oses} ${mac_os}"
+
+support='false'
+for item in ${all_oses}; do
+    if echo "${item}" | grep -wq "${os}"; then
+        support='true'
+    fi
+done
+
+if [ "${support}" = 'false' ]; then
+    printf 'OS: '\''%s'\'' is not supported.\n' "${os}"
+    printf 'Supported OS are: '\''%s'\''.\n' "${all_oses}"
     exit 1
 fi
 
-# Parse environment variables for repo branch to use and noninteractive mode.
+# Set os family
+os_family='free'
+
+if [ "${os}" = 'Darwin' ]; then
+    os_family="${os}"
+fi
+
+# Check for minimum needed software.
+if ! [ "$(command -v stow)" ] || ! [ "$(command -v git)" ] || ! [ "$(command -v wget)" ]; then
+    printf '\e[31mYou need to have GNU stow, wget and git installed.\nExiting...\n'
+    exit 1
+fi
+
+# Parse environment variables for repo branch to use.
 if [ -z "${GIT_BRANCH}" ]; then
     GIT_BRANCH='prod'
 fi
 
-if [ -z "${NON_INTERACTIVE}" ]; then
-    interactive='true'
-fi
+####
+#### Function definitions.
+####
+_clone_dotfiles() {
+    dotfiles_target="$HOME/.dotfiles"
+    printf '\e[32mCloning repo into: \e[34m"%s"\e[0m\n' "${dotfiles_target}"
+    git clone --recursive https://github.com/oliverwiegers/dotfiles \
+        "${dotfiles_target}" || exit 1
+    cd "${dotfiles_target}" || exit 1
+    git checkout "${GIT_BRANCH}"
+    git pull origin "${GIT_BRANCH}"
+    cd "$HOME" || exit 1
+}
 
-# Function definitions.
+_clone_omz() {
+    omz_target="$HOME/.oh-my-zsh"
+    printf '\e[32mCloning oh-my-zsh into: \e[34m%s\e[0m\n' "${omz_target}"
+    git clone https://github.com/robbyrussell/oh-my-zsh.git "${omz_target}" \
+        || exit 1
+    printf '\e[32mDone.\n\e[0m'
+    cd "$HOME" || exit 1
+}
 
 _create_symlinks() {
-    if [ "$(uname)" = "Linux" ]; then
+    cd "$HOME/.dotfiles" || exit 1
+    if [ "$(os_family)" = 'free' ]; then
         stow homedir
         stow config
         mkdir "$HOME/.themes"
         ln -s "$HOME/.dotfiles/extra/gruvbox-gtk" "$HOME/.themes/"
-    elif [ "$(uname)" = "Darwin" ]; then
+    elif [ "${os_family}" = 'Darwin' ]; then
         if [ ! -d "$HOME/.config" ]; then
             mkdir -p "$HOME/.config/"
         fi
@@ -39,16 +87,18 @@ _create_symlinks() {
 }
 
 _install_fonts() {
-    if [ ! -d "${HOME}/.local/share/fonts/" ]; then
-        mkdir -p "${HOME}/.local/share/fonts/"
+    if [ "$(os_family)" = 'free' ]; then
+        if [ ! -d "${HOME}/.local/share/fonts/" ]; then
+            mkdir -p "${HOME}/.local/share/fonts/"
+        fi
+
+        wget -O "${HOME}/.local/share/fonts/source_code_pro_bold.ttf" \
+            https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Bold/complete/Sauce%20Code%20Pro%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
+        wget -O "${HOME}/.local/share/fonts/source_code_pro_regular.ttf" \
+            https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf
+
+        fc-cache -r
     fi
-
-    wget -O "${HOME}/.local/share/fonts/source_code_pro_bold.ttf" \
-        https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Bold/complete/Sauce%20Code%20Pro%20Bold%20Nerd%20Font%20Complete%20Mono.ttf
-    wget -O "${HOME}/.local/share/fonts/source_code_pro_regular.ttf" \
-        https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf
-
-    fc-cache -r
 }
 
 _install_vim_config() {
@@ -84,166 +134,43 @@ _install_scripts() {
     printf '\e[32mDone installing scripts..\n\e[0m'
 }
 
-_print_header() {
-    echo -e "\e[34m"
+_output_header() {
+    printf '%b' '\033[34m'
     echo '.___                   __           .__   .__   .__'
     echo '|   |  ____    _______/  |_ _____   |  |  |  |  |__|  ____     ____'
-    echo '|   | /    \  /  ___/\   __\\__  \  |  |  |  |  |  | /    \   / ___\ '
+    echo '|   | /    \  /  ___/\   __\\\__  \  |  |  |  |  |  | /    \   / ___\ '
     echo '|   ||   |  \ \___ \  |  |   / __ \_|  |__|  |__|  ||   |  \ / /_/  >'
     echo '|___||___|  //____  > |__|  (____  /|____/|____/|__||___|  / \___  /'
     echo '          \/      \/             \/                      \/ /_____/'
     echo '________             __     _____ .__ .__'
     echo '\______ \    ____  _/  |_ _/ ____\|__||  |    ____    ______'
-    echo ' |    |  \  /  _ \ \   __\\   __\ |  ||  |  _/ __ \  /  ___/'
+    echo ' |    |  \  /  _ \ \   __\\\   __\ |  ||  |  _/ __ \  /  ___/'
     echo ' |    `   \(  <_> ) |  |   |  |   |  ||  |__\  ___/  \___ \ '
     echo '/_______  / \____/  |__|   |__|   |__||____/ \___  >/____  >'
     echo '        \/                                       \/      \/'
     echo ' '
     echo ' /\  /\  /\ '
     echo ' \/  \/  \/ '
-    echo -e "\e[0m "
+    printf '%b' '\033[0m'
 }
 
-# Print header.
-_print_header
-
-dotfiles_target="$HOME/.dotfiles"
-printf '\e[32mCloning repo into: \e[34m"%s"\e[0m\n' "${dotfiles_target}"
-git clone --recursive https://github.com/oliverwiegers/dotfiles \
-    "${dotfiles_target}" || exit 1
-cd "${dotfiles_target}" || exit 1
-
-git checkout "${GIT_BRANCH}"
-git pull origin "${GIT_BRANCH}"
-
-if [ -n "${interactive}" ]; then
-    printf 'Going on will potentially overwrite files in "%s" Proceed? (1/2).\n' \
-        "$HOME"
-    select choice in 'Yes' 'No'; do
-        case "${choice}" in
-            'Yes' )
-                printf 'Okay. Going on...\n'
-                break
-                ;;
-            'No' )
-                printf 'Okay. Exiting...\n'
-                exit 0
-                ;;
-            '*' )
-                printf '\e[31mWrong input. Try again.\e[0m\n'
-        esac
-    done
-fi
-
-omz_target="$HOME/.oh-my-zsh"
-printf '\e[32mCloning oh-my-zsh into: \e[34m%s\e[0m\n' "${omz_target}"
-git clone https://github.com/robbyrussell/oh-my-zsh.git "${omz_target}" \
-    || exit 1
-printf '\e[32mDone.\n\e[0m'
-
-cd "$HOME/.dotfiles" || exit 1
-
-if [ -n "${interactive}" ]; then
-    printf '"Automatically create symlinks via GNU Stow? (1/2).\n'
-    select choice in "Yes" "No"; do
-        case $choice in
-            "Yes" )
-                _create_symlinks
-                break
-                ;;
-            "No" )
-                printf 'Okay. Going on...\n'
-                break
-                ;;
-            "*" )
-                printf '\e[31mWrong input. Try again.\e[0m\n'
-        esac
-    done
-else
+_main() {
+    # Print header.
+    _output_header
+    
+    # Install configuration
+    _clone_dotfiles
+    _clone_omz
     _create_symlinks
-fi
-
-if [ "$(uname)" = "Linux" ]; then
-    if [ -n "${interactive}" ]; then
-        printf 'Want to download and install Source Code Pro Nerdfont too? (1/2).\n'
-        select choice in "Yes" "No"; do
-            case ${choice} in
-                "Yes" )
-                    _install_fonts
-                    break
-                    ;;
-                "No" )
-                    printf 'Okay. Going on...\n'
-                    break
-                    ;;
-                "*" )
-                    printf '\e[31mWrong input. Try again.\e[0m\n'
-            esac
-        done
-    else
-        _install_fonts
-    fi
-fi
-
-if [ -n "${interactive}" ]; then
-    printf 'Want to install Vim config too? (1/2).\n'
-    select choice in 'Yes' 'No'; do
-        case "${choice}" in
-            'Yes' )
-                _install_vim_config
-                break
-                ;;
-            'No' )
-                printf 'Okay. Going on...\n'
-                break
-                ;;
-            '*' )
-                printf '\e[31mWrong input. Try again.\e[0m\n'
-        esac
-    done
-else
+    _install_fonts
     _install_vim_config
-fi
-
-
-if [ -n "${interactive}" ];then
-    printf 'Want to install .tmuxist too? (1/2).\n'
-    select choice in 'Yes' 'No'; do
-        case "${choice}" in
-            'Yes' )
-                _install_tmux_config
-                break
-                ;;
-            'No' )
-                printf 'Okay. Going on...\n'
-                break
-                ;;
-            '*' )
-                printf '\e[31mWrong input. Try again.\e[0m\n'
-        esac
-    done
-else
     _install_tmux_config
-fi
-
-if [ -n "${interactive}" ];then
-    printf 'Want to install helper scripts too? (1/2).\n'
-    select choice in 'Yes' 'No'; do
-        case "${choice}" in
-            'Yes' )
-                _install_scripts
-                break
-                ;;
-            'No' )
-                printf 'Okay. Going on...\n'
-                break
-                ;;
-            '*' )
-                printf '\e[31mWrong input. Try again.\e[0m\n'
-        esac
-    done
-else
     _install_scripts
-fi
+    
+    printf '\e[32mFinally done.\e[0m\n'
+}
 
-printf '\e[32mFinally done.\e[0m\n'
+####
+#### Actually run all the stuff.
+####
+main "$@"

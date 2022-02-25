@@ -72,7 +72,10 @@ Furthermore the
 - stow
 - wget
 
-### Interactive installation
+### Installation
+
+Clone all repositories and components without asking. Be careful, you might
+loose your own config files.
 
 ```bash
 curl \
@@ -80,22 +83,12 @@ curl \
     https://raw.githubusercontent.com/oliverwiegers/dotfiles/prod/install.sh \
     -o install.sh \
     && chmod +x install.sh \
-    && ./install.sh
+    ./install.sh
 ```
 
-### Non-interactive installation
-
-The `NON_INTERACTIVE` env variable can be set to clone all repositories and
-components without asking. Be careful, you might loose your own config files.
-
-```bash
-curl \
-    -fsSL \
-    https://raw.githubusercontent.com/oliverwiegers/dotfiles/prod/install.sh \
-    -o install.sh \
-    && chmod +x install.sh \
-    && NON_INTERACTIVE=true ./install.sh
-```
+If there are current configuration files these will be moved to
+`$HOME/current_config_backup-$(date +%Y%m%d%H%m)"` so the install script should
+not delete or override any files.
 
 ## Development and Testing
 
@@ -104,10 +97,9 @@ Dockerfile to build an Ubuntu image including all needed packages to run my
 shell configuration. Some of the installed packages aren't needed to test
 the script itself but the functionality of the configuration afterwards.
 
-In addition to the `NON_INTERACTIVE` env variable the install script and the
-Dockerfile both know the `GIT_BRANCH` env variable to curl the install script
-from the right branch and checkout the right branch after cloning. The default
-is the prod branch.
+The install script and the Dockerfile both know the `GIT_BRANCH` env variable to
+curl the install script from the right branch and checkout the right branch
+after cloning. The default is the prod branch.
 
 ### Testing remote changes
 
@@ -117,7 +109,7 @@ cd dotfiles
 export branch="$(git rev-parse --abbrev-ref HEAD)"
 docker build -t install_test:"${branch}" --build-arg GIT_BRANCH="${branch}" .
 docker container run -it install_test:"${branch}"
-NON_INTERACTIVE=true ./install.sh
+./install.sh
 zsh
 ```
 
@@ -130,7 +122,7 @@ export branch="$(git rev-parse --abbrev-ref HEAD)"
 docker build -t install_test:"${branch}" --build-arg GIT_BRANCH="${branch}" .
 docker container run -v $PWD:/root/.dotfiles -it install_test:"${branch}"
 cd .dotfiles
-NON_INTERACTIVE=true ./install.sh
+./install.sh
 zsh
 ```
 
