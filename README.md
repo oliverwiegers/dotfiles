@@ -83,7 +83,7 @@ curl \
     https://raw.githubusercontent.com/oliverwiegers/dotfiles/prod/install.sh \
     -o install.sh \
     && chmod +x install.sh \
-    ./install.sh
+    && ./install.sh
 ```
 
 If there are current configuration files these will be moved to
