@@ -32,7 +32,8 @@ fi
 
 # Check for minimum needed software.
 if ! [ "$(command -v stow)" ] || ! [ "$(command -v git)" ] || ! [ "$(command -v wget)" ]; then
-    printf '\e[31mYou need to have GNU stow, wget and git installed.\nExiting...\n'
+    printf '\033[31mYou need to have GNU stow, wget and git installed.\n'
+    printf 'Exiting...\n\033[0m'
     exit 1
 fi
 
@@ -46,27 +47,30 @@ fi
 ####
 _clone_dotfiles() {
     dotfiles_target="$HOME/.dotfiles"
-    printf '\e[32mCloning repo into: \e[34m"%s"\e[0m\n' "${dotfiles_target}"
+    printf '\033[32mCloning repo into: \033[34m"%s"\033[0m\n' \
+        "${dotfiles_target}"
     git clone --recursive https://github.com/oliverwiegers/dotfiles \
         "${dotfiles_target}" || exit 1
     cd "${dotfiles_target}" || exit 1
     git checkout "${GIT_BRANCH}"
     git pull origin "${GIT_BRANCH}"
     cd "$HOME" || exit 1
+    printf '\033[32mDone.\n\033[0m'
 }
 
 _clone_omz() {
     omz_target="$HOME/.oh-my-zsh"
-    printf '\e[32mCloning oh-my-zsh into: \e[34m%s\e[0m\n' "${omz_target}"
+    printf '\033[32mCloning oh-my-zsh into: \033[34m%s\033[0m\n' "${omz_target}"
     git clone https://github.com/robbyrussell/oh-my-zsh.git "${omz_target}" \
         || exit 1
-    printf '\e[32mDone.\n\e[0m'
     cd "$HOME" || exit 1
+    printf '\033[32mDone.\n\033[0m'
 }
 
 _create_symlinks() {
+    printf '\033[32mCreating symlinks.\033[0m\n'
     cd "$HOME/.dotfiles" || exit 1
-    if [ "$(os_family)" = 'free' ]; then
+    if [ "${os_family}" = 'free' ]; then
         stow homedir
         stow config
         mkdir "$HOME/.themes"
@@ -84,10 +88,12 @@ _create_symlinks() {
         ln -s "$HOME/.dotfiles/config/.config/ranger/" \
             "$HOME/.config/ranger"
     fi
+    printf '\033[32mDone.\n\033[0m'
 }
 
 _install_fonts() {
-    if [ "$(os_family)" = 'free' ]; then
+    printf '\033[32mInstalling fonts.\033[0m\n'
+    if [ "${os_family}" = 'free' ]; then
         if [ ! -d "${HOME}/.local/share/fonts/" ]; then
             mkdir -p "${HOME}/.local/share/fonts/"
         fi
@@ -99,39 +105,49 @@ _install_fonts() {
 
         fc-cache -r
     fi
+    printf '\033[32mDone.\n\033[0m'
 }
 
 _install_vim_config() {
-    cd "$HOME" || exit 1
+    vim_target="$HOME/.vim"
+    printf '\033[32mCloning vim config into: \033[34m%s\033[0m\n' \
+        "${vim_target}"
 
-    if [ -d "$HOME/.vim" ]; then
-        rm -r "$HOME/.vim"
+    if [ -d "${vim_target}" ]; then
+        rm -r "${vim_target}"
     fi
 
     git clone --recursive https://github.com/oliverwiegers/vim_config \
-        .vim || exit 1
+        "${vim_target}" || exit 1
     cd "$HOME/.vim" || exit 1
     stow vimrc
     ./helper-scripts/manage-coc.sh -i
-    printf '\e[32mDone installing Vim config..\n\e[0m'
+    cd "$HOME" || exit 1
+    printf '\033[32mDone installing Vim config..\n\033[0m'
 }
 
 _install_tmux_config() {
-    cd "$HOME" || exit 1
+    tmux_target="$HOME/.tmuxist"
+    printf '\033[32mCloning tmux config into: \033[34m%s\033[0m\n' \
+        "${tmux_target}"
     git clone --recursive https://github.com/chrootzius/.tmuxist \
-        .tmuxist || exit 1
+        "${tmux_target}" || exit 1
+
     cd "$HOME/.tmuxist" || exit 1
     stow tmux
-    printf '\e[32mDone installing Tmux config..\n\e[0m'
+    cd "$HOME" || exit 1
+    printf '\033[32mDone installing Tmux config..\n\033[0m'
 }
 
 _install_scripts() {
+    printf '\033[32mInstalling scipts.\033[0m\n'
     cd "$HOME" || exit 1
     if [ ! -d "$HOME/.local/bin/" ]; then
         mkdir -p "$HOME/.local/bin/"
     fi
     ln -s "$HOME/.dotfiles/extra/bin/scripts" "$HOME/.local/bin/"
-    printf '\e[32mDone installing scripts..\n\e[0m'
+    cd "$HOME" || exit 1
+    printf '\033[32mDone installing scripts..\n\033[0m'
 }
 
 _output_header() {
@@ -167,10 +183,10 @@ _main() {
     _install_tmux_config
     _install_scripts
     
-    printf '\e[32mFinally done.\e[0m\n'
+    printf '\033[32mFinally done.\033[0m\n'
 }
 
 ####
 #### Actually run all the stuff.
 ####
-main "$@"
+_main "$@"
