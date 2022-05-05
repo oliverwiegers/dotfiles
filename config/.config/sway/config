@@ -46,6 +46,7 @@ default_border pixel 1
 default_floating_border pixel 1
 floating_maximum_size 1000 x 1000
 titlebar_border_thickness 1
+gaps outer 10
 gaps inner 5
 mouse_warping container
 focus_follows_mouse no
@@ -73,14 +74,6 @@ workspace 4 output $output-external
 workspace 5 output $output-internal
 workspace 6 output $output-internal
 workspace 7 output $output-internal
-
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    swaybar_command waybar
-}
 
 #
 # Run software.
@@ -209,9 +202,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Media keys.
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+# Refresh tmux because volume is displayed in tmux bar.
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ -5% && tmux refresh-client -S
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ 0 && pactl set-sink-volume @DEFAULT_SINK@ +5% && tmux refresh-client -S
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && tmux refresh-client -S
 
 # Brightness control.
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5

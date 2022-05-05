@@ -74,9 +74,9 @@
         "pulseaudio": {
             "interval": 60,
             "format": "{icon} {volume}%",
-            "format-muted": "{format_source}",
-            "format-source": "{volume}% ",
-            "format-source-muted": "",
+            "format-muted": "",
+            "format-source": "{icon} {volume}%",
+            "format-source-muted": "",
             "format-icons": {
                 "default": ["", "", ""]
             }
