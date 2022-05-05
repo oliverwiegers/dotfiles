@@ -104,6 +104,24 @@ fi
 # /____/\__/\__,_/_/   \__/\__,_/ .___/ 
 #                              /_/      
 
+# Setup sway displays for later usage
+# At first install on new machine the defaults will be used.
+# Startup -> Open terminal -> Reload sway config. And the right values will be
+# set.
+if swaymsg -t get_outputs > /dev/null 2>&1; then
+    internal='eDP-1'
+    external='DP-1'
+    
+    read -r interal external <<< "$(swaymsg -t get_outputs \
+        | jq -r '[.[] | .name ] | @tsv')"
+    
+    printf 'set $output-internal %s\n' "${internal}" \
+        > $HOME/.cache/sway_internal_display
+    printf 'set $output-external %s\n' "${external}" \
+        > $HOME/.cache/sway_external_display
+fi
+
+
 if [ "$(uname)" = "Linux" ]; then
     if [ ! "${DISPLAY}" ] && [ -z "${SSH_TTY}" ]; then
         eval "$(ssh-agent)"

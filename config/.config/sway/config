@@ -12,8 +12,8 @@ set $term alacritty
 #set $menu wofi --show run
 set $menu bemenu_launcher.sh
 
-set $output-internal DP-3
-set $output-external DP-1
+include $HOME/.cache/sway_internal_display
+include $HOME/.cache/sway_external_display
 
 # Home row direction keys, like vim
 set $left  h
@@ -29,7 +29,9 @@ input type:keyboard {
     xkb_options ctrl:nocaps
 }
 
-input type:touchpad events disabled
+input type:touchpad {
+    events disabled
+}
 
 input type:pointer {
     pointer_accel 0.7
@@ -40,7 +42,7 @@ input type:pointer {
 #   / / __ \/ __ \/ //_/  / __ \/|   / /_/ _ \/ _ \/ / 
 #  / / /_/ / /_/ / ,<    / /_/  <   / __/  __/  __/ /  
 # /_/\____/\____/_/|_|   \____/\/  /_/  \___/\___/_/   
-                                                     
+
 #xwayland disable
 default_border pixel 1
 default_floating_border pixel 1
@@ -58,6 +60,7 @@ output * bg $HOME/Pictures/wallpaper/matrix/follow_the_white_rabbit.png fill
 
 output LVDS-1 disable
 output DP-1 pos 0 0 res 3440x1440
+
 # (3440 - 1920) / 2 = 1037 Needed to arange DP-3 in the middle of DP-1
 output DP-3 pos 760 1441 res 1920x1080
 
@@ -73,7 +76,6 @@ workspace 3 output $output-external
 workspace 4 output $output-external
 workspace 5 output $output-internal
 workspace 6 output $output-internal
-workspace 7 output $output-internal
 
 #
 # Run software.
@@ -210,3 +212,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 # Brightness control.
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
+
+# Launch Meet
+bindsym $mod+m exec --no-startup-id chromium --new-window 'https://meet.google.com'
+bindsym $mod+Shift+m exec --no-startup-id chromium --new-window 'https://meet.new'
