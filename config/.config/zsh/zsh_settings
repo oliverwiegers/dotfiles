@@ -113,7 +113,7 @@ if swaymsg -t get_outputs > /dev/null 2>&1; then
     external='DP-1'
     
     read -r interal external <<< "$(swaymsg -t get_outputs \
-        | jq -r '[.[] | .name ] | @tsv')"
+        | jq -r '[.[] | select(.active) | .name ] | @tsv')"
     
     printf 'set $output-internal %s\n' "${internal}" \
         > $HOME/.cache/sway_internal_display
