@@ -109,12 +109,18 @@ fi
 # Startup -> Open terminal -> Reload sway config. And the right values will be
 # set.
 if swaymsg -t get_outputs > /dev/null 2>&1; then
-    internal='eDP-1'
-    external='DP-1'
     
     read -r interal external <<< "$(swaymsg -t get_outputs \
         | jq -r '[.[] | select(.active) | .name ] | @tsv')"
+
+    if [ -z "${internal}" ]; then
+        internal='eDP-1'
+    fi
     
+    if [ -z "${external}" ]; then
+        external='DP-1'
+    fi
+
     printf 'set $output-internal %s\n' "${internal}" \
         > $HOME/.cache/sway_internal_display
     printf 'set $output-external %s\n' "${external}" \
