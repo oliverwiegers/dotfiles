@@ -43,7 +43,7 @@ input type:pointer {
 #  / / /_/ / /_/ / ,<    / /_/  <   / __/  __/  __/ /  
 # /_/\____/\____/_/|_|   \____/\/  /_/  \___/\___/_/   
 
-#xwayland disable
+# xwayland disable
 default_border pixel 1
 default_floating_border pixel 1
 floating_maximum_size 1000 x 1000
