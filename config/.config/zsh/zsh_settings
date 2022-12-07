@@ -32,10 +32,13 @@ appendpath "$HOME/.local/bin"
 appendpath "$HOME/.cargo/bin"
 appendpath "$HOME/.krew/bin"
 appendpath "$HOME/.local/bin/scripts"
-appendpath '/usr/lib/ruby/2.7.0/bin'
+appendpath "$HOME/.gems/bin"
 
 unset appendpath
 # END Set PATH
+
+# Install ruby gems to ~/.gems
+export GEM_HOME="$HOME/.gems"
 
 export RANGER_LOAD_DEFAULT_RC=false
 export EDITOR=/usr/bin/vim
@@ -173,3 +176,6 @@ POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 
 # Bind key for autosuggestions
 bindkey '^ ' autosuggest-accept
+
+bindkey '^B' backward-word
+bindkey '^F' forward-word
