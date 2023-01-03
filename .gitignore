@@ -1,6 +1,7 @@
 *__init__.py*
 *__pycache__*
 *.swp*
+config/.config/obsidian
 config/.config/autostart
 config/.config/dconf
 config/.config/gconf

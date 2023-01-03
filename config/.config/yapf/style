@@ -1,0 +1,4 @@
+[style]
+based_on_style = google
+split_before_logical_operator = true
+indent_width = 2

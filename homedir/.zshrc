@@ -67,6 +67,7 @@ plugins=(
     fancy-ctrl-z
     zsh-autosuggestions
     zsh-syntax-highlighting
+    zsh-talosctl
 )
 
 ZSH_DISABLE_COMPFIX=true
