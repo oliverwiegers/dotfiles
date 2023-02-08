@@ -34,7 +34,7 @@ input type:touchpad {
 }
 
 input type:pointer {
-    pointer_accel 0.7
+    pointer_accel 0.1
 }
 
 #     __            __      ___        ____          __
@@ -181,6 +181,9 @@ bindsym $mod+f fullscreen
 
 # Toggle the current focus between tiling and floating mode.
 bindsym $mod+Shift+f floating toggle
+
+# Toggle focus from focus/tilling to the other one
+bindsym $mod+t focus mode_toggle
 
 # Move focus to the parent container
 bindsym $mod+a focus parent
