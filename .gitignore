@@ -1,6 +1,5 @@
 *__init__.py*
-*__pycache__*
-*.swp*
+*__pycache__* *.swp*
 config/.config/obsidian
 config/.config/autostart
 config/.config/dconf
@@ -27,6 +26,7 @@ config/.config/wpg/
 config/.config/ranger/bookmarks
 config/.config/ranger/history
 config/.config/ranger/tagged
+config/.config/ranger/plugins/
 config/.config/neofetch
 config/.config/newsboat/cache*
 config/.config/newsboat/history*
@@ -61,3 +61,5 @@ config/.config/ibus/
 config/.config/midori/
 config/.config/user-dirs.dirs
 config/.config/user-dirs.locale
+config/.config/libvirt/qemu
+config/.config/libvirt/storage

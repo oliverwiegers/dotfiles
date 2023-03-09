@@ -33,6 +33,7 @@ appendpath "$HOME/.cargo/bin"
 appendpath "$HOME/.krew/bin"
 appendpath "$HOME/.local/bin/scripts"
 appendpath "$HOME/.gems/bin"
+appendpath "$HOME/.pulumi/bin"
 
 unset appendpath
 # END Set PATH

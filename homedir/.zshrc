@@ -68,6 +68,7 @@ plugins=(
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-talosctl
+    zsh-pulumi
 )
 
 ZSH_DISABLE_COMPFIX=true
