@@ -60,7 +60,6 @@ bind-key G end all
 #     \__, /\___/_/ /_/\___/_/   \__,_/_/   
 #    /____/                                 
 
-unbind-key C feedlist
 confirm-exit no
 cleanup-on-quit yes
 

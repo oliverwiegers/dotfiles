@@ -71,6 +71,9 @@ export OS_CLOUD='openstack'
 # Expose wordlist dir.
 export WORDLISTS='/opt/wordlists'
 
+# Export local pulumi password
+export PULUMI_CONFIG_PASSPHRASE=""
+
 #                  __
 #  _      ______ _/ /
 # | | /| / / __ `/ / 

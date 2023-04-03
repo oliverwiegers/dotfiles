@@ -1,13 +1,12 @@
-https://news.ycombinator.com/rss hackernews
-https://lobste.rs/rss "~Lobste.rs" lobsters
-https://www.archlinux.org/feeds/news/ arch linux
-https://voidlinux.org/atom
-https://codewithoutrules.com/atom.xml
-https://feeds.feedburner.com/ThePragmaticEngineer
-https://micahflee.com/feed.xml "~Mica Lee"
-https://captnemo.in/atom.xml
-https://krebsonsecurity.com/feed/
-https://medium.com/feed/@sinemgnel
-https://medium.com/feed/topic/leadership
-https://feeds2.feedburner.com/typepad/krisdedecker/lowtechmagazineenglish
-https://blog.dave.tf/
+https://news.ycombinator.com/rss news aggregator
+https://lobste.rs/rss news aggregator
+https://feeds.feedburner.com/ThePragmaticEngineer leadership blog
+https://blog.orhun.dev/rss.xml blog programming "~Orhun's Blog (Programming)"
+https://blog.python.org/feeds/posts/default?alt=rss programming python blog
+http://www.python.org/dev/peps/peps.rss programming python
+https://www.pulumi.com/blog/rss.xml blog infrastructure
+https://www.rfc-editor.org/rfcrss.xml
+https://ersei.net/en/blog.atom blog
+https://danielmiessler.com/feed blog cybersecurity
+https://garrit.xyz/rss.xml blog
+https://fasterthanli.me/index.xml blog
