@@ -1,4 +1,4 @@
-https://news.ycombinator.com/rss news aggregator
+https://news.ycombinator.com/rss "~Hacker News (ycombinator)" news aggregator
 https://lobste.rs/rss news aggregator
 https://feeds.feedburner.com/ThePragmaticEngineer leadership blog
 https://blog.orhun.dev/rss.xml blog programming "~Orhun's Blog (Programming)"
@@ -10,3 +10,6 @@ https://ersei.net/en/blog.atom blog
 https://danielmiessler.com/feed blog cybersecurity
 https://garrit.xyz/rss.xml blog
 https://fasterthanli.me/index.xml blog
+https://taylor.town/feed blog
+https://feeds.feedburner.com/TheHackersNews cybersecurity news aggregator
+https://intel.taggartinstitute.org/i/?a=rss&rid=642fae7dcfe7c&hours=168 news aggregator
