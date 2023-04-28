@@ -27,14 +27,16 @@ prepopulate-query-feeds yes
 #    /_/\____/\____/_/|_|  
 
 show-read-feeds yes
-feed-sort-order unreadarticlecount-asc
+show-read-articles no
+article-sort-order date
 
-color info cyan default reverse
+color info black white reverse
 color listnormal_unread yellow default
-color listfocus red default reverse bold
-color listfocus_unread red default reverse bold
+color listfocus green default reverse bold
+color listfocus_unread green default reverse bold
 
 text-width 80
+feedlist-format "%?T?%  %n %8u %t &--------------------------------------------------------------- %t?"
                                                        
 #                          _             __  _           
 #       ____  ____ __   __(_)___ _____ _/ /_(_)___  ____ 
@@ -62,7 +64,9 @@ bind-key G end all
 
 confirm-exit no
 cleanup-on-quit yes
+confirm-mark-feed-read no
 
 notify-program '/bin/notify-send'
 browser "/bin/w3m %u"
-macro f set browser "/bin/firefox %u"; open-in-browser ; set browser "/bin/w3m %u"
+macro f set browser "/bin/firefox %u"; open-in-browser-and-mark-read ; set browser "/bin/w3m %u"
+macro w set browser "~/.local/bin/wallabag add %u"; open-in-browser-and-mark-read ; set browser "/bin/w3m %u"

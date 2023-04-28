@@ -1,15 +1,36 @@
-https://news.ycombinator.com/rss "~Hacker News (ycombinator)" news aggregator
-https://lobste.rs/rss news aggregator
-https://feeds.feedburner.com/ThePragmaticEngineer leadership blog
-https://blog.orhun.dev/rss.xml blog programming "~Orhun's Blog (Programming)"
-https://blog.python.org/feeds/posts/default?alt=rss programming python blog
-http://www.python.org/dev/peps/peps.rss programming python
-https://www.pulumi.com/blog/rss.xml blog infrastructure
-https://www.rfc-editor.org/rfcrss.xml
-https://ersei.net/en/blog.atom blog
-https://danielmiessler.com/feed blog cybersecurity
-https://garrit.xyz/rss.xml blog
-https://fasterthanli.me/index.xml blog
-https://taylor.town/feed blog
-https://feeds.feedburner.com/TheHackersNews cybersecurity news aggregator
-https://intel.taggartinstitute.org/i/?a=rss&rid=642fae7dcfe7c&hours=168 news aggregator
+"query:News Aggregators:tags # \"news_aggregator\""
+https://feeds.feedburner.com/TheHackersNews                              news_aggregator                              cybersecurity 
+https://news.ycombinator.com/rss                                         news_aggregator "~Hacker News (ycombinator)"
+https://lobste.rs/rss                                                    news_aggregator
+
+"query:Blogs:tags # \"blog\""
+https://blog.orhun.dev/rss.xml                       blog "~Orhun's Blog (Programming)" programming
+https://ersei.net/en/blog.atom                       blog
+https://danielmiessler.com/feed                      blog                               cybersecurity
+https://blog.python.org/feeds/posts/default?alt=rss  blog                               programming python
+https://garrit.xyz/rss.xml                           blog
+https://fasterthanli.me/index.xml                    blog
+https://taylor.town/feed                             blog
+https://www.claudiokuenzler.com/rss.xml              blog
+https://www.mevlyshkin.com/blog/atom.xml             blog                               maybe
+http://feeds.scottlowe.org/slowe/content/feed/       blog                               kubernetes
+https://bitecode.substack.com/feed/                  blog                               programming python
+https://annehelen.substack.com/feed                  blog                               social
+https://samwho.dev/rss.xml                           blog
+https://kmaasrud.com/atom.xml                        blog
+https://opensourcemusings.com/feed/                  blog
+https://dqdongg.com/rss.xml                          blog                               programming python
+https://frankindev.com/feed.xml                      blog
+
+"query:Corporate Blogs:tags # \"corporate_blog\""
+https://googleonlinesecurity.blogspot.com/atom.xml  corporate_blog  cybersecurity
+https://www.pulumi.com/blog/rss.xml                 corporate_blog  infrastructure
+https://blog.python.org/feeds/posts/default?alt=rss corporate_blog  programming
+https://blog.pypi.org/feed_rss_created.xml    corporate_blog  programming
+
+"query:Misc:tags # \"misc\""
+http://www.python.org/dev/peps/peps.rss misc programming python
+http://wikileaks.org/feed-all           misc
+https://www.rfc-editor.org/rfcrss.xml   misc
+https://www.w3.org/blog/news/feed       misc
+https://hacks.mozilla.org/feed/         misc

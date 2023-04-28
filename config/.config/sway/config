@@ -220,3 +220,6 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5
 # Launch Meet
 bindsym $mod+m exec --no-startup-id chromium --new-window 'https://meet.google.com'
 bindsym $mod+Shift+m exec --no-startup-id chromium --new-window 'https://meet.new'
+
+# Launch empty Firefox window
+bindsym $mod+n exec --no-startup-id firefox --new-window
