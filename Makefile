@@ -1,7 +1,4 @@
-Nothing:
-
-all: Nothing
-
+.PHONY: all clean test lint
 .SILENT:
 
 lint: shellcheck markdownlint

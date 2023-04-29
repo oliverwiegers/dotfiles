@@ -7,14 +7,14 @@
 #                                                                             #
 ###############################################################################
 
-#                    _       __    __         
+#                    _       __    __
 #  _   ______ ______(_)___ _/ /_  / /__  _____
 # | | / / __ `/ ___/ / __ `/ __ \/ / _ \/ ___/
-# | |/ / /_/ / /  / / /_/ / /_/ / /  __(__  ) 
-# |___/\__,_/_/  /_/\__,_/_.___/_/\___/____/  
+# | |/ / /_/ / /  / / /_/ / /_/ / /  __(__  )
+# |___/\__,_/_/  /_/\__,_/_.___/_/\___/____/
 
 # START Set PATH
-# Following snippet appends to PATH but ensures PATH is not appendig itself
+# Following snippet appends to PATH but ensures PATH is not appending itself
 # while resourcing the shell configuration.
 # Shamelessly stolen from /etc/profile on Void Linux.
 appendpath () {
@@ -53,7 +53,7 @@ fi
 # Wayland fixes.
 export WLR_DRM_NO_MODIFIERS=1
 export MOZ_ENABLE_WAYLAND=1
-export _JAVA_AWT_WM_NONREPARENTING=1 
+export _JAVA_AWT_WM_NONREPARENTING=1
 export GDK_BACKEND=wayland
 
 # fix terminal gpg
@@ -76,9 +76,9 @@ export PULUMI_CONFIG_PASSPHRASE=""
 
 #                  __
 #  _      ______ _/ /
-# | | /| / / __ `/ / 
-# | |/ |/ / /_/ / /  
-# |__/|__/\__,_/_/   
+# | | /| / / __ `/ /
+# | |/ |/ / /_/ / /
+# |__/|__/\__,_/_/
 
 if [ "$(uname)" = "Linux" ] && [ "$(command -v wal)" ]; then
     # Set wal theme if not done yet.
@@ -95,36 +95,36 @@ if [ "$(uname)" = "Linux" ] && [ "$(command -v wal)" ]; then
     . "${HOME}/.cache/wal/colors-tty.sh"
 fi
 
-#    _________  __  _______________ 
+#    _________  __  _______________
 #   / ___/ __ \/ / / / ___/ ___/ _ \
 #  (__  ) /_/ / /_/ / /  / /__/  __/
-# /____/\____/\__,_/_/   \___/\___/ 
+# /____/\____/\__,_/_/   \___/\___/
 
 # shellcheck source=/home/oliverwiegers/.config/zsh/zsh_aliases
 . "${HOME}/.config/zsh/zsh_aliases"
 # shellcheck source=/home/oliverwiegers/.config/zsh/zsh_functions
 . "${HOME}/.config/zsh/zsh_functions"
 
-#          __             __            
-#    _____/ /_____ ______/ /___  ______ 
+#          __             __
+#    _____/ /_____ ______/ /___  ______
 #   / ___/ __/ __ `/ ___/ __/ / / / __ \
 #  (__  ) /_/ /_/ / /  / /_/ /_/ / /_/ /
-# /____/\__/\__,_/_/   \__/\__,_/ .___/ 
-#                              /_/      
+# /____/\__/\__,_/_/   \__/\__,_/ .___/
+#                              /_/
 
 # Setup sway displays for later usage
 # At first install on new machine the defaults will be used.
 # Startup -> Open terminal -> Reload sway config. And the right values will be
 # set.
 if swaymsg -t get_outputs > /dev/null 2>&1; then
-    
-    read -r interal external <<< "$(swaymsg -t get_outputs \
+
+    read -r internal external <<< "$(swaymsg -t get_outputs \
         | jq -r '[.[] | select(.active) | .name ] | @tsv')"
 
     if [ -z "${internal}" ]; then
         internal='eDP-1'
     fi
-    
+
     if [ -z "${external}" ]; then
         external='DP-1'
     fi
@@ -153,30 +153,30 @@ fi
 
 #                                      __
 #    ____ ____  ____  ___  _________ _/ /
-#   / __ `/ _ \/ __ \/ _ \/ ___/ __ `/ / 
-#  / /_/ /  __/ / / /  __/ /  / /_/ / /  
-#  \__, /\___/_/ /_/\___/_/   \__,_/_/   
-# /____/                                 
+#   / __ `/ _ \/ __ \/ _ \/ ___/ __ `/ /
+#  / /_/ /  __/ / / /  __/ /  / /_/ / /
+#  \__, /\___/_/ /_/\___/_/   \__,_/_/
+# /____/
 
 # Call function to welcome the user.
 _zsh_greeting
 
-#         _                  __    
+#         _                  __
 #  _   __(_)______  ______ _/ /____
 # | | / / / ___/ / / / __ `/ / ___/
-# | |/ / (__  ) /_/ / /_/ / (__  ) 
-# |___/_/____/\__,_/\__,_/_/____/  
+# | |/ / (__  ) /_/ / /_/ / (__  )
+# |___/_/____/\__,_/\__,_/_/____/
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
 [[ ! ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-#     __              __    _           ___                 
+#     __              __    _           ___
 #    / /_____  __  __/ /_  (_)___  ____/ (_)___  ____ ______
 #   / //_/ _ \/ / / / __ \/ / __ \/ __  / / __ \/ __ `/ ___/
-#  / ,< /  __/ /_/ / /_/ / / / / / /_/ / / / / / /_/ (__  ) 
-# /_/|_|\___/\__, /_.___/_/_/ /_/\__,_/_/_/ /_/\__, /____/  
-#           /____/                            /____/        
+#  / ,< /  __/ /_/ / /_/ / / / / / /_/ / / / / / /_/ (__  )
+# /_/|_|\___/\__, /_.___/_/_/ /_/\__,_/_/_/ /_/\__, /____/
+#           /____/                            /____/
 
 # Bind key for autosuggestions
 bindkey '^ ' autosuggest-accept

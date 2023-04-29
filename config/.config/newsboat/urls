@@ -1,5 +1,5 @@
 "query:News Aggregators:tags # \"news_aggregator\""
-https://feeds.feedburner.com/TheHackersNews                              news_aggregator                              cybersecurity 
+https://feeds.feedburner.com/TheHackersNews                              news_aggregator                              cybersecurity
 https://news.ycombinator.com/rss                                         news_aggregator "~Hacker News (ycombinator)"
 https://lobste.rs/rss                                                    news_aggregator
 
@@ -21,6 +21,8 @@ https://kmaasrud.com/atom.xml                        blog
 https://opensourcemusings.com/feed/                  blog
 https://dqdongg.com/rss.xml                          blog                               programming python
 https://frankindev.com/feed.xml                      blog
+https://ounapuu.ee/index.xml                         blog                               linux
+https://ma.ttias.be/blog/index.xml                   blog                               linux
 
 "query:Corporate Blogs:tags # \"corporate_blog\""
 https://googleonlinesecurity.blogspot.com/atom.xml  corporate_blog  cybersecurity

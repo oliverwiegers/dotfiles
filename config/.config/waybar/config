@@ -1,9 +1,9 @@
-//  _       _______  ______  ___    ____ 
+//  _       _______  ______  ___    ____
 // | |     / /   \ \/ / __ )/   |  / __ \
 // | | /| / / /| |\  / __  / /| | / /_/ /
-// | |/ |/ / ___ |/ / /_/ / ___ |/ _, _/ 
-// |__/|__/_/  |_/_/_____/_/  |_/_/ |_|  
-                                      
+// | |/ |/ / ___ |/ / /_/ / ___ |/ _, _/
+// |__/|__/_/  |_/_/_____/_/  |_/_/ |_|
+
 [
     {
         // Bar config.
@@ -17,7 +17,7 @@
         "margin-bottom": 2,
         "output": ["DP-3", "eDP-1"],
 
-        // Module arangement.
+        // Module arrangement.
         "modules-left": ["pulseaudio", "network", "battery"],
         "modules-center": ["sway/workspaces"],
         "modules-right": ["clock"],

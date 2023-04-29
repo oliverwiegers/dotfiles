@@ -144,7 +144,7 @@ _install_tmux_config() {
 }
 
 _install_scripts() {
-    printf '\033[32mInstalling scipts.\n\033[0m'
+    printf '\033[32mInstalling scripts.\n\033[0m'
     cd "$HOME" || exit 1
     if [ ! -d "$HOME/.local/bin/" ]; then
         mkdir -p "$HOME/.local/bin/"
@@ -158,12 +158,14 @@ _output_header() {
     printf '%b' '\033[34m'
     echo '.___                   __           .__   .__   .__'
     echo '|   |  ____    _______/  |_ _____   |  |  |  |  |__|  ____     ____'
+    # shellcheck disable=SC2028
     echo '|   | /    \  /  ___/\   __\\\__  \  |  |  |  |  |  | /    \   / ___\ '
     echo '|   ||   |  \ \___ \  |  |   / __ \_|  |__|  |__|  ||   |  \ / /_/  >'
     echo '|___||___|  //____  > |__|  (____  /|____/|____/|__||___|  / \___  /'
     echo '          \/      \/             \/                      \/ /_____/'
     echo '________             __     _____ .__ .__'
     echo '\______ \    ____  _/  |_ _/ ____\|__||  |    ____    ______'
+    # shellcheck disable=SC2028
     echo ' |    |  \  /  _ \ \   __\\\   __\ |  ||  |  _/ __ \  /  ___/'
     echo ' |    `   \(  <_> ) |  |   |  |   |  ||  |__\  ___/  \___ \ '
     echo '/_______  / \____/  |__|   |__|   |__||____/ \___  >/____  >'
@@ -177,7 +179,7 @@ _output_header() {
 _main() {
     # Print header.
     _output_header
-    
+
     # Install configuration
     _clone_dotfiles
     _clone_omz
@@ -186,7 +188,7 @@ _main() {
     _install_vim_config
     _install_tmux_config
     _install_scripts
-    
+
     printf '\033[32mFinally done.\033[0m\n'
 }
 

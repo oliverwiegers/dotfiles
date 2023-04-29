@@ -6,13 +6,13 @@
 #    (_)/_/  /_/   \____/    /_/      /_/    /_/ |_|   \____/       #
 #                                                                   #
 #####################################################################
-                                                             
+
 #                                         __
 #       ____ ____  ____  ___  _________ _/ /
-#      / __ `/ _ \/ __ \/ _ \/ ___/ __ `/ / 
-#     / /_/ /  __/ / / /  __/ /  / /_/ / /  
-#     \__, /\___/_/ /_/\___/_/   \__,_/_/   
-#    /____/                                 
+#      / __ `/ _ \/ __ \/ _ \/ ___/ __ `/ /
+#     / /_/ /  __/ / / /  __/ /  / /_/ / /
+#     \__, /\___/_/ /_/\___/_/   \__,_/_/
+#    /____/
 
 set my_pass="`pass neomutt/gmail`"
 set editor=`echo \$EDITOR`
@@ -26,12 +26,12 @@ set new_mail_command = "/bin/notify-send 'Neomutt' 'You got mail.'"
 auto_view text/html
 alternative_order text/enriched text/plain text/html text
 
-#        _     __           __  _ __       
+#        _     __           __  _ __
 #       (_)___/ /__  ____  / /_(_) /___  __
 #      / / __  / _ \/ __ \/ __/ / __/ / / /
-#     / / /_/ /  __/ / / / /_/ / /_/ /_/ / 
-#    /_/\__,_/\___/_/ /_/\__/_/\__/\__, /  
-#                                 /____/   
+#     / / /_/ /  __/ / / / /_/ / /_/ /_/ /
+#    /_/\__,_/\___/_/ /_/\__/_/\__/\__, /
+#                                 /____/
 
 set realname = "Oliver Wiegers"
 set from = "oliver.wiegers@gmail.com"
@@ -39,21 +39,21 @@ set use_from = yes
 set user_agent = yes
 my_hdr User-Agent: Friendly User Agent/1.0
 
-#       _____ __  _____________ 
+#       _____ __  _____________
 #      / ___//  |/  /_  __/ __ \
 #      \__ \/ /|_/ / / / / /_/ /
-#     ___/ / /  / / / / / ____/ 
-#    /____/_/  /_/ /_/ /_/      
+#     ___/ / /  / / / / / ____/
+#    /____/_/  /_/ /_/ /_/
 
 set smtp_url = "smtps://oliver.wiegers@gmail.com@smtp.gmail.com:465/"
 set smtp_pass = "$my_pass"
 set record="+[Gmail]/Sent Mail"
 
-#        ______  ______    ____ 
+#        ______  ______    ____
 #       /  _/  |/  /   |  / __ \
 #       / // /|_/ / /| | / /_/ /
-#     _/ // /  / / ___ |/ ____/ 
-#    /___/_/  /_/_/  |_/_/      
+#     _/ // /  / / ___ |/ ____/
+#    /___/_/  /_/_/  |_/_/
 
 
 mailboxes = "+INBOX"
@@ -72,9 +72,9 @@ set mail_check = 30
 
 #       ____ _____  ____ _
 #      / __ `/ __ \/ __ `/
-#     / /_/ / /_/ / /_/ / 
-#     \__, / .___/\__, /  
-#    /____/_/    /____/   
+#     / /_/ / /_/ / /_/ /
+#     \__, / .___/\__, /
+#    /____/_/    /____/
 
 set crypt_use_gpgme=yes
 set crypt_autosign=yes
@@ -88,11 +88,11 @@ set pgp_check_gpg_decrypt_status_fd
 set pgp_use_gpg_agent = yes
 set pgp_self_encrypt = no
 
-#       _________  __  _______________ 
+#       _________  __  _______________
 #      / ___/ __ \/ / / / ___/ ___/ _ \
 #     (__  ) /_/ / /_/ / /  / /__/  __/
-#    /____/\____/\__,_/_/   \___/\___/ 
-                                  
+#    /____/\____/\__,_/_/   \___/\___/
+
 source $HOME/.config/neomutt/colors
 source $HOME/.config/neomutt/vim-keys
 source $HOME/.config/neomutt/sidebar

@@ -16,7 +16,7 @@
 These are the dotfiles for my current setup.
 
 This configuration aims to be simple and portable. Yet there are some parts
-that wont work on MacOS.
+that won't work on MacOS.
 
 The [Installation section](#installation) will guide you through the
 installation process.
@@ -36,16 +36,16 @@ Main software:
 - **Wallpaper**: [Wallpaper
   Flare](https://www.wallpaperflare.com/red-mountains-and-moon-digital-wallpaper-red-mountain-illustration-wallpaper-pu)
 
-## Installation
+## Usage
 
 I use the configuration mostly on my Linux systems but partly on a mac for work.
-The install script is OS aware and will only create symlinks for macOS useable
+The install script is OS aware and will only create symlinks for macOS usable
 software if executed on macOS.
 
-Furthermore the script will ask wether or not to install configuration files for
+Furthermore the script will ask whether or not to install configuration files for
 Vim and Tmux from other repositories listed down below.
 
-The [install.sh](install.sh) wont install any packages, only config files.
+The [install](install) script won't install any packages, only config files.
 
 The install script will clone the following repos:
 
@@ -80,10 +80,10 @@ loose your own config files.
 ```bash
 curl \
     -fsSL \
-    https://raw.githubusercontent.com/oliverwiegers/dotfiles/prod/install.sh \
-    -o install.sh \
-    && chmod +x install.sh \
-    && ./install.sh
+    https://raw.githubusercontent.com/oliverwiegers/dotfiles/prod/install \
+    -o install \
+    && chmod +x install \
+    && ./install
 ```
 
 If there are current configuration files these will be moved to
@@ -109,7 +109,7 @@ cd dotfiles
 export branch="$(git rev-parse --abbrev-ref HEAD)"
 docker build -t install_test:"${branch}" --build-arg GIT_BRANCH="${branch}" .
 docker container run -it install_test:"${branch}"
-./install.sh
+./install
 zsh
 ```
 
@@ -122,13 +122,13 @@ export branch="$(git rev-parse --abbrev-ref HEAD)"
 docker build -t install_test:"${branch}" --build-arg GIT_BRANCH="${branch}" .
 docker container run -v $PWD:/root/.dotfiles -it install_test:"${branch}"
 cd .dotfiles
-./install.sh
+./install
 zsh
 ```
 
 ## Software
 
-The install script intalls configuration files for the following software.
+The install script installs configuration files for the following software.
 
 ### Included in this repo
 
@@ -171,7 +171,7 @@ Firefox is highly customized using `userChrome.css` and
 
 #### userChrome.css
 
-The [userChrome.css](extra/firefox/userchrome.css) uses the colors created bu
+The [userChrome.css](extra/firefox/userchrome.css) uses the colors created by
 pywal. These are stored in `~/.cache/wal/colors.css` by default. To enable this
 do the following:
 
@@ -198,7 +198,7 @@ generate the final config by hand.
 - Go to Vimium preferences.
 - Open "Advanced Options".
 - Clear "CSS for Vimium UI".
-- Paste the genereted config into the empty text field.
+- Paste the generated config into the empty text field.
 - Save changes.
 
 ## Gallery

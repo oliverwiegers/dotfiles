@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-RUN apt-get update && apt-get install -y git curl fontconfig vim stow zsh wget \
+RUN apt-get update && apt-get install --no-install-recommends -y git curl fontconfig vim stow zsh wget \
     shellcheck iproute2 taskwarrior bat
 
 ARG GIT_BRANCH=prod

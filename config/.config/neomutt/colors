@@ -23,7 +23,7 @@ color header color2 default ^Subject:
 color header color5 default ^X-TRASH:
 
 color sidebar_divider bold color4 default
-color sidebar_indicator bold color2 default 
+color sidebar_indicator bold color2 default
 color sidebar_flagged default default
 color sidebar_highlight bold color2 default
 color sidebar_new bold default default
