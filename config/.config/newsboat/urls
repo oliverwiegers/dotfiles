@@ -23,16 +23,27 @@ https://dqdongg.com/rss.xml                          blog                       
 https://frankindev.com/feed.xml                      blog
 https://ounapuu.ee/index.xml                         blog                               linux
 https://ma.ttias.be/blog/index.xml                   blog                               linux
+https://privsec.dev/index.xml                        blog                               security
+https://matduggan.com/rss/                           blog  "~Mat Duggan"
+https://alexharv074.github.io/feed.xml               blog                               programming
+https://lazybear.io/index.xml                        blog
+https://shellsharks.com/feed                         blog                               security
+https://0xash.io/feed                                blog                               security
+https://ianthehenry.com/feed.xml                     blog
 
 "query:Corporate Blogs:tags # \"corporate_blog\""
 https://googleonlinesecurity.blogspot.com/atom.xml  corporate_blog  cybersecurity
 https://www.pulumi.com/blog/rss.xml                 corporate_blog  infrastructure
 https://blog.python.org/feeds/posts/default?alt=rss corporate_blog  programming
-https://blog.pypi.org/feed_rss_created.xml    corporate_blog  programming
+https://blog.pypi.org/feed_rss_created.xml          corporate_blog  programming
 
 "query:Misc:tags # \"misc\""
-http://www.python.org/dev/peps/peps.rss misc programming python
-http://wikileaks.org/feed-all           misc
-https://www.rfc-editor.org/rfcrss.xml   misc
-https://www.w3.org/blog/news/feed       misc
-https://hacks.mozilla.org/feed/         misc
+http://www.python.org/dev/peps/peps.rss  misc programming python
+http://wikileaks.org/feed-all            misc
+https://www.rfc-editor.org/rfcrss.xml    misc
+https://www.w3.org/blog/news/feed        misc
+https://hacks.mozilla.org/feed/          misc
+https://nyxt.atlas.engineer/feed         misc changelog
+
+"query:Gaming:tags # \"gaming\""
+http://feeds.feedburner.com/MajorNelson  gaming

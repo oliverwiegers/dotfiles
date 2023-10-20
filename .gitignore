@@ -63,3 +63,13 @@ config/.config/user-dirs.dirs
 config/.config/user-dirs.locale
 config/.config/libvirt/qemu
 config/.config/libvirt/storage
+config/.config/argocd/
+config/.config/cef_user_data/
+config/.config/cni/
+config/.config/krdcrc
+config/.config/nyxt/
+config/.config/simple-scan/
+config/.config/virt-viewer/
+config/.config/weechat/
+config/.config/zoom.conf
+config/.config/zoomus.conf

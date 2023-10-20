@@ -58,6 +58,7 @@ plugins=(
     fzf-tab
     kubectl
     jsontools
+    terraform
     taskwarrior
     systemadmin
     copybuffer

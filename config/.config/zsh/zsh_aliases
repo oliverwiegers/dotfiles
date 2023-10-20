@@ -37,7 +37,7 @@ alias wanip='curl -s4 https://ip.syseleven.de'
 # Useful.
 alias dev="ls /dev/"
 alias weather="curl -H \"Accept-Language: de\" wttr.in/Berlin"
-alias getcommittext='curl -s http://whatthecommit.com/index.txt'
+alias getcommittext='curl -sL http://whatthecommit.com/index.txt'
 
 # Use wal colors for tmux
 alias tmux='tmux -2'
@@ -60,8 +60,6 @@ alias venv='python3 -m virtualenv .venv'
 alias powershell='docker run --rm -it mcr.microsoft.com/powershell'
 
 # Kubernetes.
-alias kubectx='kubectl ctx'
-alias kubens='kubectl ns'
 alias kcon='kubectl ctx'
 alias kns='kubectl ns'
 alias kk='kubectl krew'
