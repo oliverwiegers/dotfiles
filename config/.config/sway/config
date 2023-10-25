@@ -58,10 +58,12 @@ Seat * hide_cursor 2000
 # Wallpaper
 output * bg $HOME/Pictures/wallpaper/cyberpunk/hack_station_green.jpg fill
 
-output LVDS-1 disable
-# (3440 - 1920) / 2 = 1037 Needed to arange DP-3 in the middle of DP-1
-output DP-1 pos 760 1441 res 3440x1440
-output DP-3 pos 760 1441 res 1920x1080
+# Internal display.
+output eDP-1 pos 760 1440 res 1920x1200
+
+# External display
+# (3440 - 1920) / 2 = 1037 Needed to arange DP-1 in the middle of eDP-1
+output DP-1 pos 0 0 res 3440x1440
 
 
 # Container border colors.
