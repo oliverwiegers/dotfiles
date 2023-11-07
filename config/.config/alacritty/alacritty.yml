@@ -17,6 +17,6 @@ font:
     style: Bold
   italic:
     family: SauceCodePro Nerd Font Mono
-    style: Light Italic
+    style: Italic
   size: 11
   scale_with_dpi: true

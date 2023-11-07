@@ -15,7 +15,6 @@ https://www.claudiokuenzler.com/rss.xml              blog
 https://www.mevlyshkin.com/blog/atom.xml             blog                               maybe
 http://feeds.scottlowe.org/slowe/content/feed/       blog                               kubernetes
 https://bitecode.substack.com/feed/                  blog                               programming python
-https://annehelen.substack.com/feed                  blog                               social
 https://samwho.dev/rss.xml                           blog
 https://kmaasrud.com/atom.xml                        blog
 https://opensourcemusings.com/feed/                  blog
@@ -30,6 +29,7 @@ https://lazybear.io/index.xml                        blog
 https://shellsharks.com/feed                         blog                               security
 https://0xash.io/feed                                blog                               security
 https://ianthehenry.com/feed.xml                     blog
+https://ludic.mataroa.blog/rss/                      blog
 
 "query:Corporate Blogs:tags # \"corporate_blog\""
 https://googleonlinesecurity.blogspot.com/atom.xml  corporate_blog  cybersecurity

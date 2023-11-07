@@ -28,3 +28,6 @@
 [submodule "extra/zsh_custom/plugins/zsh-fzf-pass"]
 	path = extra/zsh_custom/plugins/zsh-fzf-pass
 	url = https://github.com/smeagol74/zsh-fzf-pass.git
+[submodule "extra/zsh_custom/plugins/zsh-magic-dashboard"]
+	path = extra/zsh_custom/plugins/zsh-magic-dashboard
+	url = https://github.com/chrisgrieser/zsh-magic-dashboard

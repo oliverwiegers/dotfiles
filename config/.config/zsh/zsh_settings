@@ -105,6 +105,8 @@ fi
 . "${HOME}/.config/zsh/zsh_aliases"
 # shellcheck source=/home/oliverwiegers/.config/zsh/zsh_functions
 . "${HOME}/.config/zsh/zsh_functions"
+# shellcheck # source=/home/oliverwiegers/.dotfiles/extra/zsh_custom/plugins/zsh-magic-dashboard/magic_dashboard.zsh
+. "${HOME}/.dotfiles/extra/zsh_custom/plugins/zsh-magic-dashboard/magic_dashboard.zsh"
 
 #          __             __
 #    _____/ /_____ ______/ /___  ______
