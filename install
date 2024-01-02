@@ -134,7 +134,7 @@ _install_tmux_config() {
     tmux_target="$HOME/.tmuxist"
     printf '\033[32mCloning tmux config into: \033[34m%s\n\033[0m' \
         "${tmux_target}"
-    git clone --recursive https://github.com/chrootzius/.tmuxist \
+    git clone --recursive https://github.com/chrootzius/tmuxist \
         "${tmux_target}" || exit 1
 
     cd "$HOME/.tmuxist" || exit 1

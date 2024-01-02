@@ -60,7 +60,7 @@ The install script will clone the following repos:
 The install script will ask to clone / setup the following repos:
 
 - [Vim config](https://github.com/oliverwiegers/vim_config)
-- [Tmux config](https://github.com/oliverwiegers/.tmuxist)
+- [Tmux config](https://github.com/oliverwiegers/tmuxist)
 - [scripts](https://github.com/oliverwiegers/scripts)
 
 Furthermore the
@@ -152,7 +152,7 @@ The install script installs configuration files for the following software.
 For Vim and Tmux I use different repositories.
 
 - [Vim](https://github.com/oliverwiegers/vim_config)
-- [Tmux](https://github.com/oliverwiegers/.tmuxist)
+- [Tmux](https://github.com/oliverwiegers/tmuxist)
 
 A big shoutout to [dylanaraps](https://github.com/dylanaraps/) for
 [pywal](https://github.com/dylanaraps/pywal). This is an awesome tool. It took
