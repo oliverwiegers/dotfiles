@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repo was replaced by [oliverwiegers/homelab](https://github.com/oliverwiegers/homelab)
+
 <p align="center">
   <img width="25%" src=".assets/home.png"/>
 </p>
